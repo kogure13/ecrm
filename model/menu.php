@@ -27,6 +27,7 @@ if (isset($_GET['page'])) {
         <li>
             <a href="#">Profile</a>
             <ul>
+                <li><a href="?page=profile">Company Profile</a></li>
                 <li><a href="?page=req_project">Request Project</a></li>
                 <li><a href="?page=faq">FAQ</a></li>
                 <li><a href="?page=logout">Logout</a></li>

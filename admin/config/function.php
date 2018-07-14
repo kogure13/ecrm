@@ -35,9 +35,3 @@ function v_password($password, $hash_pass) {
     
     return $hash;
 }
-
-function gen_noreg() {
-    
-    $a = "jpo"; //initiall 
-    
-}

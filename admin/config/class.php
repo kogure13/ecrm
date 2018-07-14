@@ -114,3 +114,32 @@ class User {
     }
 
 }//end class user
+
+class noreg {
+    
+    protected $conn;
+    
+    function __construct($connString) {
+        $this->conn = $connString;
+    }
+
+    function getData() {
+        
+        $a = "PJO-";
+        $sql = "SELECT count(*)+1 AS numData FROM data_prospek";        
+
+        $result = mysqli_query($this->conn, $sql) or die();
+        $row = mysqli_fetch_assoc($result);                
+        
+        if($row['numData'] < 10) {
+            
+            $a .= "0".$row['numData'];
+        }else{
+            $a .= $row['numData'];
+        }
+        
+        $a .= "/".date('Y')."-".date('m');
+        
+        echo $a;
+    }
+}

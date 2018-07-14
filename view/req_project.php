@@ -1,4 +1,8 @@
-
+<?php
+$db = new dbObj();
+$connString = $db->getConstring();
+$noreg = new noreg($connString);
+?>
 <div class="row">
     <div class="col-sm-12">
         <h4 class="page-title">Halaman Permintaan Project</h4>
@@ -48,7 +52,7 @@
                                 <label for="nip" class="control-label">No. Reg:</label>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-keyboard-o"></i></span>
-                                    <input type="text" class="form-control input-sm" id="noreg" name="noreg" readonly="readonly"/>
+                                    <input type="text" class="form-control input-sm" id="noreg" name="noreg" readonly="readonly" value="<?=$noreg->getData()?>"/>
                                 </div>                                
                             </div>
                             <div class="col-sm-4">

@@ -51,7 +51,8 @@
                 <?= $main->get_page() ?>
                 <div class="cleaner"></div>		
             </div>		
-        </div>                       
+        </div>
+        
         <script type="text/javascript" src="admin/assets/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="admin/assets/js/jquery.validate.min.js"></script>
         

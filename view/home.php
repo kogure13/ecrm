@@ -13,7 +13,23 @@
 </div>
 
 <div class="col one_third no_margin_right">
-    <a href="#"><img src="theme/asset/images/ad_300.jpg" alt="image" /></a>
+    <div class="panel panel-default" style="height: 300px;">
+        <div class="panel-heading">
+            Project
+        </div>
+        <div class="panel-body" style="overflow-y: auto; ">
+            <ul class="tmo_list" id="jproyek">
+                <?php
+                $db = new dbObj();
+                $connString = $db->getConstring();
+
+                $tb_name = "master_kategori_proyek";
+                $jProyek = new Option($connString);
+                $jProyek->getOption($tb_name);
+                ?>
+            </ul>
+        </div>
+    </div>    
 </div>        
 
 <div id="content" class="float_l">
@@ -47,29 +63,11 @@
 
     <div class="cleaner h40"></div>
 
-    <div class="col one_third">
-        <h5>Project</h5>
-        <ul class="tmo_list" id="jproyek">
-            <?php
-            $db = new dbObj();
-            $connString = $db->getConstring();
+    <div class="col one_third">        
 
-            $tb_name = "master_kategori_proyek";
-            $jProyek = new Option($connString);
-            $jProyek->getOption($tb_name);
-            ?>
-        </ul>
     </div>
     <div class="col one_third no_margin_right">
-        <h5>Flickr Stream</h5>
-        <ul class="flickr_stream">
-            <li><a href="#"><img class="image_frame" src="theme/asset/images/tooplate_image_02.png" alt="" /></a></li>
-            <li><a href="#"><img class="image_frame" src="theme/asset/images/tooplate_image_03.png" alt="" /></a></li>
-            <li class="no_margin_right"><a href="#"><img class="image_frame" src="theme/asset/images/tooplate_image_04.png" alt="" /></a></li>
-            <li><a href="#"><img class="image_frame" src="theme/asset/images/tooplate_image_05.png" alt="" /></a></li>
-            <li><a href="#"><img class="image_frame" src="theme/asset/images/tooplate_image_06.png" alt="" /></a></li>
-            <li class="no_margin_right"><a href="#"><img class="image_frame" src="theme/asset/images/tooplate_image_07.png" alt="" /></a></li>
-        </ul>
+
     </div>        
 </div>
 
