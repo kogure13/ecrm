@@ -53,6 +53,10 @@
             </div>		
         </div>
         
+        <div class="footer">
+            <?=$main->get_footer() ?>
+        </div>
+        
         <script type="text/javascript" src="admin/assets/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="admin/assets/js/jquery.validate.min.js"></script>
         

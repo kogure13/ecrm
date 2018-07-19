@@ -41,7 +41,7 @@ display: inline-block;
 /*1st sub level menu*/
 .ddsmoothmenu ul li ul {
 	position: absolute;
-	width: 120px;
+	width: 200px;
 	margin: 0;
 	padding: 0;
 	left: 0;
@@ -68,7 +68,7 @@ top: 0;
 /* Sub level menu links style */
 .ddsmoothmenu ul li ul li a{
 	font-weight: 500;
-	width: 120px; /*width of sub menus*/
+	width: 200px; /*width of sub menus*/
 	height: 28px;
 	line-height: 28px;
 	padding: 0 20px;

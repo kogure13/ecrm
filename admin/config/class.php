@@ -57,6 +57,10 @@ class Main {
         include_once 'model/topbar.php';
     }
 
+    function get_footer() {
+        include_once 'model/footer.php';
+    }
+
     function get_menu() {
         include_once 'model/menu.php';
     }
@@ -113,33 +117,60 @@ class User {
         echo '<meta http-equiv="refresh" content="0;url=index.php" >';
     }
 
-}//end class user
+}
+
+//end class user
 
 class noreg {
-    
+
     protected $conn;
-    
+
     function __construct($connString) {
         $this->conn = $connString;
     }
 
     function getData() {
-        
+
         $a = "PJO-";
-        $sql = "SELECT count(*)+1 AS numData FROM data_prospek";        
+        $sql = "SELECT count(*)+1 AS numData FROM data_prospek";
 
         $result = mysqli_query($this->conn, $sql) or die();
-        $row = mysqli_fetch_assoc($result);                
-        
-        if($row['numData'] < 10) {
-            
-            $a .= "0".$row['numData'];
-        }else{
+        $row = mysqli_fetch_assoc($result);
+
+        if ($row['numData'] < 10) {
+
+            $a .= "0" . $row['numData'];
+        } else {
             $a .= $row['numData'];
         }
-        
-        $a .= "/".date('Y')."-".date('m');
-        
+
+        $a .= "/" . date('Y') . "-" . date('m');
+
         echo $a;
     }
+
 }
+
+class nProject {
+
+    protected $conn;
+
+    function __construct($connString) {
+        $this->conn = $connString;
+    }
+
+    function getOption($tb_name) {
+        $json_data = [];
+        $sql = "SELECT * FROM " . $tb_name;
+        $result = mysqli_query($this->conn, $sql);
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo '<li>';
+            echo $row['nama_proyek'];
+            echo '</li>';
+        }
+    }
+
+}
+
+?>

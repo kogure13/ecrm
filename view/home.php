@@ -24,7 +24,7 @@
                 $connString = $db->getConstring();
 
                 $tb_name = "master_kategori_proyek";
-                $jProyek = new Option($connString);
+                $jProyek = new nProject($connString);
                 $jProyek->getOption($tb_name);
                 ?>
             </ul>
@@ -113,31 +113,6 @@
 </div>        
 
 <div class="cleaner"></div>
-
-<?php
-
-class Option {
-
-    protected $conn;
-
-    function __construct($connString) {
-        $this->conn = $connString;
-    }
-
-    function getOption($tb_name) {
-        $json_data = [];
-        $sql = "SELECT * FROM " . $tb_name;
-        $result = mysqli_query($this->conn, $sql);
-
-        while ($row = mysqli_fetch_assoc($result)) {
-            echo '<li>';
-            echo $row['nama_proyek'];
-            echo '</li>';
-        }
-    }
-
-}
-?>
 
 <script type="text/javascript" src="theme/asset/js/jquery-1.4.3.min.js"></script>
 

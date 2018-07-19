@@ -2,14 +2,14 @@
 <div class="row">
     <div class="col-lg-5 col-md-5">
         <div class="panel-heading">
-            <h3 class="text-center"> Sign Up as <strong class="text-custom">Client</strong> </h3>
+            <h3 class="text-center"> Profile <strong class="text-custom">Client</strong> </h3>
         </div>
 
         <div class="panel-body">
             <form method="post" id="form_reg" name="form_reg" class="form-horizontal" novalidate="novalidate">
-                <input type="hidden" value="save" name="action" id="action">
-                <input type="hidden" value="<?= date("Y-m-d") ?> <?= date("H:i:s") ?>" name="jdate" id="jdate">
-
+                <input type="hidden" value="save" name="action" id="action">                
+                <input type="hidden" value="<?=$_SESSION['id_user']?>" name="edit_id" id="edit_id">
+                
                 <div class="form-group ">                    
                     <div class="col-lg-12 col-md-12 col-sm-6">
                         <label>E-mail</label>
@@ -47,21 +47,12 @@
                         <label for="alamat">Address</label>
                         <textarea id="caddress" name="caddress" class="form-control"></textarea>
                     </div>
-                </div>
-
-                <div class="form-group m-1-10">
-                    <div class="col-lg-12 col-xs-12">
-                        <div class="checkbox checkbox-primary">
-                            <input type="checkbox" id="checkbox_signup" name="checkbox_signup" style="margin-left: 0;">
-                            <label for="checkbox signup">I accept <a href="#" id="term_condt">Terms and Conditions</a></label>
-                        </div>
-                    </div>
-                </div>
+                </div>                
 
                 <div class="form-group text-center m-t-40">
                     <div class="col-lg-12 col-md-12 col-sm-12">
-                        <button id="save_reg" class="btn btn-primary btn-block text-uppercase" type="submit">
-                            Register
+                        <button type="submit" id="update" class="btn btn-primary btn-block text-uppercase" >
+                            Update
                         </button>
                     </div>
                 </div>
