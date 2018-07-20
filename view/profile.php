@@ -8,24 +8,22 @@
         <div class="panel-body">
             <form method="post" id="form_reg" name="form_reg" class="form-horizontal" novalidate="novalidate">
                 <input type="hidden" value="save" name="action" id="action">                
-                <input type="hidden" value="<?=$_SESSION['id_user']?>" name="edit_id" id="edit_id">
-                
+                <input type="hidden" value="<?= $_SESSION['id_user'] ?>" name="edit_id" id="edit_id">
                 <div class="form-group ">                    
                     <div class="col-lg-12 col-md-12 col-sm-6">
                         <label>E-mail</label>
                         <input type="text" id="email" name="email" class="form-control" placeholder="Email">
                     </div>
                 </div>
-
                 <div class="form-group ">                                            
                     <div class="col-xs-6">
                         <label>Username</label>
                         <input type="text" id="uname" name="uname" class="form-control" placeholder="Username">
                     </div>
                     <div class="col-xs-6">
-                        <label>Password</label>
-                        <input type="password" id="password" name="password" class="form-control" placeholder="Password">
-                    </div>
+                        <label>Phone</label>
+                        <input type="text" id="phone" name="phone" class="form-control" placeholder="Phone">
+                    </div>                    
                 </div>
 
                 <div class="form-group">
@@ -33,22 +31,13 @@
                         <label>Company Name</label>
                         <input type="text" id="cname" name="cname" class="form-control" placeholder="Company Name">
                     </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-xs-7">
-                        <label>Phone</label>
-                        <input type="text" id="phone" name="phone" class="form-control" placeholder="Phone">
-                    </div>
-                </div>
-
+                </div>               
                 <div class="form-group">
                     <div class="col-xs-12">
                         <label for="alamat">Address</label>
                         <textarea id="caddress" name="caddress" class="form-control"></textarea>
                     </div>
                 </div>                
-
                 <div class="form-group text-center m-t-40">
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <button type="submit" id="update" class="btn btn-primary btn-block text-uppercase" >

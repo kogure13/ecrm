@@ -15,8 +15,7 @@ $columns = array(
     3 => 'company_address',    
     4 => 'tlp',
     5 => 'email',    
-    6 => 'username',
-    7 => 'status_client'
+    6 => 'username'    
 );
 
 $eClass->getData($requestData, $columns, $tb_name);
@@ -77,8 +76,7 @@ class Client {
             $nestedData[] = $row['company_address'];
             $nestedData[] = $row['tlp'];
             $nestedData[] = $row['email'];
-            $nestedData[] = $row['date_register'];            
-            $nestedData[] = $row['status_client'];
+            $nestedData[] = $row['date_register'];                        
 
             $data[] = $nestedData;
         }

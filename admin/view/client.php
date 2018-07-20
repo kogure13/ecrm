@@ -20,8 +20,7 @@
                         <th class="nosort" width="40px">Action</th>
                         <th>Username</th><th>Company name</th>
                         <th>Company address</th><th>Phone number</th>
-                        <th>E-mail</th><th>Join date</th>
-                        <th>Status</th>
+                        <th>E-mail</th><th>Join date</th>                        
                     </tr>
                 </thead>
                 <tbody></tbody>

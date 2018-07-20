@@ -42,10 +42,11 @@ $noreg = new noreg($connString);
             <div class="modal-header">                
                 <h4 class="modal-title"></h4>
             </div>
-            <form id="form_pegawai" novalidate="novalidate">
+            <form id="form_kproyek" name="form_kproyek" novalidate="novalidate">
                 <div class="modal-body">
                     <input type="hidden" value="add" name="action" id="action">
-                    <input type="hidden" value="0" name="edit_id" id="edit_id">                    
+                    <input type="hidden" value="0" name="edit_id" id="edit_id">  
+                    <input type="hidden" value="<?=$_SESSION['id_user']?>" name="id_client" id="id_client">
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-6">
@@ -73,8 +74,7 @@ $noreg = new noreg($connString);
                                         <option></option>
                                     </select>
                                 </div>                                
-                            </div>
-                            
+                            </div>                            
                         </div>                        
                     </div>
                     

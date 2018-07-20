@@ -8,14 +8,11 @@ $connString = $db->getConstring();
 $params = $_REQUEST;
 $tb_name = "data_client";
 
-$password = $params['password'];
-$hashpassword = hashing_pasword($password);
-
 $action = isset($params['action']) != '' ? $params['action'] : '';
 $crudClass = new CRUD($connString);
 
 switch ($action) {
-    case 'save' : $crudClass->updateData($params, $tb_name, $hashpassword);
+    case 'save' : $crudClass->updateData($params, $tb_name);
         break;    
     default : break;
 }
@@ -28,9 +25,9 @@ class CRUD {
         $this->conn = $connString;
     }
     
-    function updateData($params, $tb_name, $hashpassword) {
+    function updateData($params, $tb_name) {
 
-        $numData = $this->cekData($params, $tb_name, $hashpassword);
+        $numData = $this->cekData($params, $tb_name);
 
         if ($numData > 1) {
             echo 1;
@@ -41,8 +38,7 @@ class CRUD {
                     . " company_address = '" . addslashes($params['caddress']) . "',"
                     . " tlp = '" . $params['phone'] . "',"
                     . " email = '" . addslashes($params['email']) . "',"
-                    . " username = '" . addslashes($params['uname']) . "',"
-                    . " password = '" . $hashpassword . "'";
+                    . " username = '" . addslashes($params['uname']) . "'";
             $sql .= " WHERE id = '" . $_POST['edit_id'] . "'";
 
             $result = mysqli_query($this->conn, $sql) or die("error to update data");

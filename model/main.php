@@ -12,10 +12,11 @@
             <link rel="stylesheet" type="text/css" href="theme/asset/css/nivo-slider.css" media="screen"/>
             <link rel="stylesheet" type="text/css" href="theme/asset/css/ddsmoothmenu.css" />
             <link rel="stylesheet" type="text/css" href="theme/asset/css/slimbox2.css" media="screen"/> 
-
-            <link rel="stylesheet" type="text/css" href="admin/assets/css/bootstrap.min.css"/>
             <link rel="stylesheet" type="text/css" href="theme/asset/css/font-awesome/css/font-awesome.min.css"/>
-            <link rel="stylesheet" type="text/css" href="admin/assets/plugins/datatables/jquery.dataTables.min.css"/>
+            
+            <link rel="stylesheet" type="text/css" href="admin/assets/css/bootstrap.min.css"/>            
+            <link rel="stylesheet" type="text/css" href="admin/assets/plugins/datatables/jquery.dataTables.min.css"/>            
+            <link rel="stylesheet" type="text/css" href="admin/assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css"/>
 
             <style type="text/css">
                 .error {
@@ -62,6 +63,8 @@
         
         <script type="text/javascript" src="admin/assets/plugins/datatables/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="admin/assets/plugins/datatables/dataTables.bootstrap.js"></script>
+        
+        <script type="text/javascript" src="admin/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
         
         <script type="text/javascript" src="theme/asset/js/ddsmoothmenu.js">
             /***********************************************

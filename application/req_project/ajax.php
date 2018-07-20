@@ -44,9 +44,10 @@ class Prospek {
 
         $sqlTot = "SELECT $dbparams[0].id, no_reg, nama_proyek, tgl_request, "
                 . " $dbparams[0].status, $dbparams[0].keterangan, nama_peg";
-        $sqlTot .= " FROM ".$dbparams[0];
+        $sqlTot .= " FROM ".$dbparams[0];        
+        
         $sqlTot .= " JOIN master_kategori_proyek ON $dbparams[0].id_proyek = master_kategori_proyek.id";
-        $sqlTot .= " JOIN data_pegawai ON $dbparams[0].id_pegawai = data_pegawai.id";
+        $sqlTot .= " LEFT OUTER JOIN data_pegawai ON $dbparams[0].id_pegawai = data_pegawai.id";
         $sqlTot .= " WHERE $dbparams[0].id_client = $dbparams[1]";
 
         $sql = $sqlTot;
@@ -79,12 +80,21 @@ class Prospek {
         while ($row = mysqli_fetch_assoc($query)) {
             $nestedData = [];
             
-            $nestedData[] = $user->editAct($row['id']);
+            switch ($row['status']) {
+                case 0 : $status = 'Open'; $ubtn = $user->editAct($row['id']); break;
+                case 1 : $status = 'Approve'; $ubtn = ''; break;
+                case 2 : $status = 'On Progress'; $ubtn = ''; break;
+                case 3 : $status = 'Canceled'; $ubtn = ''; break;
+                case 4 : $status = 'Close'; $ubtn = $user->pointAct($row['id']); break;
+                default: break;
+            }                        
+            
+            $nestedData[] = $ubtn;
             $nestedData[] = $row['no_reg'];
             $nestedData[] = $row['tgl_request'];            
             $nestedData[] = $row['nama_proyek'];
             $nestedData[] = $row['nama_peg'];
-            $nestedData[] = $row['status'];            
+            $nestedData[] = $status;            
             $nestedData[] = $row['keterangan'];
 
             $data[] = $nestedData;
@@ -108,4 +118,4 @@ class Prospek {
 
         return $json_data;
     }
-}//end class client
+}//end class prospek

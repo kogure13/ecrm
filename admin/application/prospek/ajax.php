@@ -37,9 +37,9 @@ class Prospek {
         $sqlTot = "SELECT data_prospek.id AS id, no_reg, company_name, "
                 . "nama_proyek, nama_peg, tgl_request, status, data_prospek.keterangan AS keterangan";
         $sqlTot .= " FROM data_prospek";
-        $sqlTot .= " INNER JOIN data_client ON data_prospek.id_client = data_client.id";
-        $sqlTot .= " INNER JOIN data_pegawai ON data_prospek.id_pegawai = data_pegawai.id";
-        $sqlTot .= " INNER JOIN master_kategori_proyek ON data_prospek.id_proyek = master_kategori_proyek.id";
+        $sqlTot .= " JOIN data_client ON data_prospek.id_client = data_client.id";
+        $sqlTot .= " LEFT OUTER JOIN data_pegawai ON data_prospek.id_pegawai = data_pegawai.id";
+        $sqlTot .= " JOIN master_kategori_proyek ON data_prospek.id_proyek = master_kategori_proyek.id";
         
         $sql = $sqlTot;
 
@@ -73,7 +73,7 @@ class Prospek {
         while ($row = mysqli_fetch_assoc($query)) {
             $nestedData = [];
             
-            $nestedData[] = $user->linkAct($row['id']);            
+            $nestedData[] = $user->editAct($row['id']);            
             $nestedData[] = $row['no_reg'];
             $nestedData[] = $row['company_name'];
             $nestedData[] = $row['nama_proyek'];

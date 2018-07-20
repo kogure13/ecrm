@@ -111,6 +111,14 @@ class User {
         </a>        
         </div>';
     }
+    
+    public function pointAct($id) {
+        return '<div class="text-center">
+        <a href="#" id="' . $id . '" class="act_btn text-success" data-toggle="tooltip" data-placement="top" data-original-title="Point" title="Point">
+        <i class="fa fa-check-circle fa-fw"></i>
+        </a>        
+        </div>';
+    }
 
     function logout() {
         session_destroy();
