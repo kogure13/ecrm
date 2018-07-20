@@ -15,7 +15,7 @@ $noreg = new noreg($connString);
         <div class="card-box">
             <div class="form-group">
                 <input type="hidden" id="idSession" data-value="<?= $_SESSION['id_user'] ?>"/>
-                <button id="btn_add">Tambah Project</button>
+                <button id="btn_add" class="btn btn-default">Tambah Project</button>
             </div>
 
             <table id="lookup"

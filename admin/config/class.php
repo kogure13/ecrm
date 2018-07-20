@@ -125,9 +125,7 @@ class User {
         echo '<meta http-equiv="refresh" content="0;url=index.php" >';
     }
 
-}
-
-//end class user
+}//end class user
 
 class noreg {
 
@@ -179,6 +177,28 @@ class nProject {
         }
     }
 
+}//end class list project
+
+class profile_client {
+    
+    protected $conn;
+    
+    function __construct($connString) {
+        $this->conn = $connString;
+    }
+    
+    function getData($params, $tb_name) {
+        $json_data = [];
+        $sql = "SELECT * FROM ".$tb_name;
+        $sql .= " WHERE id = $params";
+
+        $result = mysqli_query($this->conn, $sql) or die();
+                
+        while ($row = mysqli_fetch_assoc($result)) {            
+            $json_data = $row;
+        }
+        echo json_encode($json_data);
+    }
 }
 
 ?>

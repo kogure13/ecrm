@@ -31,7 +31,7 @@
                 </form>
                 -->
                 <ul class="nav navbar-nav navbar-right pull-right">                                                                                    
-                    <li class="dropdown top-menu-item-xs">
+                    <li class="dropdown top-menu-item-xs hidden-xs">
                         <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true">
                             <img src="assets/images/users/avatar-1.jpg" alt="user-img" class="img-circle">
                         </a>

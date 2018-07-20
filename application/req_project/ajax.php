@@ -48,7 +48,7 @@ class Prospek {
         
         $sqlTot .= " JOIN master_kategori_proyek ON $dbparams[0].id_proyek = master_kategori_proyek.id";
         $sqlTot .= " LEFT OUTER JOIN data_pegawai ON $dbparams[0].id_pegawai = data_pegawai.id";
-        $sqlTot .= " WHERE $dbparams[0].id_client = $dbparams[1]";
+        $sqlTot .= " JOIN data_client ON $dbparams[0].id_client = $dbparams[1]";        
 
         $sql = $sqlTot;
 
@@ -58,7 +58,8 @@ class Prospek {
 
         if (!empty($req['search']['value'])) {
 
-            $sql .= " OR nama_proyek LIKE '%" . $req['search']['value'] . "%' ";            
+            $sql .= " WHERE nama_proyek LIKE '%" . $req['search']['value'] . "%' ";            
+            $sql .= " GROUP BY no_reg, nama_proyek";
 
             $query = mysqli_query($this->conn, $sql) or die("ajax-grid-data.php: get PO");
             $totalFiltered = mysqli_num_rows($query);
@@ -67,6 +68,7 @@ class Prospek {
                     $req['order'][0]['dir'] . " LIMIT " . $req['start'] . " ," . $req['length'] . " ";
             $query = mysqli_query($this->conn, $sql) or die("ajax-grid-data.php: get PO");
         } else {
+            $sql .= " GROUP BY no_reg, nama_proyek";
 
             $sql .=" ORDER BY " . $col[$req['order'][0]['column']] . " 
             " . $req['order'][0]['dir'] . " LIMIT " . $req['start'] . " ,

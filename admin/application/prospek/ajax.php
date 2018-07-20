@@ -73,13 +73,22 @@ class Prospek {
         while ($row = mysqli_fetch_assoc($query)) {
             $nestedData = [];
             
-            $nestedData[] = $user->editAct($row['id']);            
+            switch ($row['status']) {
+                case 0 : $status = 'Open'; $ubtn = $user->editAct($row['id']); break;
+                case 1 : $status = 'Approve'; $ubtn = ''; break;
+                case 2 : $status = 'On Progress'; $ubtn = ''; break;
+                case 3 : $status = 'Canceled'; $ubtn = ''; break;
+                case 4 : $status = 'Close'; $ubtn = $user->pointAct($row['id']); break;
+                default: break;
+            }
+            
+            $nestedData[] = $ubtn;          
             $nestedData[] = $row['no_reg'];
             $nestedData[] = $row['company_name'];
             $nestedData[] = $row['nama_proyek'];
             $nestedData[] = $row['nama_peg'];
             $nestedData[] = $row['tgl_request'];
-            $nestedData[] = $row['status'];
+            $nestedData[] = $status;
             $nestedData[] = $row['keterangan'];
 
             $data[] = $nestedData;            
