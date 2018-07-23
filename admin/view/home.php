@@ -53,7 +53,7 @@
         <div class="col-lg-12 col-sm-12">
             <div class="card-box">
                 <h4 class="text-dark text-center header-title m-t-0">Analytics Survey</h4>                
-                <div id="morris-line-chart" style="height: 300px;"></div>
+                <div id="myChart" style="height: 400px;"></div>
             </div>
         </div>
     </div>
