@@ -1,23 +1,23 @@
-$(document).ready(function() {
+$(document).ready(function () {
     var session = $('#idSession').data('value');
     var items_jproyek = '';
-    
+
     $('#rdate').datepicker({
         format: 'yyyy-mm-dd'
     });
-    
+
     $.ajax({
-        url: 'admin/application/proyek/option_proyek.php',        
+        url: 'admin/application/proyek/option_proyek.php',
         dataType: 'JSON',
-        success: function(data) {
+        success: function (data) {
             $.each(data, function (key, value) {
                 items_jproyek += '<option value="' + value.id + '">' + value.nama_proyek + '</option>';
             });
 
-            $('#kproyek').append(items_jproyek);            
-        }        
+            $('#kproyek').append(items_jproyek);
+        }
     });
-                
+
     $('#btn_add').click(function (e) {
         e.preventDefault();
 
@@ -26,18 +26,11 @@ $(document).ready(function() {
         $('#action').val('add');
         $('#edit_id').val(0);
     });
-    
-    $('#btn_cancel').click(function () {
-        var $form = $('#form_kproyek');
-        $form.trigger('reset');
-        $form.validate().resetForm();
-        $form.find('.error').removeClass('error');
-    });
-    
+
     var dataTable = $('#lookup').DataTable({
         'autoWidth': true,
         'aoColumnDefs': [
-            {'bSortable': false, 'aTargets': ['nosort']}            
+            {'bSortable': false, 'aTargets': ['nosort']}
         ],
         'processing': true,
         'serverSide': true,
@@ -45,14 +38,14 @@ $(document).ready(function() {
             type: 'POST',
             dataType: 'JSON',
             url: 'application/req_project/ajax.php'
-        },        
+        },
         fnDrawCallback: function (oSettings) {
 
             $('.act_btn').each(function () {
                 $(this).tooltip({
                     html: true
                 });
-            });                        
+            });
 
             $('.act_btn').on('click', function (e) {
                 e.preventDefault();
@@ -61,41 +54,47 @@ $(document).ready(function() {
 
                 if (com == 'Edit') {
                     $('#add_model').modal({backdrop: 'static', keyboard: false});
-                    $('.modal-title').html('Edit Permintaan Project');                    
+                    $('#btn_jabatan').html('Edit Permintaan Project');
                     $('#action').val('edit');
                     $('#edit_id').val(id);
 
                     v_edit = $.ajax({
                         url: 'application/req_project/edit.php?id=' + id,
                         type: 'POST',
-                        dataType: 'JSON',                        
-                        success: function (data) {                            
+                        dataType: 'JSON',
+                        success: function (data) {
                             $('#noreg').val(data.no_reg);
                             $('#rdate').val(data.tgl_request);
                             $('#kproyek').val(data.id_proyek);
                             $('#keterangan').val(data.keterangan);
                         }
                     });
-                } 
+                }
             });
         }
-    });//end datatable    
-    
-     $('#form_kproyek').validate({
+    });//end datatable
+
+    $('#form_kproyek').validate({
         rules: {
             rdate: {
                 required: true
             },
             kproyek: {
                 required: true
+            },
+            keterangan: {
+                required: true
             }
         },
         messages: {
             rdate: {
-                required: ' *) field is required'
+                required: '*) field is required'
             },
             kproyek: {
-                required: ' *) field is required'
+                required: '*) field is required'
+            },
+            keterangan: {
+                required: '*) choose one'
             }
         },
         submitHandler: function (form) {
@@ -108,12 +107,12 @@ $(document).ready(function() {
 
             $('#form_kproyek').trigger('reset');
         }
-    });//end validate form
-});//end document
+    });//end validate
+});//end $ document
 
 function ajaxAction(action) {
     data = $('#form_kproyek').serializeArray();
-    var table = $('#lookup').DataTable();
+    table = $('#lookup').DataTable();
 
     v_dump = $.ajax({
         url: 'application/req_project/data.php',
@@ -121,11 +120,14 @@ function ajaxAction(action) {
         dataType: 'JSON',
         data: data,
         success: function (response) {
-            $('#add_model').modal('hide');
-            table.ajax.reload();
-
-            $('#action').val('add');
-            $('#edit_id').val('0');
+            if (response == 1) {
+                alert('Data sudah tersedia');
+            } else if (response == 0) {
+                $('#add_model').modal('hide');
+                $('#action').val('add');
+                $('#edit_id').val('0');
+                table.ajax.reload();
+            }
         }
     });    
-}
+}//end ajaxAction

@@ -1,10 +1,9 @@
 <?php
 //get session(user) admin application
 session_start();
-
 //set class & configuration
-require_once 'config/class.php';
-require_once 'config/function.php';
+require_once '../config/class.php';
+require_once '../config/function.php';
 
 $main = new Main();
 

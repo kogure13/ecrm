@@ -1,6 +1,6 @@
 <?php
-
-require '../../config/class.php';
+include_once '../../../config/class.php';
+include_once '../../../config/function.php';
 
 $db = new dbObj();
 $connString = $db->getConstring();
@@ -9,8 +9,9 @@ $jabatanClass = new Jabatan($connString);
 $requestData = $_REQUEST;
 
 $columns = array(    
-    0 => 'id',    
-    1 => 'jabatan'
+    0 => 'kode_jabatan',
+    1 => 'id',    
+    2 => 'jabatan'
 );
 
 $jabatanClass->getData($requestData, $columns);
@@ -65,6 +66,7 @@ class Jabatan {
             $nestedData = [];
             
             $nestedData[] = $user->linkAct($row['id']);
+            $nestedData[] = $row['kode_jabatan'];
             $nestedData[] = $row['jabatan'];
 
             $data[] = $nestedData;            

@@ -1,6 +1,5 @@
 <?php
-
-include_once '../../admin/config/class.php';
+include_once '../../config/class.php';
 $db = new dbObj();
 $connString = $db->getConstring();
 $crudClass = new CRUD($connString);

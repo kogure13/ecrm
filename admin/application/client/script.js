@@ -1,4 +1,4 @@
-$(document).ready(function() {    
+$(document).ready(function () {
 
     $('#btn_add').click(function (e) {
         e.preventDefault();
@@ -8,26 +8,26 @@ $(document).ready(function() {
         $('#action').val('add');
         $('#edit_id').val(0);
     });
-    
+
     $('#btn_ebroadcast').click(function (e) {
         e.preventDefault();
 
         window.location.href = "?page=ebroadcast";
     });
-    
+
     $('#btn_cancel').click(function (e) {
-        e.preventDefault();                
-        var $form = $('#form_client');        
-        
-        $form.trigger('reset');        
+        e.preventDefault();
+        var $form = $('#form_client');
+
+        $form.trigger('reset');
         $form.validate().resetForm();
         $form.find('.error').removeClass('error');
-    });    
+    });
 
     var dataTable = $('#lookup').DataTable({
         'autoWidth': true,
         'aoColumnDefs': [
-            {'bSortable': false, 'aTargets': ['nosort']}            
+            {'bSortable': false, 'aTargets': ['nosort']}
         ],
         'processing': true,
         'serverSide': true,
@@ -35,7 +35,7 @@ $(document).ready(function() {
             type: 'POST',
             dataType: 'JSON',
             url: 'application/client/ajax.php',
-            error: function() {
+            error: function () {
                 $.Notification.notify(
                         'error', 'top center',
                         'Warning',
@@ -43,20 +43,20 @@ $(document).ready(function() {
                         );
             }
         },
-        fnDrawCallback: function(oSettings) {                        
-                                    
-            $('.act_btn').each(function() {
+        fnDrawCallback: function (oSettings) {
+
+            $('.act_btn').each(function () {
                 $(this).tooltip({
                     html: true
                 });
             });
 
-            $('.act_btn').on('click', function(e) {
+            $('.act_btn').on('click', function (e) {
                 e.preventDefault();
                 var com = $(this).attr('data-original-title');
                 var id = $(this).attr('id');
 
-                if(com == 'Edit') {                    
+                if (com == 'Edit') {
                     $('#add_model').modal({backdrop: 'static', keyboard: false});
                     $('.rdinput').attr('disabled', true);
                     $('.modal-title').html('<i class="fa fa-info-circle text-primary"></i> Purpose client to prospek');
@@ -64,25 +64,25 @@ $(document).ready(function() {
                     $('#edit_id').val(id);
 
                     v_edit = $.ajax({
-                        url: 'application/client/edit.php?id='+id,
+                        url: 'application/client/edit.php?id=' + id,
                         type: 'POST',
                         dataType: 'JSON',
-                        success: function(data) {                            
+                        success: function (data) {
                             $('#uname').val(data.username);
                             $('#cname').val(data.company_name);
                             $('#caddress').val(data.company_address);
                             $('#tlp').val(data.tlp);
-                            $('#email').val(data.email); 
-                            $('#jdate').val(data.date_register); 
+                            $('#email').val(data.email);
+                            $('#jdate').val(data.date_register);
                         }
                     });
-                    
-                }else if(com == 'Delete') {
+
+                } else if (com == 'Delete') {
                     var conf = confirm('Delete this items ?');
                     var url = 'application/client/data.php';
 
-                    if(conf) {
-                        $.post(url, {id: id, action: com.toLowerCase()}, function() {
+                    if (conf) {
+                        $.post(url, {id: id, action: com.toLowerCase()}, function () {
                             var table = $('#lookup').DataTable();
                             table.ajax.reload();
                         });
@@ -101,9 +101,9 @@ $(document).ready(function() {
                 required: true
             },
             tlp: {
-                required: true, 
+                required: true,
                 number: true
-            },            
+            },
             jdate: {
                 required: true
             },
@@ -123,7 +123,7 @@ $(document).ready(function() {
             },
             tlp: {
                 required: '*) Phone number is required'
-            },            
+            },
             jdate: {
                 required: '*) Date is required'
             },
@@ -133,9 +133,9 @@ $(document).ready(function() {
         },
         submitHandler: function (form) {
             var com_action = $('#action').val();
-            if(com_action == 'add') {
+            if (com_action == 'add') {
                 ajaxAction('add');
-            }else if(com_action == 'edit') {
+            } else if (com_action == 'edit') {
                 ajaxAction('edit');
             }
 
@@ -145,7 +145,7 @@ $(document).ready(function() {
     $.validator.addMethod("pwcheck", function (value, element, regexpr) {
         return regexpr.test(value);
     });
-    
+
     $('#jdate').datepicker({
         autoclose: true,
         format: 'yyyy-mm-dd'
@@ -154,16 +154,16 @@ $(document).ready(function() {
 });
 
 function ajaxAction(action) {
-    data = $('#form_client').serializeArray();      
+    data = $('#form_client').serializeArray();
     var table = $('#lookup').DataTable();
 
     v_dump = $.ajax({
         url: 'application/client/data.php',
         type: 'POST',
         dataType: 'JSON',
-        data: data,        
-        success: function(response) {
-            $('#add_model').modal('hide');            
+        data: data,
+        success: function (response) {
+            $('#add_model').modal('hide');
             table.ajax.reload();
             $('#action').val('add');
             $('#edit_id').val('0');

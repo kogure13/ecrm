@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../../admin/config/class.php';
+require '../../config/class.php';
 
 $db = new dbObj();
 $connString = $db->getConstring();
@@ -44,11 +44,10 @@ class Prospek {
 
         $sqlTot = "SELECT $dbparams[0].id, no_reg, nama_proyek, tgl_request, "
                 . " $dbparams[0].status, $dbparams[0].keterangan, nama_peg";
-        $sqlTot .= " FROM ".$dbparams[0];        
-        
+        $sqlTot .= " FROM ".$dbparams[0];
         $sqlTot .= " JOIN master_kategori_proyek ON $dbparams[0].id_proyek = master_kategori_proyek.id";
         $sqlTot .= " LEFT OUTER JOIN data_pegawai ON $dbparams[0].id_pegawai = data_pegawai.id";
-        $sqlTot .= " JOIN data_client ON $dbparams[0].id_client = $dbparams[1]";        
+        $sqlTot .= " WHERE $dbparams[0].id_client = $dbparams[1]";
 
         $sql = $sqlTot;
 
@@ -58,8 +57,7 @@ class Prospek {
 
         if (!empty($req['search']['value'])) {
 
-            $sql .= " WHERE nama_proyek LIKE '%" . $req['search']['value'] . "%' ";            
-            $sql .= " GROUP BY no_reg, nama_proyek";
+            $sql .= " OR nama_proyek LIKE '%" . $req['search']['value'] . "%' ";            
 
             $query = mysqli_query($this->conn, $sql) or die("ajax-grid-data.php: get PO");
             $totalFiltered = mysqli_num_rows($query);
@@ -68,7 +66,6 @@ class Prospek {
                     $req['order'][0]['dir'] . " LIMIT " . $req['start'] . " ," . $req['length'] . " ";
             $query = mysqli_query($this->conn, $sql) or die("ajax-grid-data.php: get PO");
         } else {
-            $sql .= " GROUP BY no_reg, nama_proyek";
 
             $sql .=" ORDER BY " . $col[$req['order'][0]['column']] . " 
             " . $req['order'][0]['dir'] . " LIMIT " . $req['start'] . " ,
@@ -83,20 +80,20 @@ class Prospek {
             $nestedData = [];
             
             switch ($row['status']) {
-                case 0 : $status = 'Open'; $ubtn = $user->editAct($row['id']); break;
-                case 1 : $status = 'Approve'; $ubtn = ''; break;
-                case 2 : $status = 'On Progress'; $ubtn = ''; break;
+                case 0 : $status = 'Open'; $ubtn = $user->editAct($row['id']);break;
+                case 1 : $status = 'Approve'; $ubtn = '';break;
+                case 2 : $status = 'On-Progress'; $ubtn = '';break;
                 case 3 : $status = 'Canceled'; $ubtn = ''; break;
-                case 4 : $status = 'Close'; $ubtn = $user->pointAct($row['id']); break;
-                default: break;
-            }                        
+                case 4 : $status = 'Close'; $ubtn = ''; break;
+                default : break;
+            }
             
             $nestedData[] = $ubtn;
             $nestedData[] = $row['no_reg'];
             $nestedData[] = $row['tgl_request'];            
             $nestedData[] = $row['nama_proyek'];
             $nestedData[] = $row['nama_peg'];
-            $nestedData[] = $status;            
+            $nestedData[] = $status;
             $nestedData[] = $row['keterangan'];
 
             $data[] = $nestedData;
@@ -120,4 +117,4 @@ class Prospek {
 
         return $json_data;
     }
-}//end class prospek
+}//end class client

@@ -1,38 +1,23 @@
 $(document).ready(function () {
 
     $('#btn_cancel').click(function () {
-        var $form = $('#form_prospek');
-        $form.trigger('reset');
-        $form.validate().resetForm();
-        $form.find('.error').removeClass('error');
-        $('#kode').attr('readonly', false);
+        window.location.reload();
     });
 
-    var items_pjname = '';
-    $.ajax({
-        url: 'application/pegawai/option_pegawai.php',
-        dataType: 'json',
-        success: function (data, textStatus, jqXHR) {
-            $.each(data, function (key, value) {
-                items_pjname += '<option value="' + value.id + '">' + value.nama_peg + '</option>';
-            });
-
-            $('#pjname').append(items_pjname);
-        }
-    });
+    $('#btn_promosi').html('Upload');
 
     var dataTable = $('#lookup').DataTable({
-        'autoWidth': true,
+        'autoWidth': false,
         'aoColumnDefs': [
-            {'bSortable': false, 'aTargets': ['nosort']}
+            {'bSortable': false, 'aTargets': ['nosort']}            
         ],
         'processing': true,
         'serverSide': true,
         'ajax': {
             type: 'POST',
             dataType: 'JSON',
-            url: 'application/prospek/ajax.php',
-            error: function () {
+            url: 'application/jabatan/ajax.php',
+            error: function() {
                 $.Notification.notify(
                         'error', 'top center',
                         'Warning',
@@ -54,25 +39,28 @@ $(document).ready(function () {
                 var id = $(this).attr('id');
 
                 if (com == 'Edit') {
-                    $('#add_model').modal({backdrop: 'static', keyboard: false});
-                    $('.modal-title').html('detail prospek');
+                    $('#btn_jabatan').html('Edit Jabatan');
+                    $('#btn_add').attr('class', 'btn btn-sm btn-success');
                     $('#action').val('edit');
                     $('#edit_id').val(id);
 
                     v_edit = $.ajax({
-                        url: 'application/prospek/edit.php?id=' + id,
+                        url: 'application/jabatan/edit.php?id=' + id,
                         type: 'POST',
                         dataType: 'JSON',
+                        beforeSend: function () {
+                            $('#err-loading').css('display', 'inline', 'important');
+                            $('#err-loading').html("<img src='theme/asset/images/loading.gif' height='20px' /> Loading...");
+                        },
                         success: function (data) {
-                            $('#pjname').val(data.id_pegawai);
-                            $('#stprospek').val(data.status);
-                            $('#keterangan').val(data.keterangan);
+                            $('#err-loading').hide(1300);
+                            $('#jabatan').val(data.jabatan);
                         }
                     });
 
                 } else if (com == 'Delete') {
                     var conf = confirm('Delete this items ?');
-                    var url = 'application/prospek/data.php';
+                    var url = 'application/jabatan/data.php';
 
                     if (conf) {
                         $.post(url, {id: id, action: com.toLowerCase()}, function () {
@@ -83,23 +71,17 @@ $(document).ready(function () {
                 }
             });
         }
-    });//end datatable       
+    });//end datatable
 
-    $('#form_prospek').validate({
+    $('#form_jabatan').validate({
         rules: {
-            pjname: {
-                required: true
-            },
-            stprospek: {
+            jabatan: {
                 required: true
             }
         },
         messages: {
-            pjname: {
+            jabatan: {
                 required: ' *) field is required'
-            },
-            stprospek: {
-                required: '*) field is required'
             }
         },
         submitHandler: function (form) {
@@ -110,17 +92,17 @@ $(document).ready(function () {
                 ajaxAction('edit');
             }
 
-            $('#form_prospek').trigger('reset');
+            $('#form_jabatan').trigger('reset');
         }
     });
-});//end $ document
+});
 
 function ajaxAction(action) {
-    data = $('#form_prospek').serializeArray();
+    data = $('#form_jabatan').serializeArray();
     var table = $('#lookup').DataTable();
 
     v_dump = $.ajax({
-        url: 'application/prospek/data.php',
+        url: 'application/jabatan/data.php',
         type: 'POST',
         dataType: 'JSON',
         data: data,
@@ -138,12 +120,12 @@ function ajaxAction(action) {
                         'Data berhasil diproses'
                         );
             }
-
-            $('#add_model').modal('hide');
             table.ajax.reload();
 
+            $('#btn_add').attr('class', 'btn btn-sm btn-primary');
+            $('#btn_jabatan').html('Add Jabatan');
             $('#action').val('add');
             $('#edit_id').val('0');
         }
     });
-}//end ajaxAction
+}

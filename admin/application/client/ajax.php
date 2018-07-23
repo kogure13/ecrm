@@ -1,5 +1,5 @@
 <?php
-require '../../config/class.php';
+require '../../../config/class.php';
 
 $db = new dbObj();
 $connString = $db->getConstring();
@@ -15,7 +15,8 @@ $columns = array(
     3 => 'company_address',    
     4 => 'tlp',
     5 => 'email',    
-    6 => 'username'    
+    6 => 'username',
+    7 => 'status_client'
 );
 
 $eClass->getData($requestData, $columns, $tb_name);
@@ -70,7 +71,7 @@ class Client {
         while ($row = mysqli_fetch_assoc($query)) {
             $nestedData = [];
             
-            $nestedData[] = $user->editAct($row['id']);
+            $nestedData[] = '<div align="right">'.$row['id'].'</div>';
             $nestedData[] = $row['username'];
             $nestedData[] = $row['company_name'];
             $nestedData[] = $row['company_address'];

@@ -1,6 +1,7 @@
 <?php
 
-require '../../config/class.php';
+session_start();
+require '../../../config/class.php';
 
 $db = new dbObj();
 $connString = $db->getConstring();
@@ -19,7 +20,7 @@ $columns = array(
 $eClass->getData($requestData, $columns);
 
 class Prospek {
-    
+
     protected $conn;
     protected $data = [];
 
@@ -32,7 +33,7 @@ class Prospek {
         echo json_encode($this->data);
     }
 
-    function getRecords($req, $col) {                
+    function getRecords($req, $col) {
 
         $sqlTot = "SELECT data_prospek.id AS id, no_reg, company_name, "
                 . "nama_proyek, nama_peg, tgl_request, status, data_prospek.keterangan AS keterangan";
@@ -40,27 +41,26 @@ class Prospek {
         $sqlTot .= " JOIN data_client ON data_prospek.id_client = data_client.id";
         $sqlTot .= " LEFT OUTER JOIN data_pegawai ON data_prospek.id_pegawai = data_pegawai.id";
         $sqlTot .= " JOIN master_kategori_proyek ON data_prospek.id_proyek = master_kategori_proyek.id";
-        
+
         $sql = $sqlTot;
 
         $qTot = mysqli_query($this->conn, $sqlTot) or die("error fetch data: ");
         $totalData = mysqli_num_rows($qTot);
         $totalFiltered = $totalData;
-        
-        if(!empty($req['search']['value'])) {
+
+        if (!empty($req['search']['value'])) {
 
             $sql .=" WHERE company_name LIKE '%" . $req['search']['value'] . "%'"
-                    . " OR nama_peg LIKE '%".$req['search']['value']."%'"
-                    . " OR no_reg LIKE '%".$req['search']['value']."%'";            
-            
+                    . " OR nama_peg LIKE '%" . $req['search']['value'] . "%'"
+                    . " OR no_reg LIKE '%" . $req['search']['value'] . "%'";
+
             $query = mysqli_query($this->conn, $sql) or die("ajax-grid-data.php: get PO");
             $totalFiltered = mysqli_num_rows($query);
 
-            $sql .=" ORDER BY " . $col[$req['order'][0]['column']] . " " . 
-            $req['order'][0]['dir'] . " LIMIT " . $req['start'] . " ," . $req['length'] . " "; 
-            $query = mysqli_query($this->conn, $sql) or die("ajax-grid-data.php: get PO"); 
-
-        }else{
+            $sql .=" ORDER BY " . $col[$req['order'][0]['column']] . " " .
+                    $req['order'][0]['dir'] . " LIMIT " . $req['start'] . " ," . $req['length'] . " ";
+            $query = mysqli_query($this->conn, $sql) or die("ajax-grid-data.php: get PO");
+        } else {
 
             $sql .=" ORDER BY " . $col[$req['order'][0]['column']] . " 
             " . $req['order'][0]['dir'] . " LIMIT " . $req['start'] . " ,
@@ -72,17 +72,22 @@ class Prospek {
 
         while ($row = mysqli_fetch_assoc($query)) {
             $nestedData = [];
-            
+
             switch ($row['status']) {
-                case 0 : $status = 'Open'; $ubtn = $user->editAct($row['id']); break;
-                case 1 : $status = 'Approve'; $ubtn = ''; break;
-                case 2 : $status = 'On Progress'; $ubtn = ''; break;
-                case 3 : $status = 'Canceled'; $ubtn = ''; break;
-                case 4 : $status = 'Close'; $ubtn = $user->pointAct($row['id']); break;
-                default: break;
+                case 0 : $status = 'Open'; $ubtn = $user->editAct($row['id']);
+                    break;
+                case 1 : $status = 'Approve'; $ubtn = '';
+                    break;
+                case 2 : $status = 'On-Progress'; $ubtn = '';
+                    break;
+                case 3 : $status = 'Canceled'; $ubtn = '';
+                    break;
+                case 4 : $status = 'Close'; $ubtn = '';
+                    break;
+                default : break;
             }
-            
-            $nestedData[] = $ubtn;          
+
+            $nestedData[] = $ubtn;
             $nestedData[] = $row['no_reg'];
             $nestedData[] = $row['company_name'];
             $nestedData[] = $row['nama_proyek'];
@@ -91,17 +96,17 @@ class Prospek {
             $nestedData[] = $status;
             $nestedData[] = $row['keterangan'];
 
-            $data[] = $nestedData;            
+            $data[] = $nestedData;
         }
 
-        if($totalData > 0) {
+        if ($totalData > 0) {
             $json_data = array(
-                "draw" => intval($req['draw']), 
-                "recordsTotal" => intval($totalData), 
-                "recordsFiltered" => intval($totalFiltered), 
+                "draw" => intval($req['draw']),
+                "recordsTotal" => intval($totalData),
+                "recordsFiltered" => intval($totalFiltered),
                 "data" => $data
             );
-        }else{
+        } else {
             $json_data = array(
                 "draw" => 0,
                 "recordsTotal" => 0,
@@ -112,4 +117,7 @@ class Prospek {
 
         return $json_data;
     }
-}//end class pegawai
+
+}
+
+//end class pegawai

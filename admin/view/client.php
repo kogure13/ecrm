@@ -17,7 +17,7 @@
                    width="100%">
                 <thead>
                     <tr>
-                        <th class="nosort" width="40px">Action</th>
+                        <th class="nosort" style="width: auto">#</th>
                         <th>Username</th><th>Company name</th>
                         <th>Company address</th><th>Phone number</th>
                         <th>E-mail</th><th>Join date</th>                        

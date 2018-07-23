@@ -1,15 +1,12 @@
 <?php
-include_once '../../../config/class.php';
-include_once '../../../config/function.php';
-
+require_once '../../../config/class.php';
 $db = new dbObj();
 $connString = $db->getConstring();
 
 $params = $_REQUEST;
-$tb_name = "master_kategori_proyek";
 
 $optionClass = new Option($connString);
-$optionClass->getOption($tb_name);
+$optionClass->getOption($params);
 
 class Option {
     
@@ -19,16 +16,15 @@ class Option {
         $this->conn = $connString;
     }
     
-    function getOption($tb_name) {
+    function getOption($params) {
         $json_data = [];
-        $sql = "SELECT * FROM ".$tb_name;
+        $sql = "SELECT * FROM data_pegawai";
         $result = mysqli_query($this->conn, $sql);
         
-        while ($row = mysqli_fetch_assoc($result)){            
+        while ($row = mysqli_fetch_assoc($result)){
             $json_data[] = $row;
         }                
         
         echo json_encode($json_data);
     }
 }
-?>

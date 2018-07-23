@@ -1,19 +1,16 @@
 <?php
-include_once '../../config/class.php';
-include_once '../../config/function.php';
+include_once '../../../config/class.php';
 $db = new dbObj();
 $connString = $db->getConstring();
 $crudClass = new CRUD($connString);
-$tb_name = "data_prospek";
 
 if(!isset($_GET['id'])){
     exit();
 }else{
     $params = $_GET['id'];
 }
-
 if ($params > 0) {
-    $crudClass->getData($params, $tb_name);
+    $crudClass->getData($params);
 } else {
     mysql_errno();
 }
@@ -26,9 +23,9 @@ class CRUD {
         $this->conn = $connString;
     }
 
-    function getData($params, $tb_name) {
+    function getData($params) {
         $json_data = [];
-        $sql = "SELECT * FROM ".$tb_name;
+        $sql = "SELECT * FROM data_prospek";
         $sql .= " WHERE id = $params";
 
         $result = mysqli_query($this->conn, $sql) or die();

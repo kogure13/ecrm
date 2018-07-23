@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-require_once '../../admin/config/class.php';
-require_once '../../admin/config/function.php';
+require_once '../../config/class.php';
+require_once '../..//config/function.php';
 
 $db = new dbObj();
 $connString = $db->getConstring();

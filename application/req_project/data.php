@@ -1,8 +1,6 @@
 <?php
-
-include_once '../../admin/config/class.php';
-include_once '../../admin/config/function.php';
-
+include_once '../../config/class.php';
+include_once '../../config/function.php';
 $db = new dbObj();
 $connString = $db->getConstring();
 
@@ -17,8 +15,6 @@ switch ($action) {
         break;
     case 'edit' : $crudClass->updateData($params, $tb_name);
         break;
-    case 'delete' : $crudClass->deleteData($params, $tb_name);
-        break;
     default : break;
 }
 
@@ -32,12 +28,11 @@ class CRUD {
 
     function insertData($params, $tb_name) {
 
-
         $sql = "INSERT INTO " . $tb_name;
         $sql .= " (no_reg, id_client, id_proyek, tgl_request, keterangan)";
-        $sql .= " VALUES('" . addslashes($params['noreg']) . "', "
-                . "'" . $params['id_client'] . "', '" . $params['kproyek'] . "', "
-                . "'" . $params['rdate'] . "', '" . addslashes($params['keterangan']) . "')";
+        $sql .= " VALUES('" . $params['noreg'] . "', '" . $params['idSession'] . "',"
+                . " '" . $params['kproyek'] . "', '" . $params['rdate'] . "',"
+                . " '" . addslashes($params['keterangan']) . "')";
 
         $result = mysqli_query($this->conn, $sql) or die("error to insert data");
         echo 0;
@@ -45,25 +40,14 @@ class CRUD {
 
     function updateData($params, $tb_name) {
 
-
         $sql = "UPDATE " . $tb_name;
-        $sql .= " SET no_reg = '" . addslashes($params['noreg']) . "', "
-                . " id_client ='" . addslashes($params['id_client']) . "', "
-                . " id_proyek = '" . addslashes($params['kproyek']) . "', "
-                . " tgl_request = '" . addslashes($params['rdate']) . "', "
-                . " keterangan = '" . addslashes($params['keterangan']) . "'";
+        $sql .= " SET tgl_request = '" . $params['rdate'] . "',"
+                . " keterangan = '" . addslashes($params['keterangan']) . "',"
+                . " id_proyek = '" . $params['kproyek'] . "'";
         $sql .= " WHERE id = '" . $_POST['edit_id'] . "'";
 
         $result = mysqli_query($this->conn, $sql) or die("error to update data");
         echo 0;
-    }
-
-    function deleteData($params, $tb_name) {
-
-        $sql = "DELETE FROM " . $tb_name;
-        $sql .= " WHERE id = '" . $params['id'] . "'";
-
-        echo $result = mysqli_query($this->conn, $sql) or die("error to delete data");
     }
 
 }

@@ -6,16 +6,17 @@
                 <li class="text-muted menu-title">Navigation</li>                            
                 <li>
                     <a href="?page=home" class="">
-                        <i class="ti-home"></i>
+                        <i class="ti-dashboard"></i>
                         <span>Dashboard</span>
                     </a>
-                </li>
+                </li>                
                 <li>
                     <a href="?page=client" class="">
                         <i class="md md-account-child"></i>
                         <span>Data Client</span>
                     </a>
                 </li>
+                <!--SDM, Marketing-->
                 <li>
                     <a href="?page=prospek">
                         <i class="md md-business"></i>
@@ -37,12 +38,14 @@
                         </li>                        
                     </ul>
                 </li>
+                <!--Admin-->
                 <li>
                     <a href="?page=promosi" class="">
                         <i class="ti-bell"></i>
                         <span>Promosi</span>
                     </a>
-                </li>                
+                </li>    
+
                 <li class="text-muted menu-title">Data Master</li>
                 <li class="has-sub">
                     <a href="#">
@@ -71,6 +74,7 @@
                         <span>Kategori proyek</span>
                     </a>
                 </li>
+
             </ul>
             <div class="clearfix"></div>
         </div>

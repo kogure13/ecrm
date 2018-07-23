@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $('#btn_cancel').click(function () {
+    $('#btn_cancel').click(function () {       
         window.location.reload();
     });
 
@@ -54,6 +54,7 @@ $(document).ready(function () {
                         },
                         success: function (data) {
                             $('#err-loading').hide(1300);
+                            $('#kode').val(data.kode_jabatan);
                             $('#jabatan').val(data.jabatan);
                         }
                     });
@@ -128,4 +129,5 @@ function ajaxAction(action) {
             $('#edit_id').val('0');
         }
     });
+    console.log(v_dump)
 }

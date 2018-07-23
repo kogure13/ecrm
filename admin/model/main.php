@@ -61,15 +61,39 @@
         <script src="assets/plugins/peity/jquery.peity.min.js"></script>       
         <script src="assets/plugins/waypoints/lib/jquery.waypoints.js"></script>
         <script src="assets/plugins/counterup/jquery.counterup.min.js"></script>
-<!--        <script src="assets/plugins/morris/morris.min.js"></script>-->
+        <script src="assets/plugins/morris/morris.min.js"></script>
         <script src="assets/plugins/raphael/raphael-min.js"></script>
         <script src="assets/plugins/jquery-knob/jquery.knob.js"></script>
 
 <!--        <script src="assets/pages/jquery.dashboard.js"></script>-->
+        <script src="assets/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.min.js"></script>
+        <script src="assets/plugins/switchery/js/switchery.min.js"></script>
+        <script type="text/javascript" src="assets/plugins/multiselect/js/jquery.multi-select.js"></script>
+        <script type="text/javascript" src="assets/plugins/jquery-quicksearch/jquery.quicksearch.js"></script>
+        <script src="assets/plugins/select2/js/select2.min.js" type="text/javascript"></script>
+        <script src="assets/plugins/bootstrap-select/js/bootstrap-select.min.js" type="text/javascript"></script>
+        <script src="assets/plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js" type="text/javascript"></script>
+        <script src="assets/plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js" type="text/javascript"></script>
+        <script src="assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js" type="text/javascript"></script>
+
+        <script type="text/javascript" src="assets/pages/jquery.form-advanced.init.js"></script>
 
         <script src="assets/js/jquery.validate.min.js"></script>
         <script src="assets/js/jquery.core.js"></script>
         <script src="assets/js/jquery.app.js"></script>
+
+        <script src="assets/plugins/summernote/summernote.min.js"></script>
+        <script>
+            jQuery(document).ready(function () {
+
+                $('.summernote').summernote({
+                    height: 250, // set editor height
+                    minHeight: null, // set minimum height of editor
+                    maxHeight: null, // set maximum height of editor
+                    focus: false                 // set focus to editable area after initializing summernote 
+                });
+            });
+        </script>
 
         <!-- jQuery dataTables -->
         <script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
@@ -90,7 +114,7 @@
         <script src="assets/plugins/datatables/dataTables.colVis.js"></script>
         <script src="assets/plugins/datatables/dataTables.fixedColumns.min.js"></script>
 
-        <script src="assets/pages/datatables.init.js"></script>
+        <script src="assets/pages/datatables.init.js"></script>                        
 
         <!-- get Jquery -->
         <?= $main->getActScript() ?>

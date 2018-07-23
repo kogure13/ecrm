@@ -1,7 +1,6 @@
 <?php
-
-include_once '../../admin/config/class.php';
-include_once '../../admin/config/function.php';
+include_once '../../config/class.php';
+include_once '../../config/function.php';
 $db = new dbObj();
 $connString = $db->getConstring();
 
