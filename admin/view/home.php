@@ -53,7 +53,11 @@
         <div class="col-lg-12 col-sm-12">
             <div class="card-box">
                 <h4 class="text-dark text-center header-title m-t-0">Analytics Survey</h4>                
-                <div id="myChart" style="height: 400px;"></div>
+                <div class="graph">
+                    <div class="graph-container" id="barDiv">
+                        <canvas id="bar" height="80px"></canvas>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

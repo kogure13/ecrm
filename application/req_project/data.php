@@ -30,7 +30,7 @@ class CRUD {
 
         $sql = "INSERT INTO " . $tb_name;
         $sql .= " (no_reg, id_client, id_proyek, tgl_request, keterangan)";
-        $sql .= " VALUES('" . $params['noreg'] . "', '" . $params['idSession'] . "',"
+        $sql .= " VALUES('" . $params['noreg'] . "', '" . $params['id_client'] . "',"
                 . " '" . $params['kproyek'] . "', '" . $params['rdate'] . "',"
                 . " '" . addslashes($params['keterangan']) . "')";
 

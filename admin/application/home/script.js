@@ -7,29 +7,74 @@ $(document).ready(function () {
         success: function (data) {
             $('#kepuasan').html(data.jKepuasan);
             $('#keluhan').html(data.jKeluhan);
-            $('#tClient').html(data.jClient);
+            $('#tClient').text(data.jClient);
+            console.log(data)
         }
     });
-});
 
-google.charts.load('current', {'packages': ['corechart']});
-google.charts.setOnLoadCallback(drawChart);
+    v_graph = $.ajax({
+        url: 'application/home/graph.php',
+        dataType: 'json',
+        type: 'post',
+        success: function (data) {
+            //console.log(data);
+            var nperiode = [];
+            var skeluhan = [];
+            var skepuasan = [];
 
-function drawChart() {
+            for (var i in data) {
+                nperiode.push(data[i].tanggal);                
+                skeluhan.push(data[i].keluhan);
+                skepuasan.push(data[i].kepuasan);
+            }            
 
-    // membuat data chart dari json yang sudah ada di atas
-    var data = google.visualization.arrayToDataTable([
-        ['Element', 'Density', {role: 'style'}],
-        ['Copper', 8.94, '#b87333'], // RGB value
-        ['Silver', 10.49, 'silver'], // English color name
-        ['Gold', 19.30, 'gold'],
-        ['Platinum', 21.45, 'color: #e5e4e2'], // CSS-style declaration
-    ]);
+            var chartdata = {
+                labels: nperiode,
+                datasets: [
+                    {
+                        label: 'Kepuasan',
+                        backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                        borderColor: 'rgba(200, 200, 200, 0.75)',
+                        hoverBackgroundColor: 'rgb(73, 139, 218)',
+                        hoverBorderColor: 'rgb(73, 139, 218)',
+                        stack: 1,
+                        data: skepuasan
+                    },
+                    {
+                        label: 'Keluhan',
+                        backgroundColor: 'rgba(255, 159, 64, 0.5)',
+                        borderColor: 'rgba(200, 200, 200, 0.75)',
+                        hoverBackgroundColor: 'rgb(255, 159, 64)',
+                        hoverBorderColor: 'rgb(255, 159, 64)',
+                        stack: 0,
+                        data: skeluhan
+                    }
+                ]
+            };
 
-    // Set options, bisa anda rubah
-    var options = {'title': '',
-        'width': 800 };
+            var ctx = $("#bar");
 
-    var chart = new google.visualization.ColumnChart(document.getElementById('myChart'));
-    chart.draw(data, options);
-}
+            var barGraph = new Chart(ctx, {
+                type: 'bar',
+                data: chartdata,
+                responsive: true,
+                maintainAspectRatio: false,
+                options: {
+                    scales: {
+                        yAxes: [{
+                                ticks: {
+                                    fontSize: 10,
+                                    beginAtZero: true
+                                }
+                            }]
+                    }
+
+                }
+            });
+        },
+        error: function (data) {
+            console.log(data);
+        }
+    });//end chart
+
+});//end $ document

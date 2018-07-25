@@ -76,11 +76,17 @@ $(document).ready(function () {
 
     $('#form_jabatan').validate({
         rules: {
+            kode: {
+                required: true
+            },
             jabatan: {
                 required: true
             }
         },
         messages: {
+            kode: {
+                required: ' *) field is required'
+            },
             jabatan: {
                 required: ' *) field is required'
             }

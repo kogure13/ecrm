@@ -2,7 +2,7 @@
     <div class="col-sm-12">
         <div class="card-box">
             <div class="row">
-                <div class="col-lg-7 col-sm-12">
+                <div class="col-lg-12 col-sm-12">
                     <form name="form_jabatan" id="form_jabatan" class="form-inline m-b-5" novalidate="novalidate">
                         <input type="hidden" value="add" name="action" id="action">
                         <input type="hidden" value="0" name="edit_id" id="edit_id">
@@ -13,7 +13,7 @@
                             <input type="text" id="jabatan" name="jabatan" class="form-control input-sm" placeholder="Jabatan">
                         </div>
                         <div class="form-group">
-                            <span class="input-group-btn">
+                            <span class="">
                                 <button id="btn_add" class="btn btn-sm btn-primary">
                                     <i class="fa fa-plus"></i>
                                     <span id="btn_jabatan"></span>

@@ -29,26 +29,26 @@ class homeClass {
 
     function getKepuasan($params) {
         
-        $sql = "SELECT * FROM data_kepuasan";
-        $result = mysqli_query($this->conn, $sql) or die();
-        $qTotal = intval($result->num_rows);
+        $sql = "SELECT sum(kepuasan) as kepuasan FROM data_penilaian";
+        $result = mysqli_query($this->conn, $sql) or die('error to fetch data');
+        $row = mysqli_fetch_array($result);
 
-        return $qTotal;
+        return $row['kepuasan'];
     }
     
     function getKeluhan($params) {
         
-        $sql = "SELECT * FROM data_keluhan";
-        $result = mysqli_query($this->conn, $sql) or die();
-        $qTotal = intval($result->num_rows);
+        $sql = "SELECT sum(keluhan) as keluhan FROM data_penilaian";
+        $result = mysqli_query($this->conn, $sql) or die('error to fetch data');
+        $row = mysqli_fetch_array($result);
 
-        return $qTotal;
+        return $row['keluhan'];
     }
     
     function getClient($params) {
         
         $sql = "SELECT * FROM data_client";
-        $result = mysqli_query($this->conn, $sql) or die();
+        $result = mysqli_query($this->conn, $sql) or die('error to fetch data');
         $qTotal = intval($result->num_rows);
 
         return $qTotal;
