@@ -2,11 +2,11 @@
 
 class dbObj {
 
-    // var $DB_Host = "localhost"; //koneksi localhost
-    var $DB_Host = "192.168.0.128"; //koneksi server
+    var $DB_Host = "localhost"; //koneksi localhost
+    // var $DB_Host = "192.168.0.128"; //koneksi server
     var $DB_Name = "db_ecrm"; //nama database
     var $DB_User = "root"; //user database
-    var $DB_Pass = "password"; //password database
+    var $DB_Pass = ""; //password database
     var $conn;
 
     function getConstring() {
@@ -118,6 +118,14 @@ class User {
         <i class="fa fa-check-circle fa-fw"></i>
         </a>        
         </div>';
+    }
+
+    public function commentAct($id) {
+    	return '<div class="text-center">
+    	<button class="act_btn btn btn-sm btn-danger" id="'.$id.'" data-original-title="comment">
+            Penilaian
+        </button>
+    	</div>';
     }
 
     function logout() {
