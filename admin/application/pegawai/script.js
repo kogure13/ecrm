@@ -28,9 +28,7 @@ $(document).ready(function () {
 
             $('#jabatan').append(items_jabatan);
         }
-    });
-
-    console.log(v_dump)
+    });    
 
     var dataTable = $('#lookup').DataTable({
         'autoWidth': false,

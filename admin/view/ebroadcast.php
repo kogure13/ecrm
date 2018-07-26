@@ -4,7 +4,7 @@
             <div class="col-sm-12">
                 <div class="card-box m-t-20">
                     <div class="p-20">
-                        <form method="post" id="form_email" name="form_email" role="form">
+                        <form method="post" id="form_email" name="form_email" role="form" novalidate="novalidate">
                             <div class="form-group">
                                 <input type="email" id="eto" name="eto" class="form-control" placeholder="To"
                                        data-role="tagsinput">
@@ -27,7 +27,7 @@
 
                             <div class="btn-toolbar form-group m-b-0">
                                 <div class="pull-right">                                    
-                                    <button type="button" id="btn_send" class="btn btn-purple">
+                                    <button type="submit" id="btn_send" class="btn btn-purple">
                                         <span>Send</span>
                                         <i class="fa fa-send m-l-10"></i>
                                     </button>

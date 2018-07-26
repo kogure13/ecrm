@@ -2,6 +2,12 @@
 require '../../../vendors/PHPMailer/PHPMailerAutoload.php';
 $mail = new PHPMailer;
 
+$params = $_REQUEST;
+$toadd = $_POST['eto'];
+$tocc = $_POST['ecc'];
+$subject = $_POST['esubject'];
+$content = $_POST['summernote'];
+
 // Konfigurasi SMTP
 $mail->isSMTP();
 $mail->Host = 'smtp.gmail.com';
@@ -15,15 +21,15 @@ $mail->setFrom('ecrm.ricky.18@gmail.com', 'Admin e-CRM');
 $mail->addReplyTo('ecrm.ricky.18@gmail.com', 'Admin e-CRM');
 
 // Menambahkan penerima
-$mail->addAddress('$toadd');
+$mail->addAddress($toadd);
 
 // Menambahkan beberapa penerima
 //$mail->addAddress('penerima2@contoh.com');
 //$mail->addAddress('penerima3@contoh.com');
 
 // Menambahkan cc atau bcc 
-$mail->addCC('cc@contoh.com');
-$mail->addBCC('bcc@contoh.com');
+$mail->addCC($tocc);
+//$mail->addBCC('bcc@contoh.com');
 
 // Subjek email
 $mail->Subject = "$subject";
