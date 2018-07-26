@@ -6,8 +6,8 @@ class dbObj {
     var $DB_Host = "192.168.0.128"; //koneksi server
     var $DB_Name = "db_ecrm"; //nama database
     var $DB_User = "root"; //user database
-    var $DB_Pass = "password"; //password database
     // var $DB_Pass = ""; //password database
+    var $DB_Pass = "password"; //password database
     var $conn;
 
     function getConstring() {
