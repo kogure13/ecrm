@@ -84,7 +84,7 @@ class Prospek {
                 case 1 : $status = 'Approve'; $ubtn = '';break;
                 case 2 : $status = 'On-Progress'; $ubtn = '';break;
                 case 3 : $status = 'Canceled'; $ubtn = ''; break;
-                case 4 : $status = 'Close'; $ubtn = ''; break;
+                case 4 : $status = 'Close'; $ubtn = $user->commentAct($row['id']); break;
                 default : break;
             }
             

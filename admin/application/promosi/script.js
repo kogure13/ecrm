@@ -16,7 +16,7 @@ $(document).ready(function () {
         'ajax': {
             type: 'POST',
             dataType: 'JSON',
-            url: 'application/jabatan/ajax.php',
+            url: 'application/promosi/ajax.php',
             error: function() {
                 $.Notification.notify(
                         'error', 'top center',
@@ -45,7 +45,7 @@ $(document).ready(function () {
                     $('#edit_id').val(id);
 
                     v_edit = $.ajax({
-                        url: 'application/jabatan/edit.php?id=' + id,
+                        url: 'application/promosi/edit.php?id=' + id,
                         type: 'POST',
                         dataType: 'JSON',
                         beforeSend: function () {
@@ -60,7 +60,7 @@ $(document).ready(function () {
 
                 } else if (com == 'Delete') {
                     var conf = confirm('Delete this items ?');
-                    var url = 'application/jabatan/data.php';
+                    var url = 'application/promosi/data.php';
 
                     if (conf) {
                         $.post(url, {id: id, action: com.toLowerCase()}, function () {

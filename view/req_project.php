@@ -92,4 +92,65 @@ $noreg = new noreg($connString);
             </form>
         </div>
     </div>
+</div><!-- end modal add req project -->
+
+<div id="comment_model" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">            
+            <div class="modal-header">                
+                <h4 class="modal-title"></h4>
+            </div>
+            <form id="form_comment" name="form_comment" novalidate="novalidate">
+                <div class="modal-body">
+                    <input type="hidden" value="add" name="action_comment" id="action_comment">
+                    <input type="hidden" value="0" name="edit_id_comment" id="edit_id_comment">  
+                    <input type="hidden" value="<?=$_SESSION['id_user']?>" name="id_client" id="id_client">
+                    <input type="hidden" value="<?=date('Y-m-d')?>" name="comdate">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p class="text-muted font-13 m-b-5">Penilaian:
+                                    <label class="radio-inline">
+                                        <input type="radio" class="radio rdc_btn" value="1" name="rdc"> Feedback Positif
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" class="radio rdc_btn" value="0" name="rdc"> Feedback Negatif
+                                    </label>                                
+                                </p>
+                            </div>                        
+                        </div>                            
+                    </div>
+
+                    <div class="form-group" id="rdp" style="display: none;">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p class="text-muted2">
+                                    <?php 
+                                        for ($i=1; $i <= 5; $i++) {
+                                    ?>
+                                    <label class="radio-inline">
+                                        <input type="radio" class="rdstar" name="rdstar" value="<?=$i?>"> <?=$i?>
+                                    </label>
+                                    <?php
+                                        }
+                                    ?>
+                                </p>                                    
+                            </div>
+                        </div>
+                    </div>                    
+                    
+                    <div class="form-group">
+                        <label for="alamat" class="control-label">Pesan:</label>                                
+                        <textarea class="form-control" id="keterangan" name="keterangan"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="">
+                        <button type="button" id="btn_cancel_commit" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button>
+                        <button type="submit" id="btn_add_commit" class="btn btn-sm btn-primary">Save</button>
+                    </div>                        
+                </div>
+            </form>
+        </div>
+    </div>
 </div>

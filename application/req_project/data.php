@@ -11,10 +11,10 @@ $action = isset($params['action']) != '' ? $params['action'] : '';
 $crudClass = new CRUD($connString);
 
 switch ($action) {
-    case 'add' : $crudClass->insertData($params, $tb_name);
-        break;
-    case 'edit' : $crudClass->updateData($params, $tb_name);
-        break;
+    case 'add' : $crudClass->insertData($params, $tb_name); break;
+    case 'add_comment' : $crudClass->insertComment($params); break;
+    case 'edit' : $crudClass->updateData($params, $tb_name); break;
+
     default : break;
 }
 

@@ -27,6 +27,21 @@ $(document).ready(function () {
         $('#edit_id').val(0);
     });
 
+    $('#btn_cancel').click(function () {
+        var $form = $('#form_kproyek');
+        $form.trigger('reset');
+        $form.validate().resetForm();
+        $form.find('.error').removeClass('error');
+    });    
+
+    $('#btn_cancel_commit').click(function () {
+        var $form = $('#form_comment');
+        $form.trigger('reset');
+        $form.validate().resetForm();
+        $form.find('.error').removeClass('error');
+        $('#rdp').attr('style', 'display: none');        
+    });    
+
     var dataTable = $('#lookup').DataTable({
         'autoWidth': true,
         'aoColumnDefs': [
@@ -39,13 +54,7 @@ $(document).ready(function () {
             dataType: 'JSON',
             url: 'application/req_project/ajax.php'
         },
-        fnDrawCallback: function (oSettings) {
-
-            $('.act_btn').each(function () {
-                $(this).tooltip({
-                    html: true
-                });
-            });
+        fnDrawCallback: function (oSettings) {            
 
             $('.act_btn').on('click', function (e) {
                 e.preventDefault();
@@ -54,7 +63,7 @@ $(document).ready(function () {
 
                 if (com == 'Edit') {
                     $('#add_model').modal({backdrop: 'static', keyboard: false});
-                    $('#btn_jabatan').html('Edit Permintaan Project');
+                    $('.modal-title').html('Edit Permintaan Project');
                     $('#action').val('edit');
                     $('#edit_id').val(id);
 
@@ -67,6 +76,21 @@ $(document).ready(function () {
                             $('#rdate').val(data.tgl_request);
                             $('#kproyek').val(data.id_proyek);
                             $('#keterangan').val(data.keterangan);
+                        }
+                    });
+                } else if(com == 'comment') {  
+
+                    $('#comment_model').modal({backdrop: 'static', keyboard: false});                    
+                    $('.modal-title').html('Beri Penilaian Anda');                    
+                    $('#edit_id_comment').val(id);
+
+                    $('.rdc_btn').on('change', function(e) {
+                        e.preventDefault();
+                        if($(this).val() == 1) {
+                            $('#rdp').attr('style','display: block');
+                        } else if($(this).val() == 0) {
+                            $('#rdp').attr('style','display: none');
+                            $('.rdstar').attr('checked', false);
                         }
                     });
                 }
@@ -107,7 +131,37 @@ $(document).ready(function () {
 
             $('#form_kproyek').trigger('reset');
         }
-    });//end validate
+    });//end validate form kproyek
+
+    $('#form_comment').validate({
+        rules: {
+            keterangan: {
+                required: true,
+                minlength: 30
+            },
+            rdc: {
+                required: true
+            }
+        },
+        messages: {
+            rdc: {
+                required: "Pilih Salah Satu"                
+            }
+        },
+        errorPlacement: function(error, element) {
+            if(element.is(":radio")) {
+                error.appendTo(element.parents('.text-muted'));
+            } else {
+                error.insertAfter(element);
+            }
+        },
+        submitHandler: function(form) {
+            var com_action = $('#action').val();
+            ajaxComment('add_comment');
+
+            $('#form_comment').trigger('reset');
+        }
+    });
 });//end $ document
 
 function ajaxAction(action) {
@@ -131,3 +185,9 @@ function ajaxAction(action) {
         }
     });    
 }//end ajaxAction
+
+function ajaxComment(action) {
+    data = $('#form_comment').serializeArray();
+
+    console.log(data)
+}
