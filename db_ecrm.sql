@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50626
 File Encoding         : 65001
 
-Date: 2018-07-25 14:33:08
+Date: 2018-07-26 16:18:12
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -75,12 +75,12 @@ CREATE TABLE `data_penilaian` (
   `keterangan` text,
   `tanggal` date NOT NULL DEFAULT '0000-00-00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of data_penilaian
 -- ----------------------------
-INSERT INTO `data_penilaian` VALUES ('2', '0', '1', '0', null, null, '2018-07-01');
+INSERT INTO `data_penilaian` VALUES ('2', '0', '0', '1', null, null, '2018-07-01');
 INSERT INTO `data_penilaian` VALUES ('3', '0', '0', '1', null, null, '2018-07-01');
 INSERT INTO `data_penilaian` VALUES ('4', '0', '1', '0', null, null, '2018-07-03');
 INSERT INTO `data_penilaian` VALUES ('5', '0', '1', '0', null, null, '2018-07-01');
@@ -91,6 +91,8 @@ INSERT INTO `data_penilaian` VALUES ('9', '0', '0', '1', null, null, '2018-07-05
 INSERT INTO `data_penilaian` VALUES ('10', '0', '0', '1', null, null, '2018-07-02');
 INSERT INTO `data_penilaian` VALUES ('11', '0', '1', '0', null, null, '2018-07-03');
 INSERT INTO `data_penilaian` VALUES ('12', '0', '1', '0', null, null, '2018-07-03');
+INSERT INTO `data_penilaian` VALUES ('13', '0', '1', '0', null, null, '2018-07-05');
+INSERT INTO `data_penilaian` VALUES ('14', '0', '1', '0', null, null, '2018-07-05');
 
 -- ----------------------------
 -- Table structure for data_promosi
@@ -129,7 +131,7 @@ CREATE TABLE `data_prospek` (
 -- Records of data_prospek
 -- ----------------------------
 INSERT INTO `data_prospek` VALUES ('1', 'PJO-01/2018-07', '1', '1', '2', '2018-07-01', 'Keterangan: 1', '1');
-INSERT INTO `data_prospek` VALUES ('2', 'PJO-02/2018-07', '2', '2', '2', '2018-07-10', 'Keterangan: Client', '3');
+INSERT INTO `data_prospek` VALUES ('2', 'PJO-02/2018-07', '2', '2', '2', '2018-07-10', 'Keterangan: Client', '4');
 INSERT INTO `data_prospek` VALUES ('3', 'PJO-03/2018-07', '2', '3', '4', '2018-07-20', '', '1');
 
 -- ----------------------------

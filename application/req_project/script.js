@@ -189,5 +189,19 @@ function ajaxAction(action) {
 function ajaxComment(action) {
     data = $('#form_comment').serializeArray();
 
-    console.log(data)
+    v_dump = $.ajax({
+        url: 'application/req_project/data.php',
+        type: 'POST',
+        dataType: 'JSON',
+        data: data,
+        success: function (response) {
+            if (response == 0) {                
+                $('#comment_model').modal('hide');
+                $('#action').val('add');
+                $('#edit_id').val('0');
+                window.location.reload();
+            }
+            alert('Terima Kasih Atas Penilaian Anda');
+        }
+    });    
 }

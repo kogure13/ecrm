@@ -102,7 +102,7 @@ $noreg = new noreg($connString);
             </div>
             <form id="form_comment" name="form_comment" novalidate="novalidate">
                 <div class="modal-body">
-                    <input type="hidden" value="add" name="action_comment" id="action_comment">
+                    <input type="hidden" value="add_comment" name="action" id="action">
                     <input type="hidden" value="0" name="edit_id_comment" id="edit_id_comment">  
                     <input type="hidden" value="<?=$_SESSION['id_user']?>" name="id_client" id="id_client">
                     <input type="hidden" value="<?=date('Y-m-d')?>" name="comdate">

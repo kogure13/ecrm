@@ -32,9 +32,9 @@ class CRUD {
         if($numData > 0) {
             echo 1;
         }else{
-            $sql = "INSERT INTO ".$tb_name;
+            $sql = "INSERT INTO master_jabatan";
             $sql .= " (kode_jabatan, jabatan)";
-            $sql .= " VALUES('".addslashes($params['kode'])."', ".addslashes($params['jabatan'])."')";
+            $sql .= " VALUES('".addslashes($params['kode'])."', '".addslashes($params['jabatan'])."')";
 
             $result = mysqli_query($this->conn, $sql) or die("error to insert data");
             echo 0;
@@ -70,7 +70,7 @@ class CRUD {
     function cekData($params) {
         
         $sql = "SELECT * FROM master_jabatan";
-        $sql .= " WHERE kode_jabatan LIKE '%".$params['kode']."%' OR "
+        $sql .= " WHERE kode_jabatan LIKE '%".$params['kode']."%' AND "
                 . "jabatan LIKE '%".$params['jabatan']."'";        
         $query = mysqli_query($this->conn, $sql) or die('error to cek data');
         $numData = intval($query->num_rows);

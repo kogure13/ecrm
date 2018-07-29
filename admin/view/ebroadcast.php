@@ -2,8 +2,8 @@
     <div class="col-lg-12 col-md-12">
         <div class="row">
             <div class="col-sm-12">
-                <div class="card-box m-t-20">
-                    <div class="p-20">
+                <div class="card-box">
+                    <div class="">
                         <form method="post" id="form_email" name="form_email" role="form" novalidate="novalidate">
                             <div class="form-group">
                                 <input type="email" id="eto" name="eto" class="form-control" placeholder="To"

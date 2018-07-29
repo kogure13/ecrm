@@ -65,7 +65,7 @@ class Jabatan {
         while ($row = mysqli_fetch_assoc($query)) {
             $nestedData = [];
             
-            $nestedData[] = $user->linkAct($row['id']);
+            $nestedData[] = $user->editAct($row['id']);
             $nestedData[] = $row['kode_jabatan'];
             $nestedData[] = $row['jabatan'];
 

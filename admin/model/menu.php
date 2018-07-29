@@ -9,14 +9,14 @@
                         <i class="ti-dashboard"></i>
                         <span>Dashboard</span>
                     </a>
-                </li>                
+                </li>
+                <!--SDM, Marketing, DIrektur-->                
                 <li>
                     <a href="?page=client" class="">
                         <i class="md md-account-child"></i>
                         <span>Data Client</span>
                     </a>
                 </li>
-                <!--SDM, Marketing-->
                 <li>
                     <a href="?page=prospek">
                         <i class="md md-business"></i>
@@ -47,6 +47,12 @@
                 </li>    
 
                 <li class="text-muted menu-title">Data Master</li>
+                <li>
+                    <a href="?page=user">
+                        <i class="fa fa-users fa-fw"></i>
+                        <span>Master User</span>
+                    </a>
+                </li>
                 <li class="has-sub">
                     <a href="#">
                         <i class="fa fa-users fa-fw"></i>
@@ -54,13 +60,13 @@
                         <span class="menu-arrow"></span>
                     </a>
                     <ul class="list-unstyled">
-                        <li>
+                        <li><!-- Admin -->
                             <a href="?page=jabatan" class="">
                                 <i class="ti-layers"></i>
                                 <span>Data Jabatan</span>
                             </a>
                         </li>							
-                        <li>
+                        <li><!-- SDM -->
                             <a href="?page=pegawai" class="">
                                 <i class="ti-user"></i>
                                 <span>Data Pegawai</span>
@@ -74,7 +80,6 @@
                         <span>Kategori proyek</span>
                     </a>
                 </li>
-
             </ul>
             <div class="clearfix"></div>
         </div>

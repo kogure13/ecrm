@@ -59,9 +59,6 @@ $(document).ready(function () {
                         url: 'application/proyek/edit.php?id=' + id,
                         type: 'POST',
                         dataType: 'JSON',
-                        beforeSend: function () {
-
-                        },
                         success: function (data) {                            
                             $('#kode').val(data.kode_proyek);
                             $('#proyek').val(data.nama_proyek);

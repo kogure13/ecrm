@@ -8,7 +8,6 @@ $(document).ready(function () {
             $('#kepuasan').html(data.jKepuasan);
             $('#keluhan').html(data.jKeluhan);
             $('#tClient').text(data.jClient);
-            console.log(data)
         }
     });
 
@@ -23,10 +22,10 @@ $(document).ready(function () {
             var skepuasan = [];
 
             for (var i in data) {
-                nperiode.push(data[i].tanggal);                
+                nperiode.push(data[i].tanggal);
                 skeluhan.push(data[i].keluhan);
                 skepuasan.push(data[i].kepuasan);
-            }            
+            }
 
             var chartdata = {
                 labels: nperiode,

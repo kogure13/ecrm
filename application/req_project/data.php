@@ -38,6 +38,31 @@ class CRUD {
         echo 0;
     }
 
+    function insertComment($params) {
+
+        $sql = "INSERT INTO data_penilaian";
+
+        if ($params['rdc'] == 1) {
+            $sql .= " (id_prospek, keluhan, kepuasan, nilai_kepuasan, keterangan, tanggal)";
+            $sql .= " VALUES('".$params['edit_id_comment']."', '0', '1', '".$params['rdstar']."', 
+                    '".addslashes($params['keterangan'])."', '".$params['comdate']."')";
+
+        } else if ($params['rdc'] == 0) {
+            $sql .= " (id_prospek, keluhan, kepuasan, keterangan, tanggal)";
+            $sql .= " VALUES('".$params['edit_id_comment']."', '1', '0', 
+                    '".addslashes($params['keterangan'])."', '".$params['comdate']."')";
+        }
+
+        $result = mysqli_query($this->conn, $sql) or die("error to insert data");
+
+        $sqlU = "UPDATE data_prospek";
+        $sqlU .= " SET status = '5'";
+        $sqlU .= " WHERE id = '".$params['edit_id_comment']."'";
+
+        $resultU = mysqli_query($this->conn, $sqlU) or die("error to update data");
+        echo 0; 
+    }
+
     function updateData($params, $tb_name) {
 
         $sql = "UPDATE " . $tb_name;

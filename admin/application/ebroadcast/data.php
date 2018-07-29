@@ -12,13 +12,13 @@ $content = $_POST['summernote'];
 $mail->isSMTP();
 $mail->Host = 'smtp.gmail.com';
 $mail->SMTPAuth = true;
-$mail->Username = 'ecrm.ricky.18@gmail.com';
-$mail->Password = '@ecrm2018';
+$mail->Username = 'fauzanricky09@gmail.com';
+$mail->Password = 'RICKYff09';
 $mail->SMTPSecure = 'tls';
 $mail->Port = 587;
 
-$mail->setFrom('ecrm.ricky.18@gmail.com', 'Admin e-CRM');
-$mail->addReplyTo('ecrm.ricky.18@gmail.com', 'Admin e-CRM');
+$mail->setFrom('fauzanricky09@gmail.com', 'Admin e-CRM');
+$mail->addReplyTo('fauzanricky09@gmail.com', 'Admin e-CRM');
 
 // Menambahkan penerima
 $mail->addAddress($toadd);
@@ -47,7 +47,7 @@ $mail->Body = $mailContent;
 
 // Kirim email
 if(!$mail->send()){
-    echo 'Pesan tidak dapat dikirim.';
+    echo 'Pesan tidak dapat dikirim. ';
     echo 'Mailer Error: ' . $mail->ErrorInfo;
 }else{
     echo 'Pesan telah terkirim';

@@ -24,9 +24,13 @@ function ajaxSend() {
         dataType: 'json',
         data: data,
         success: function(response) {
-            alert(response);
+            alert('Pesan Berhasil dikirim');
+            window.location.reload();
+        }, 
+        error: function (responseText, textStatus, errorThrown) {
+            alert('Pesan gagal dikirim');
+            window.location.reload();
         }
     });
-
-    console.log(data)
+        
 }
