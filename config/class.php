@@ -113,6 +113,15 @@ class User {
         </div>';
     }
     
+    public function deleteAct($id) {
+        return '
+        <div class="text-center">
+        <a href="#" id="' . $id . '" class="act_btn text-danger" data-toggle="tooltip" data-placement="top" data-original-title="Delete" title="Delete">
+        <i class="fa fa-trash-o fa-fw"></i>
+        </a>        
+        </div>';
+    }
+    
     public function pointAct($id) {
         return '<div class="text-center">
         <a href="#" id="' . $id . '" class="act_btn text-success" data-toggle="tooltip" data-placement="top" data-original-title="Point" title="Point">

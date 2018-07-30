@@ -74,7 +74,7 @@ class Penilaian {
         while ($row = mysqli_fetch_assoc($query)) {
             $nestedData = [];
             
-            $nestedData[] = $user->linkAct($row['id']);            
+            $nestedData[] = $user->editAct($row['id']);            
             $nestedData[] = $row['tanggal'];
             $nestedData[] = $row['nama_proyek'];
             $nestedData[] = $row['keterangan'];            

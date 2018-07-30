@@ -36,7 +36,7 @@ class Login {
                 $_SESSION['admin_crm'] = true;
                 $_SESSION['id_user'] = $row['id'];
                 $_SESSION['id_reff'] = $row['id_reff'];
-                
+                $_SESSION['role'] = $row['role'];                
                 echo 1;
             } else {
                 echo 0;

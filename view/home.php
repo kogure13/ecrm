@@ -1,6 +1,7 @@
 <div id="slider-wrapper">
-
+    <!-- Promosi banner -->
     <div id="slider" class="nivoSlider">
+        <!--<img src="theme/asset/images/Logo_CDP.jpg" alt="" /> -->
         <img src="theme/asset/images/slider/toystory.jpg" alt="" />
         <a href="http://dev7studios.com"><img src="theme/asset/images/slider/up.jpg" alt="" title="This is an example of a caption" /></a>
         <img src="theme/asset/images/slider/walle.jpg" alt="" />
@@ -9,7 +10,7 @@
     <div id="htmlcaption" class="nivo-html-caption">
         <strong>This</strong> is an example of a <em>HTML</em> caption with <a href="#">a link</a>.
     </div>
-
+    <!-- end promosi banner -->
 </div>
 
 <div class="col one_third no_margin_right">

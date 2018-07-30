@@ -18,7 +18,9 @@ class Option {
     
     function getOption($params) {
         $json_data = [];
-        $sql = "SELECT * FROM data_pegawai";
+        $sql = "SELECT data_pegawai.id AS id, nama_peg FROM data_pegawai";
+        $sql .= " JOIN master_jabatan ON data_pegawai.jabatan_peg = master_jabatan.id";
+        $sql .= " WHERE jabatan = 'Marketing'";
         $result = mysqli_query($this->conn, $sql);
         
         while ($row = mysqli_fetch_assoc($result)){

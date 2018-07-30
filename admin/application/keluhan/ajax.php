@@ -33,7 +33,7 @@ class Keluhan {
 
     function getRecords($req, $col) {                
 
-        $sqlTot = "SELECT data_penilaian.id, data_penilaian.tanggal, "
+        $sqlTot = "SELECT data_penilaian.id, data_penilaian.tanggal, data_prospek.status,"
                 . "master_kategori_proyek.nama_proyek, data_penilaian.keterangan";
         $sqlTot .= " FROM data_penilaian";
         $sqlTot .= " JOIN data_prospek ON data_penilaian.id_prospek = data_prospek.id";
@@ -71,7 +71,12 @@ class Keluhan {
         while ($row = mysqli_fetch_assoc($query)) {
             $nestedData = [];
             
-            $nestedData[] = $user->editAct($row['id']);            
+            switch ($row['status']) {
+                default : $ubtn = $user->editAct($row['id']);
+                    break;
+            }
+            
+            $nestedData[] = $ubtn;
             $nestedData[] = $row['tanggal'];
             $nestedData[] = $row['nama_proyek'];
             $nestedData[] = $row['keterangan'];            

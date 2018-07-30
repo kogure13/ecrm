@@ -2,14 +2,12 @@
     <div class="col-sm-12">
         <div class="card-box">
             <div class="form-group">
-<!--                <button id="btn_add" class="btn btn-sm btn-primary">
-                    <i class="fa fa-plus"></i>
-                    Add client
-                </button>-->
+                <?php if($_SESSION['role'] == 'marketing') { ?>
                 <button id="btn_ebroadcast" class="btn btn-sm btn-success">
                     <i class="fa fa-envelope-o"></i>
                     Broadcast E-mail
                 </button>
+                <?php } ?>
             </div>
 
             <table id="lookup"

@@ -4,6 +4,12 @@ $(document).ready(function () {
         rules: {
             eto: {
                 required: true
+            },
+            esubject: {
+                required: true
+            },
+            summernote : {
+                required: true
             }
         },
         submitHandler: function(form) {
@@ -26,11 +32,7 @@ function ajaxSend() {
         success: function(response) {
             alert('Pesan Berhasil dikirim');
             window.location.reload();
-        }, 
-        error: function (responseText, textStatus, errorThrown) {
-            alert('Pesan gagal dikirim');
-            window.location.reload();
         }
     });
-        
+    console.log(v_dump)
 }

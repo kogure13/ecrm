@@ -36,9 +36,9 @@ function ajaxAction() {
                 window.location.href = 'index.php';
             } else if(response == 0) {
                 alert('username atau password anda salah');
+            } else if(response == 404) {
+                alert('username tidak terdaftar');
             }
-            
-
         },
         error: function (response) {
             alert('error login');

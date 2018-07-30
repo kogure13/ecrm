@@ -3,10 +3,10 @@ require '../../../vendors/PHPMailer/PHPMailerAutoload.php';
 $mail = new PHPMailer;
 
 $params = $_REQUEST;
-$toadd = $_POST['eto'];
-$tocc = $_POST['ecc'];
-$subject = $_POST['esubject'];
-$content = $_POST['summernote'];
+$toadd = $params['eto'];
+//$tocc = $params['ecc'];
+$subject = $params['esubject'];
+$content = $params['summernote'];
 
 // Konfigurasi SMTP
 $mail->isSMTP();
@@ -28,17 +28,17 @@ $mail->addAddress($toadd);
 //$mail->addAddress('penerima3@contoh.com');
 
 // Menambahkan cc atau bcc 
-$mail->addCC($tocc);
+// $mail->addCC($tocc);
 //$mail->addBCC('bcc@contoh.com');
 
 // Subjek email
-$mail->Subject = "$subject";
+$mail->Subject = $subject;
 
 // Mengatur format email ke HTML
 $mail->isHTML(true);
 
 // Konten/isi email
-$mailContent = "$content";
+$mailContent = $content;
 $mail->Body = $mailContent;
 
 // Menambahakn lampiran

@@ -8,21 +8,13 @@
                             <div class="form-group">
                                 <input type="email" id="eto" name="eto" class="form-control" placeholder="To"
                                        data-role="tagsinput">
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <input type="email" id="ecc" name="ecc" class="form-control" placeholder="Cc"
-                                               data-role="tagsinput">
-                                    </div>                                    
-                                </div>
-                            </div>
+                            </div>                            
                             <div class="form-group">
                                 <input type="text" id="esubject" name="esubject" class="form-control" placeholder="Subject">
                             </div>
                             <div class="form-group">
-                                <!-- <div class="summernote" id="summernote"></div> -->
-                                <textarea class="summernote" id="summernote" name="summernote"></textarea>
+                                <label for="content">Pesan:</label>
+                                <textarea class="input-sm form-control" id="summernote" name="summernote"></textarea>
                             </div>
 
                             <div class="btn-toolbar form-group m-b-0">

@@ -1,4 +1,11 @@
 $(document).ready(function () {
+    
+    $('#btn_cancel').click(function () {
+        var $form = $('#form_keluhan');
+        $form.trigger('reset');
+        $form.validate().resetForm();
+        $form.find('.error').removeClass('error');
+    });
 
     var dataTable = $('#lookup').dataTable({
         'autoWidth': true,
@@ -48,7 +55,7 @@ $(document).ready(function () {
 
                 if (com == 'Edit') {
                     $('#add_model').modal({backdrop: 'static', keyboard: false});
-                    $('.modal-title').html('Edit pegawai');
+                    $('.modal-title').html('Feedback Keluhan');
                     $('#action').val('edit');
                     $('#edit_id').val(id);
 
@@ -56,13 +63,8 @@ $(document).ready(function () {
                         url: 'application/keluhan/edit.php?id=' + id,
                         type: 'POST',
                         dataType: 'JSON',
-                        success: function (data) {
-                            $('#nip').val(data.nip);
-                            $('#fname').val(data.nama_peg);
-                            $('#jabatan').val(data.jabatan_peg);
-                            $('#alamat').val(data.alamat_peg);
-                            $('#tlp').val(data.no_tlp);
-                            $('#email').val(data.email);
+                        success: function (data) {                            
+                            $('#keterangan').val(data.keterangan);
                         }
                     });
 
@@ -79,6 +81,45 @@ $(document).ready(function () {
                 }
             });
         }
-    });//end datatable
-    console.log(dataTable)
+    });//end datatable    
+
+    $('#form_keluhan').validate({
+        rules: {
+            keterangan: {
+                required: true,
+                minlength: 30
+            }
+        },
+        messages: {
+            keterangan: {
+                required: "Field is required"
+            }
+        },
+        submitHandler: function (form) {
+            var com_action = $('#action').val();
+            ajaxAction();
+
+            $('#form_keluhan').trigger('reset');
+        }
+    });
 });
+
+function ajaxAction() {
+    data = $('#form_keluhan').serializeArray();
+    table = $('#lookup').DataTable();
+
+    v_dump = $.ajax({
+        url: 'application/keluhan/data.php',
+        type: 'POST',
+        dataType: 'JSON',
+        data: data,
+        success: function (response) {
+
+            $('#add_model').modal('hide');
+            $('#action').val('add');
+            $('#edit_id').val('0');
+            table.ajax.reload();
+
+        }
+    });
+}//end ajaxAction

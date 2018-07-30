@@ -84,6 +84,8 @@ class Prospek {
                     break;
                 case 4 : $status = 'Close'; $ubtn = '';
                     break;
+                case 5 : $status = 'Close'; $ubtn = '';
+                    break;
                 default : break;
             }
 

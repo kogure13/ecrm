@@ -12,8 +12,7 @@
                     <tr>
                         <th class="nosort" width="40px">Action</th>
                         <th>No. Reg</th><th>Company Name</th><th>Nama Proyek</th>
-                        <th>Penanggung Jawab</th><th>Tanggal Request</th>
-                        <th>Status</th><th class="nosort">Keterangan</th>
+                        <th>Tanggal Request</th><th>Status</th><th class="nosort">Keterangan</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -32,25 +31,15 @@
             <form id="form_prospek" name="form_prospek" novalidate="novalidate">
                 <div class="modal-body">
                     <input type="hidden" value="add" name="action" id="action">
-                    <input type="hidden" value="0" name="edit_id" id="edit_id">                    
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <label for="pj" class="control-label">PJ:</label>                                
-                                <select class="input-sm form-control select2" id="pjname" name="pjname">
-                                    <option>Penanggung Jawab</option>
-                                </select>                                
-                            </div>
-                        </div>                            
-                    </div>
+                    <input type="hidden" value="0" name="edit_id" id="edit_id">                                        
                     <div class="form-group">
                         <div class="row">                            
                             <div class="col-sm-6">
                                 <label for="pj" class="control-label">Status Prospek:</label>                                
                                 <select class="input-sm form-control select2" id="stprospek" name="stprospek">
                                     <option value="sp">Status Prospek</option>
-                                    <option value="1">Approve</option>                                    
-                                    <option value="3">Cancel</option>                                    
+                                    <option value="2">On Progress</option>                                    
+                                    <option value="4">Close</option>                                    
                                 </select>                                
                             </div>                            
                         </div>                        
