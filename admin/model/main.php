@@ -90,7 +90,7 @@
                     height: 250, // set editor height
                     minHeight: null, // set minimum height of editor
                     maxHeight: null, // set maximum height of editor
-                    focus: false                 // set focus to editable area after initializing summernote 
+                    focus: false // set focus to editable area after initializing summernote 
                 });
             });
         </script>
@@ -117,6 +117,20 @@
         <script src="assets/pages/datatables.init.js"></script>                        
 
         <!-- get Jquery -->
+        <script>
+            $.fn.dataTableExt.oApi.fnPagingInfo = function (oSettings)
+            {
+                return {
+                    "iStart": oSettings._iDisplayStart,
+                    "iEnd": oSettings.fnDisplayEnd(),
+                    "iLength": oSettings._iDisplayLength,
+                    "iTotal": oSettings.fnRecordsTotal(),
+                    "iFilteredTotal": oSettings.fnRecordsDisplay(),
+                    "iPage": Math.ceil(oSettings._iDisplayStart / oSettings._iDisplayLength),
+                    "iTotalPages": Math.ceil(oSettings.fnRecordsDisplay() / oSettings._iDisplayLength)
+                };
+            };
+        </script>
         <?= $main->getActScript() ?>
 
         <script type="text/javascript">

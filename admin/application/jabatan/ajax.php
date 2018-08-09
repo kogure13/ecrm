@@ -11,7 +11,8 @@ $requestData = $_REQUEST;
 $columns = array(    
     0 => 'kode_jabatan',
     1 => 'id',    
-    2 => 'jabatan'
+    2 => 'kode_jabatan',
+    3 => 'jabatan'
 );
 
 $jabatanClass->getData($requestData, $columns);
@@ -43,7 +44,8 @@ class Jabatan {
         
         if(!empty($req['search']['value'])) {
 
-            $sql .=" WHERE jabatan LIKE '%" . $req['search']['value'] . "%' ";            
+            $sql .= " WHERE jabatan LIKE '%" . $req['search']['value'] . "%' ";
+            $sql .= " OR kode_jabatan LIKE '%".$req['search']['value']."%'";
             
             $query = mysqli_query($this->conn, $sql) or die("ajax-grid-data.php: get PO");
             $totalFiltered = mysqli_num_rows($query);
@@ -65,6 +67,7 @@ class Jabatan {
         while ($row = mysqli_fetch_assoc($query)) {
             $nestedData = [];
             
+            $nestedData[] = NULL;
             $nestedData[] = $user->editAct($row['id']);
             $nestedData[] = $row['kode_jabatan'];
             $nestedData[] = $row['jabatan'];

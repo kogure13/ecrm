@@ -10,11 +10,12 @@ $eClass = new Prospek($connString);
 $requestData = $_REQUEST;
 
 $columns = array(
-    0 => 'tgl_request',
-    1 => 'no_reg',
-    2 => 'company_name',
-    3 => 'nama_peg',
-    4 => 'status'
+    0 => 'status',
+    1 => 'tgl_request',
+    2 => 'no_reg',
+    3 => 'company_name',
+    4 => 'nama_peg',
+    5 => 'status'
 );
 
 $eClass->getData($requestData, $columns);
@@ -89,6 +90,7 @@ class Prospek {
                 default : break;
             }
 
+            $nestedData[] = NULL;
             $nestedData[] = $ubtn;
             $nestedData[] = $row['no_reg'];
             $nestedData[] = $row['company_name'];

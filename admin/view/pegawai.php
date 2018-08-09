@@ -13,6 +13,7 @@
                    width="100%">
                 <thead>
                     <tr>
+                        <th class="nosort" width="30px">#</th>
                         <th class="nosort" width="40px">Action</th>
                         <th>NIP</th><th>Nama Pegawai</th>
                         <th>Jabatan</th><th>Alamat</th>

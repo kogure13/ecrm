@@ -10,9 +10,10 @@ $tb_name = "data_user";
 $requestData = $_REQUEST;
 
 $columns = array(    
-    0 => 'id',    
-    1 => 'user',
-    2 => 'role'
+    0 => 'id',
+    1 => 'id',
+    2 => 'username',
+    3 => 'role'
 );
 
 $eClass->getData($requestData, $columns, $tb_name);
@@ -66,9 +67,10 @@ class Proyek {
         while ($row = mysqli_fetch_assoc($query)) {
             $nestedData = [];
             
+            $nestedData[] = NULL;
             $nestedData[] = $user->editAct($row['id']);
-            $nestedData[] = $row['username'];            
-            $nestedData[] = $row['role'];
+            $nestedData[] = $row['username'];
+            $nestedData[] = $row['role'];            
 
             $data[] = $nestedData;            
         }

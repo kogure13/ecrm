@@ -10,7 +10,7 @@
     <title>e-CRM</title>
 
     <!--Morris Chart CSS -->
-    <link rel="stylesheet" href="assets/plugins/morris/morris.css">
+<!--    <link rel="stylesheet" href="assets/plugins/morris/morris.css">-->
     <link rel="stylesheet" href="assets/plugins/summernote/summernote.css">
 
     <!-- DataTables -->

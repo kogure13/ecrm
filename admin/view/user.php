@@ -3,10 +3,11 @@
         <div class="card-box">
             <h4 class="page-title m-b-20">List User</h4>            
             <table id="lookup"
-                   class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0"
-                   width="100%">
+                   class="table table-striped table-bordered dt-responsive nowrap" 
+                   cellspacing="0" cellpadding="0" width="100%">
                 <thead>
                     <tr>
+                        <th class="nosort" width="30px">#</th>
                         <th class="nosort" width="40px">Action</th>
                         <th>Username</th><th>Role</th>                        
                     </tr>

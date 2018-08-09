@@ -9,13 +9,14 @@ $eClass = new Pegawai($connString);
 $requestData = $_REQUEST;
 
 $columns = array(
-    0 => 'id',
-    1 => 'nip',
-    2 => 'nama_peg',
-    3 => 'jabatan',
-    4 => 'alamat_peg',
-    5 => 'no_tlp',
-    6 => 'email'
+    0 => 'nip',
+    1 => 'id',
+    2 => 'nip',
+    3 => 'nama_peg',
+    4 => 'jabatan',
+    5 => 'alamat_peg',
+    6 => 'no_tlp',
+    7 => 'email'
 );
 
 $eClass->getData($requestData, $columns);
@@ -72,7 +73,8 @@ class Pegawai {
         while ($row = mysqli_fetch_assoc($query)) {
             $nestedData = [];
             
-            $nestedData[] = $user->linkAct($row['id']);            
+            $nestedData[] = NULL;
+            $nestedData[] = $user->linkAct($row['id']);
             $nestedData[] = $row['nip'];
             $nestedData[] = $row['nama_peg'];
             $nestedData[] = $row['jabatan'];

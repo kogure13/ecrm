@@ -1,9 +1,10 @@
-$(document).ready(function() {        
-    
+$(document).ready(function () {    
+
     var dataTable = $('#lookup').DataTable({
-        'autoWidth': false,
+        'autoWidth': true,
         'aoColumnDefs': [
-            {'bSortable': false, 'aTargets': ['nosort']}
+            {'bSortable': false, 'aTargets': ['nosort']},
+            {'sClass': 'text-right', 'aTargets': [0]}
         ],
         'processing': true,
         'serverSide': true,
@@ -18,6 +19,13 @@ $(document).ready(function() {
                         'Data tidak tersedia'
                         );
             }
+        },
+        rowCallback: function (row, data, iDisplayIndex) {
+            var info = this.fnPagingInfo();
+            var page = info.iPage;
+            var length = info.iLength;
+            var index = page * length + (iDisplayIndex + 1);
+            $('td:eq(0)', row).html(index);
         },
         fnDrawCallback: function (oSettings) {
 
@@ -42,7 +50,7 @@ $(document).ready(function() {
                         url: 'application/user/edit.php?id=' + id,
                         type: 'POST',
                         dataType: 'JSON',
-                        success: function (data) {                            
+                        success: function (data) {
                             $('#username').val(data.username);
                             $('#password').val(data.password);
                             $('#role').val(data.role);
@@ -62,8 +70,8 @@ $(document).ready(function() {
                 }
             });
         }
-    });//end datatable
-    
+    });//end datatable    
+
     $('#form_user').validate({
         rules: {
             uname: {
@@ -103,10 +111,10 @@ function ajaxAction() {
         dataType: 'JSON',
         data: data,
         success: function (response) {
-            
-                $('#add_model').modal('hide');
-                table.ajax.reload();
-            
+
+            $('#add_model').modal('hide');
+            table.ajax.reload();
+
         },
         error: function (response) {
             alert('error system');

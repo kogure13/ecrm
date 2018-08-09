@@ -9,7 +9,7 @@
 <li class="text-muted menu-title">Data Master</li>
 <li>
     <a href="?page=user">
-        <i class="fa fa-users fa-fw"></i>
+        <i class="fa fa-user fa-fw"></i>
         <span>Master User</span>
     </a>
 </li>

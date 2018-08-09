@@ -9,14 +9,15 @@ $tb_name = "data_client";
 $requestData = $_REQUEST;
 
 $columns = array(    
-    0 => 'date_register',
-    1 => 'id',
-    2 => 'company_name',
-    3 => 'company_address',    
-    4 => 'tlp',
-    5 => 'email',    
-    6 => 'username',
-    7 => 'status_client'
+    0 => 'id',
+    1 => 'date_register',
+    2 => 'id',
+    3 => 'company_name',
+    4 => 'company_address',    
+    5 => 'tlp',
+    6 => 'email',    
+    7 => 'username',
+    8 => 'status_client'
 );
 
 $eClass->getData($requestData, $columns, $tb_name);
@@ -71,7 +72,7 @@ class Client {
         while ($row = mysqli_fetch_assoc($query)) {
             $nestedData = [];
             
-            $nestedData[] = '<div align="right">'.$row['id'].'</div>';
+            $nestedData[] = NULL;
             $nestedData[] = $row['username'];
             $nestedData[] = $row['company_name'];
             $nestedData[] = $row['company_address'];
