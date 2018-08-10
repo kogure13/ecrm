@@ -19,10 +19,12 @@ $noreg = new noreg($connString);
             </div>
 
             <table id="lookup"
-                   class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0"
+                   class="table table-striped table-bordered dt-responsive nowrap" 
+                   cellspacing="0" cellpadding="0"
                    width="100%">
                 <thead>
                     <tr>
+                        <th class="nosort" width="30px">#</th>
                         <th class="nosort" width="40px">Action</th>
                         <th>No. Reg</th><th>Tanggal</th>
                         <th>Nama proyek</th><th class="nosort">Penanggung Jawab</th>
@@ -76,11 +78,14 @@ $noreg = new noreg($connString);
                                 </div>                                
                             </div>                            
                         </div>                        
-                    </div>
-                    
+                    </div>                    
                     <div class="form-group">
-                        <label for="alamat" class="control-label">Keterangan:</label>                                
-                        <textarea class="form-control" id="keterangan" name="keterangan"></textarea>
+                        <div class="row">
+                            <div class="col-sm-7">
+                                <label for="keterangan" class="control-label">Keterangan:</label>                                
+                                <textarea class="form-control" id="keterangan" name="keterangan"></textarea>
+                            </div>
+                        </div>                        
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -140,8 +145,12 @@ $noreg = new noreg($connString);
                     </div>                    
                     
                     <div class="form-group">
-                        <label for="alamat" class="control-label">Pesan:</label>                                
-                        <textarea class="form-control" id="keterangan" name="keterangan"></textarea>
+                        <div class="row">
+                            <div class="col-sm-7">
+                                <label for="alamat" class="control-label">Pesan:</label>                                
+                                <textarea class="form-control" id="keterangan" name="keterangan"></textarea>
+                            </div>
+                        </div>                        
                     </div>
                 </div>
                 <div class="modal-footer">

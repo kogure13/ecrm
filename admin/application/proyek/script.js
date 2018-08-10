@@ -20,7 +20,8 @@ $(document).ready(function () {
     var dataTable = $('#lookup').DataTable({
         'autoWidth': false,
         'aoColumnDefs': [
-            {'bSortable': false, 'aTargets': ['nosort']}
+            {'bSortable': false, 'aTargets': ['nosort']},
+            {'sClass': 'text-right', 'aTargets': [0]}
         ],
         'processing': true,
         'serverSide': true,
@@ -35,6 +36,13 @@ $(document).ready(function () {
                         'Data tidak tersedia'
                         );
             }
+        },
+        rowCallback: function (row, data, iDisplayIndex) {
+            var info = this.fnPagingInfo();
+            var page = info.iPage;
+            var length = info.iLength;
+            var index = page * length + (iDisplayIndex + 1);
+            $('td:eq(0)', row).html(index);
         },
         fnDrawCallback: function (oSettings) {
 

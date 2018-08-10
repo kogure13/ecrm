@@ -11,9 +11,10 @@ $id_marketing = $_SESSION['id_reff'];
 
 $columns = array(
     0 => 'tgl_request',
-    1 => 'no_reg',
-    2 => 'company_name',   
-    3 => 'status'
+    1 => 'id',
+    2 => 'tgl_request',
+    3 => 'company_name',   
+    4 => 'status'
 );
 
 $eClass->getData($requestData, $columns, $id_marketing);
@@ -87,6 +88,7 @@ class Prospek {
                 default : break;
             }
 
+            $nestedData[] = NULL;
             $nestedData[] = $ubtn;
             $nestedData[] = $row['no_reg'];
             $nestedData[] = $row['company_name'];

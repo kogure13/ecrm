@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : server128
-Source Server Version : 50626
+Source Server Version : 100130
 Source Host           : 192.168.0.128:3306
 Source Database       : db_ecrm
 
 Target Server Type    : MYSQL
-Target Server Version : 50626
+Target Server Version : 100130
 File Encoding         : 65001
 
-Date: 2018-07-26 16:18:12
+Date: 2018-08-10 15:16:06
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,13 +30,38 @@ CREATE TABLE `data_client` (
   `password` varchar(255) DEFAULT NULL,
   `status_client` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of data_client
 -- ----------------------------
-INSERT INTO `data_client` VALUES ('1', 'pt abc', 'Jl. Seram 13', '123456789', 'peg102@net.net', '2018-07-20', 'user12', '$2y$10$lGI9ovJHnvLfS6Mn0UpTmudHSCXYfCygN2FRxx2j5N.otPCcvaCB6', '0');
-INSERT INTO `data_client` VALUES ('2', 'pt abc123', 'asfg', '1232456789', 'peg101@net.net', '2018-07-20', 'user101', '$2y$10$BZCoIIOH3NRJ2/Y1q5lFHeTpJEcLZVSE0SPXW2jg8hJHwJcQu8zCi', '0');
+INSERT INTO `data_client` VALUES ('1', 'npm01', 'jl. kemana mana 12', '1234567890', 'npm@client.net', '2018-07-29', 'npm01', '$2y$10$gymxA3VIv.x9pyNlLul9..M3zoYy.K4kVeiiQUVfTw0GQawxAci4.', '0');
+
+-- ----------------------------
+-- Table structure for data_keluhan
+-- ----------------------------
+DROP TABLE IF EXISTS `data_keluhan`;
+CREATE TABLE `data_keluhan` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of data_keluhan
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for data_kepuasan
+-- ----------------------------
+DROP TABLE IF EXISTS `data_kepuasan`;
+CREATE TABLE `data_kepuasan` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of data_kepuasan
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for data_pegawai
@@ -51,16 +76,15 @@ CREATE TABLE `data_pegawai` (
   `no_tlp` varchar(25) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of data_pegawai
 -- ----------------------------
-INSERT INTO `data_pegawai` VALUES ('1', 'nip101', 'nama101', '2', 'add255', 'tlp25', 'email');
-INSERT INTO `data_pegawai` VALUES ('2', 'nip102', 'peg102', '9', '123456', '087678564', 'peg102@softmedia.net');
-INSERT INTO `data_pegawai` VALUES ('4', 'nip103', 'nip103', '6', 'albirru', '87980999', 'majer@cdp.net');
-INSERT INTO `data_pegawai` VALUES ('6', 'nip104', 'nip104', '5', 'bbbb', '6765545345', 'sd@cdp.net');
-INSERT INTO `data_pegawai` VALUES ('8', 'nip105', 'nama105', '7', 'akdakjh', '7776888', 'manu@cdp.net');
+INSERT INTO `data_pegawai` VALUES ('1', 'nip101', 'pegawai101', '8', 'jl. jalan jalan', '0987654321', 'peg101@crm.net');
+INSERT INTO `data_pegawai` VALUES ('2', 'nip001', 'direktur001', '1', 'hhhh', '9987654', 'dirut@crm.net');
+INSERT INTO `data_pegawai` VALUES ('3', 'nip102', 'hasan', '8', 'kadkahdkja', '98978787', 'test@crm.net');
+INSERT INTO `data_pegawai` VALUES ('4', 'nip103', 'Aida', '8', 'adfasfa', '12314124', 'dasd');
 
 -- ----------------------------
 -- Table structure for data_penilaian
@@ -69,30 +93,35 @@ DROP TABLE IF EXISTS `data_penilaian`;
 CREATE TABLE `data_penilaian` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_prospek` int(11) NOT NULL,
-  `keluhan` tinyint(1) DEFAULT NULL,
-  `kepuasan` tinyint(1) DEFAULT NULL,
-  `nilai_kepuasan` int(11) DEFAULT NULL,
+  `keluhan` tinyint(1) DEFAULT '0',
+  `kepuasan` tinyint(1) DEFAULT '0',
+  `nilai_kepuasan` int(11) DEFAULT '0',
   `keterangan` text,
   `tanggal` date NOT NULL DEFAULT '0000-00-00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of data_penilaian
 -- ----------------------------
-INSERT INTO `data_penilaian` VALUES ('2', '0', '0', '1', null, null, '2018-07-01');
-INSERT INTO `data_penilaian` VALUES ('3', '0', '0', '1', null, null, '2018-07-01');
-INSERT INTO `data_penilaian` VALUES ('4', '0', '1', '0', null, null, '2018-07-03');
-INSERT INTO `data_penilaian` VALUES ('5', '0', '1', '0', null, null, '2018-07-01');
-INSERT INTO `data_penilaian` VALUES ('6', '0', '0', '1', null, null, '2018-07-03');
-INSERT INTO `data_penilaian` VALUES ('7', '0', '1', '0', null, null, '2018-07-02');
-INSERT INTO `data_penilaian` VALUES ('8', '0', '1', '0', null, null, '2018-07-02');
-INSERT INTO `data_penilaian` VALUES ('9', '0', '0', '1', null, null, '2018-07-05');
-INSERT INTO `data_penilaian` VALUES ('10', '0', '0', '1', null, null, '2018-07-02');
-INSERT INTO `data_penilaian` VALUES ('11', '0', '1', '0', null, null, '2018-07-03');
-INSERT INTO `data_penilaian` VALUES ('12', '0', '1', '0', null, null, '2018-07-03');
-INSERT INTO `data_penilaian` VALUES ('13', '0', '1', '0', null, null, '2018-07-05');
-INSERT INTO `data_penilaian` VALUES ('14', '0', '1', '0', null, null, '2018-07-05');
+INSERT INTO `data_penilaian` VALUES ('1', '1', '1', '0', '0', 'dnasdnajkdna  nsdkandkanda dakndkandak ksandkas\r\n\r\nKeterangan marketing : sudah ditangani per tanggal ???', '2018-07-29');
+
+-- ----------------------------
+-- Table structure for data_produk
+-- ----------------------------
+DROP TABLE IF EXISTS `data_produk`;
+CREATE TABLE `data_produk` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `kategori_produk` int(11) DEFAULT NULL,
+  `produk` varchar(50) DEFAULT NULL,
+  `keterangan` varchar(255) DEFAULT NULL,
+  `gambar` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of data_produk
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for data_promosi
@@ -125,14 +154,15 @@ CREATE TABLE `data_prospek` (
   `keterangan` text,
   `status` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of data_prospek
 -- ----------------------------
-INSERT INTO `data_prospek` VALUES ('1', 'PJO-01/2018-07', '1', '1', '2', '2018-07-01', 'Keterangan: 1', '1');
-INSERT INTO `data_prospek` VALUES ('2', 'PJO-02/2018-07', '2', '2', '2', '2018-07-10', 'Keterangan: Client', '4');
-INSERT INTO `data_prospek` VALUES ('3', 'PJO-03/2018-07', '2', '3', '4', '2018-07-20', '', '1');
+INSERT INTO `data_prospek` VALUES ('1', 'PJO-01/2018-07', '1', '1', '1', '2018-08-01', 'Keterangan: 1', '5');
+INSERT INTO `data_prospek` VALUES ('2', 'PJO-02/2018-07', '1', '2', '1', '2018-08-06', 'Generator dan Pancang baru', '1');
+INSERT INTO `data_prospek` VALUES ('3', 'PJO-03/2018-07', '1', '2', '1', '2018-08-30', 'Tambahan Generator Baru\r\n\r\n', '2');
+INSERT INTO `data_prospek` VALUES ('4', 'PJO-04/2018-07', '1', '1', '3', '2018-07-19', 'fasfasf', '4');
 
 -- ----------------------------
 -- Table structure for data_user
@@ -140,21 +170,21 @@ INSERT INTO `data_prospek` VALUES ('3', 'PJO-03/2018-07', '2', '3', '4', '2018-0
 DROP TABLE IF EXISTS `data_user`;
 CREATE TABLE `data_user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
   `id_reff` int(11) DEFAULT NULL,
+  `role` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of data_user
 -- ----------------------------
-INSERT INTO `data_user` VALUES ('1', 'admin', 'admin12345', '0');
-INSERT INTO `data_user` VALUES ('2', 'nip101', '124578', '1');
-INSERT INTO `data_user` VALUES ('3', 'nip102', 'nip102', '2');
-INSERT INTO `data_user` VALUES ('4', 'nip103', 'nip103', '4');
-INSERT INTO `data_user` VALUES ('5', 'nip104', 'nip104', '6');
-INSERT INTO `data_user` VALUES ('6', 'nip105', 'nip105', '8');
+INSERT INTO `data_user` VALUES ('1', 'admin', 'admin', null, 'admin');
+INSERT INTO `data_user` VALUES ('2', 'sdm', 'sdm', null, 'sdm');
+INSERT INTO `data_user` VALUES ('5', 'direktur', 'direktur', '2', 'direktur');
+INSERT INTO `data_user` VALUES ('6', 'nip102', 'nip102', '3', 'marketing');
+INSERT INTO `data_user` VALUES ('7', 'nip103', 'nip103', '4', 'marketing');
 
 -- ----------------------------
 -- Table structure for master_jabatan
@@ -165,18 +195,19 @@ CREATE TABLE `master_jabatan` (
   `kode_jabatan` varchar(255) DEFAULT NULL,
   `jabatan` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of master_jabatan
 -- ----------------------------
-INSERT INTO `master_jabatan` VALUES ('1', '001', 'Administrator');
-INSERT INTO `master_jabatan` VALUES ('2', '010', 'Direktur');
-INSERT INTO `master_jabatan` VALUES ('5', '002', 'Admin SDM, Umum, & Logistik');
-INSERT INTO `master_jabatan` VALUES ('7', '011', 'Wakil Direktur');
-INSERT INTO `master_jabatan` VALUES ('8', '012', 'Sekretaris');
-INSERT INTO `master_jabatan` VALUES ('9', '013', 'Staff Marketing');
-INSERT INTO `master_jabatan` VALUES ('10', '999', 'IT Support');
+INSERT INTO `master_jabatan` VALUES ('1', '001', 'Direktur Utama');
+INSERT INTO `master_jabatan` VALUES ('2', '002', 'Direktur Teknik');
+INSERT INTO `master_jabatan` VALUES ('3', '003', 'Direktur SDM, Umum & Logistik');
+INSERT INTO `master_jabatan` VALUES ('4', '004', 'Direktur Marketing');
+INSERT INTO `master_jabatan` VALUES ('5', '005', 'Direktur Keuangan');
+INSERT INTO `master_jabatan` VALUES ('6', '006', 'Wakil Manajemen Mutu');
+INSERT INTO `master_jabatan` VALUES ('7', '007', 'Sekretaris');
+INSERT INTO `master_jabatan` VALUES ('8', '008', 'Marketing');
 
 -- ----------------------------
 -- Table structure for master_kategori_proyek
@@ -188,12 +219,10 @@ CREATE TABLE `master_kategori_proyek` (
   `nama_proyek` varchar(255) DEFAULT NULL,
   `keterangan` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of master_kategori_proyek
 -- ----------------------------
-INSERT INTO `master_kategori_proyek` VALUES ('1', 'P002', 'Pancang', '');
-INSERT INTO `master_kategori_proyek` VALUES ('2', 'P001', 'Generator', '');
-INSERT INTO `master_kategori_proyek` VALUES ('3', 'P003', 'Genset', '');
-INSERT INTO `master_kategori_proyek` VALUES ('4', 'P004', 'Pemancar', '');
+INSERT INTO `master_kategori_proyek` VALUES ('1', '001', 'Pancang', 'Pancang');
+INSERT INTO `master_kategori_proyek` VALUES ('2', '002', 'Generator', 'Generator');

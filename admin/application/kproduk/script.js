@@ -1,11 +1,33 @@
 $(document).ready(function () {
 
+    $('#btn_add').click(function (e) {
+        e.preventDefault();
+
+        $('#add_model').modal({backdrop: 'static', keyboard: false});
+        $('.modal-title').html('Tambah Pegawai');
+        $('#action').val('add');
+        $('#edit_id').val(0);
+    });
+
+
     $('#btn_cancel').click(function () {
-        var $form = $('#form_prospek');
+        var $form = $('#form_kproduk');
         $form.trigger('reset');
         $form.validate().resetForm();
         $form.find('.error').removeClass('error');
-        $('#kode').attr('readonly', false);
+    });
+
+    var items_kproduk = '';
+    var v_dump = $.ajax({
+        url: 'application/kproduk/option_kproduk.php',
+        dataType: 'JSON',
+        success: function (data) {
+            $.each(data, function (key, value) {
+                items_kproduk += '<option value="' + value.id + '">' + value.kategori_produk + '</option>';
+            });
+
+            $('#kproduk').append(items_kproduk);
+        }
     });    
 
     var dataTable = $('#lookup').DataTable({
@@ -19,7 +41,7 @@ $(document).ready(function () {
         'ajax': {
             type: 'POST',
             dataType: 'JSON',
-            url: 'application/prospek_marketing/ajax.php',
+            url: 'application/kproduk/ajax.php',
             error: function () {
                 $.Notification.notify(
                         'error', 'top center',
@@ -35,7 +57,7 @@ $(document).ready(function () {
             var index = page * length + (iDisplayIndex + 1);
             $('td:eq(0)', row).html(index);
         },
-        fnDrawCallback: function (oSettings) {
+        fnDrawCallback: function (oSettings) {            
 
             $('.act_btn').each(function () {
                 $(this).tooltip({
@@ -50,23 +72,27 @@ $(document).ready(function () {
 
                 if (com == 'Edit') {
                     $('#add_model').modal({backdrop: 'static', keyboard: false});
-                    $('.modal-title').html('detail Prospek');
+                    $('.modal-title').html('Edit pegawai');
                     $('#action').val('edit');
                     $('#edit_id').val(id);
 
                     v_edit = $.ajax({
-                        url: 'application/prospek_marketing/edit.php?id=' + id,
+                        url: 'application/kproduk/edit.php?id=' + id,
                         type: 'POST',
                         dataType: 'JSON',
-                        success: function (data) {                            
-                            $('#stprospek').val(data.status);
-                            $('#keterangan').val(data.keterangan);
+                        success: function (data) {
+                            $('#nip').val(data.nip);
+                            $('#fname').val(data.nama_peg);
+                            $('#jabatan').val(data.jabatan_peg);
+                            $('#alamat').val(data.alamat_peg);
+                            $('#tlp').val(data.no_tlp);
+                            $('#email').val(data.email);
                         }
                     });
 
                 } else if (com == 'Delete') {
                     var conf = confirm('Delete this items ?');
-                    var url = 'application/prospek_marketing/data.php';
+                    var url = 'application/kproduk/data.php';
 
                     if (conf) {
                         $.post(url, {id: id, action: com.toLowerCase()}, function () {
@@ -77,18 +103,41 @@ $(document).ready(function () {
                 }
             });
         }
-    });//end datatable    
-    console.log(dataTable)
+    });//end datatable
 
-    $('#form_prospek').validate({
-        rules: {            
-            stprospek_marketing: {
+    $('#form_kproduk').validate({
+        rules: {
+            nip: {
+                required: true
+            },
+            fname: {
+                required: true
+            },
+            jabatan: {
+                required: true
+            },
+            email: {
+                required: true
+            },
+            tlp: {
                 required: true
             }
         },
-        messages: {            
-            stprospek_marketing: {
+        messages: {
+            nip: {
                 required: '*) field is required'
+            },
+            fname: {
+                required: '*) field is required'
+            },
+            jabatan: {
+                required: '*) choose one'
+            },
+            email: {
+                required: '*) field is required'
+            },
+            tlp: {
+                required: true
             }
         },
         submitHandler: function (form) {
@@ -99,40 +148,32 @@ $(document).ready(function () {
                 ajaxAction('edit');
             }
 
-            $('#form_prospek_marketing').trigger('reset');
+            $('#form_kproduk').trigger('reset');
         }
+    });//end validate
+    $.validator.addMethod("pwcheck", function (value, element, regexpr) {
+        return regexpr.test(value);
     });
-});//end $ document
+
+});
 
 function ajaxAction(action) {
-    data = $('#form_prospek').serializeArray();
+    data = $('#form_kproduk').serializeArray();
     var table = $('#lookup').DataTable();
 
-    v_dump = $.ajax({
-        url: 'application/prospek_marketing/data.php',
+    $.ajax({
+        url: 'application/kproduk/data.php',
         type: 'POST',
         dataType: 'JSON',
         data: data,
         success: function (response) {
             if (response == 1) {
-                $.Notification.notify(
-                        'error', 'top center',
-                        'Warning',
-                        'Data sudah tersedia'
-                        );
-            } else {
-                $.Notification.notify(
-                        'success', 'top center',
-                        'Success',
-                        'Data berhasil diproses'
-                        );
+                alert('Data sudah tersedia');
+            } else if (response == 0) {
+                $('#add_model').modal('hide');
+                table.ajax.reload();
             }
 
-            $('#add_model').modal('hide');
-            table.ajax.reload();
-
-            $('#action').val('add');
-            $('#edit_id').val('0');
         }
     });
-}//end ajaxAction
+}

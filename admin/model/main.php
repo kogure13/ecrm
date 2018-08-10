@@ -65,7 +65,7 @@
         <script src="assets/plugins/raphael/raphael-min.js"></script>
         <script src="assets/plugins/jquery-knob/jquery.knob.js"></script>
 
-<!--        <script src="assets/pages/jquery.dashboard.js"></script>-->
+        <!-- <script src="assets/pages/jquery.dashboard.js"></script>-->
         <script src="assets/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.min.js"></script>
         <script src="assets/plugins/switchery/js/switchery.min.js"></script>
         <script type="text/javascript" src="assets/plugins/multiselect/js/jquery.multi-select.js"></script>
@@ -131,9 +131,22 @@
                 };
             };
         </script>
-        <?= $main->getActScript() ?>
+        <?= $main->getActScript() ?>                
 
         <script type="text/javascript">
+            $(document).ready(function() {
+                var juser_id = $('#juser').attr('data-id');
+                url = 'application/menu/data.php?id='+juser_id;
+                v_dump = $.ajax({
+                    url: url,
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (data, textStatus, jqXHR) {
+                        $('#juser').html(data.nama_peg);                        
+                    }
+                });                
+            });
+            
             jQuery(document).ready(function ($) {
                 $('.counter').counterUp({
                     delay: 100,

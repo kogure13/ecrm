@@ -6,10 +6,11 @@
             </h4>
 
             <table id="lookup"
-                   class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0"
-                   width="100%">
+                   class="table table-striped table-bordered dt-responsive nowrap" 
+                   cellspacing="0" cellpadding="0" width="100%">
                 <thead>
                     <tr>
+                        <th class="nosort" width="30px">#</th>
                         <th class="nosort" width="40px">Action</th>
                         <th>No. Reg</th><th>Company Name</th><th>Nama Proyek</th>
                         <th>Tanggal Request</th><th>Status</th><th class="nosort">Keterangan</th>

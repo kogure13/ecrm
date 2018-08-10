@@ -10,7 +10,7 @@
     <title>e-CRM</title>
 
     <!--Morris Chart CSS -->
-<!--    <link rel="stylesheet" href="assets/plugins/morris/morris.css">-->
+    <!-- <link rel="stylesheet" href="assets/plugins/morris/morris.css">-->
     <link rel="stylesheet" href="assets/plugins/summernote/summernote.css">
 
     <!-- DataTables -->
@@ -40,6 +40,12 @@
     <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/pages.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
+    
+    <style>
+        #juser {
+            text-transform: capitalize;
+        }
+    </style>
 
     <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

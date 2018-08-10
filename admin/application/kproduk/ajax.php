@@ -4,23 +4,22 @@ include_once '../../../config/function.php';
 
 $db = new dbObj();
 $connString = $db->getConstring();
-$eClass = new Proyek($connString);
-$tb_name = "master_kategori_proyek";
+$eClass = new Pegawai($connString);
 
 $requestData = $_REQUEST;
 
 $columns = array(
-    0 => 'id',    
-    1 => 'kode_proyek',    
-    2 => 'id',
-    3 => 'nama_proyek',
+    0 => 'id',
+    1 => 'id',
+    2 => 'kategori_produk',
+    3 => 'produk',
     4 => 'keterangan'
 );
 
-$eClass->getData($requestData, $columns, $tb_name);
+$eClass->getData($requestData, $columns);
 
-class Proyek {
-
+class Pegawai {
+    
     protected $conn;
     protected $data = [];
 
@@ -28,15 +27,15 @@ class Proyek {
         $this->conn = $connString;
     }
 
-    public function getData($req, $col, $tb_name) {
-        $this->data = $this->getRecords($req, $col, $tb_name);
+    public function getData($req, $col) {
+        $this->data = $this->getRecords($req, $col);
         echo json_encode($this->data);
     }
 
-    function getRecords($req, $col, $tb_name) {                
+    function getRecords($req, $col) {                
 
         $sqlTot = "SELECT *";
-        $sqlTot .= " FROM ".$tb_name;    
+        $sqlTot .= " FROM data_produk";        
 
         $sql = $sqlTot;
 
@@ -46,7 +45,8 @@ class Proyek {
         
         if(!empty($req['search']['value'])) {
 
-            $sql .=" WHERE nama_proyek LIKE '%" . $req['search']['value'] . "%' ";            
+            $sql .=" WHERE nip LIKE '%" . $req['search']['value'] . "%' "
+                    . "OR nama_peg LIKE '%".$req['search']['value']."%'";            
             
             $query = mysqli_query($this->conn, $sql) or die("ajax-grid-data.php: get PO");
             $totalFiltered = mysqli_num_rows($query);
@@ -70,9 +70,10 @@ class Proyek {
             
             $nestedData[] = NULL;
             $nestedData[] = $user->linkAct($row['id']);
-            $nestedData[] = $row['kode_proyek'];
-            $nestedData[] = $row['nama_proyek'];
+            $nestedData[] = $row['kproduk'];
+            $nestedData[] = $row['produk'];
             $nestedData[] = $row['keterangan'];
+            $nestedData[] = NULL;            
 
             $data[] = $nestedData;            
         }
@@ -95,4 +96,4 @@ class Proyek {
 
         return $json_data;
     }
-}//end class proyek
+}//end class pegawai

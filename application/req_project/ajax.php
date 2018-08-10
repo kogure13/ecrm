@@ -14,14 +14,15 @@ $dbparams = array(
     1 => $id
 );
 
-$columns = array(    
-    0 => 'tgl_request',
-    1 => 'id',
-    2 => 'no_reg',
-    3 => 'nama_proyek',
-    4 => 'nama_peg',
-    5 => 'status',
-    6 => 'keterangan'
+$columns = array(
+    0 => 'id',
+    1 => 'tgl_request',
+    2 => 'id',
+    3 => 'no_reg',
+    4 => 'nama_proyek',
+    5 => 'nama_peg',
+    6 => 'status',
+    7 => 'keterangan'
 );
 
 $eClass->getData($requestData, $columns, $dbparams);
@@ -89,6 +90,7 @@ class Prospek {
                 default : break;
             }
             
+            $nestedData[] = NULL;
             $nestedData[] = $ubtn;
             $nestedData[] = $row['no_reg'];
             $nestedData[] = $row['tgl_request'];            

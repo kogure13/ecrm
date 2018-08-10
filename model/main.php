@@ -13,7 +13,7 @@
             <link rel="stylesheet" type="text/css" href="theme/asset/css/ddsmoothmenu.css" />
             <link rel="stylesheet" type="text/css" href="theme/asset/css/slimbox2.css" media="screen"/> 
             <link rel="stylesheet" type="text/css" href="theme/asset/css/font-awesome/css/font-awesome.min.css"/>
-            
+
             <link rel="stylesheet" type="text/css" href="admin/assets/css/bootstrap.min.css"/>            
             <link rel="stylesheet" type="text/css" href="admin/assets/plugins/datatables/jquery.dataTables.min.css"/>            
             <link rel="stylesheet" type="text/css" href="admin/assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css"/>
@@ -41,7 +41,6 @@
             </style>            
 
             <script type="text/javascript" src="admin/assets/js/jquery.min.js"></script>
-
     </head>
     <body>
         <div id="tooplate_wrapper">
@@ -53,19 +52,19 @@
                 <div class="cleaner"></div>		
             </div>		
         </div>
-        
+
         <div class="footer">
-            <?=$main->get_footer() ?>
+            <?= $main->get_footer() ?>
         </div>
-        
+
         <script type="text/javascript" src="admin/assets/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="admin/assets/js/jquery.validate.min.js"></script>
-        
+
         <script type="text/javascript" src="admin/assets/plugins/datatables/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="admin/assets/plugins/datatables/dataTables.bootstrap.js"></script>
-        
+
         <script type="text/javascript" src="admin/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-        
+
         <script type="text/javascript" src="theme/asset/js/ddsmoothmenu.js">
             /***********************************************
              * Smooth Navigational Menu- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
@@ -85,7 +84,21 @@
         </script>        
 
         <!-- jQuery -->
+        <script>
+            $.fn.dataTableExt.oApi.fnPagingInfo = function (oSettings)
+            {
+                return {
+                    "iStart": oSettings._iDisplayStart,
+                    "iEnd": oSettings.fnDisplayEnd(),
+                    "iLength": oSettings._iDisplayLength,
+                    "iTotal": oSettings.fnRecordsTotal(),
+                    "iFilteredTotal": oSettings.fnRecordsDisplay(),
+                    "iPage": Math.ceil(oSettings._iDisplayStart / oSettings._iDisplayLength),
+                    "iTotalPages": Math.ceil(oSettings.fnRecordsDisplay() / oSettings._iDisplayLength)
+                };
+            };
+        </script>
         <?= $main->getActScript() ?>
-        
+
     </body>    
 </html>

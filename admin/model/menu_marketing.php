@@ -33,3 +33,9 @@
         <span>Kategori proyek</span>
     </a>
 </li>
+<li>
+    <a href="?page=kproduk">
+        <i class="fa fa-cubes fa-fw"></i>
+        <span>Kategori Produk</span>
+    </a>
+</li>

@@ -43,7 +43,5 @@ function ajaxAction() {
         error: function (response) {
             alert('error login');
         }
-    });
-
-    console.log(v_login)
+    });    
 }

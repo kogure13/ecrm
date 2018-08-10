@@ -6,8 +6,8 @@ class dbObj {
     var $DB_Host = "192.168.0.128"; //koneksi server
     var $DB_Name = "db_ecrm"; //nama database
     var $DB_User = "root"; //user database
-    // var $DB_Pass = ""; //password database
-    var $DB_Pass = "password"; //password database
+    var $DB_Pass = ""; //password database
+    // var $DB_Pass = "password"; //password database
     var $conn;
 
     function getConstring() {
@@ -73,9 +73,12 @@ class Main {
     function getActScript() {
         if (isset($_GET['page'])) {
             $page = htmlentities($_GET['page']);
-            $actRoot = "application/" . $page . "/script.js";
-
-            echo '<script src="' . $actRoot . '"></script>';
+            
+            if($page != "logout") {
+                $actRoot = "application/" . $page . "/script.js";
+                echo '<script src="' . $actRoot . '"></script>';
+            }
+            
         } else {
             $page = "home";
             $actRoot = "application/" . $page . "/script.js";

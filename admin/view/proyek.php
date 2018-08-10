@@ -9,10 +9,12 @@
             </div>
 
             <table id="lookup"
-                   class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0"
+                   class="table table-striped table-bordered dt-responsive nowrap" 
+                   cellspacing="0" cellpadding="0"
                    width="100%">
                 <thead>
                     <tr>
+                        <th class="nosort" width="30px">#</th>
                         <th class="nosort" width="40px">Action</th>
                         <th>Kode proyek</th><th>Nama proyek</th>
                         <th>Keterangan</th>
