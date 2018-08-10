@@ -21,7 +21,25 @@
 </div>
 
 <div id="sidebar" class="float_l">     
+    
+    <div class="panel panel-default" style="height: 300px;">
+        <div class="panel-heading">
+            Product
+        </div>
+        <div class="panel-body" style="overflow-y: auto; ">
+            <ul class="tmo_list" id="jproyek">
+                <?php
+                $db = new dbObj();
+                $connString = $db->getConstring();
 
+                $tb_name = "master_kategori_produk";
+                $jProduk = new nProduk($connString);
+                $jProduk->getOption($tb_name);
+                ?>
+            </ul>
+        </div>
+    </div>
+    
     <div class="panel panel-default" style="height: 300px;">
         <div class="panel-heading">
             Project

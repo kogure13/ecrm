@@ -9,9 +9,9 @@ $eClass = new Pegawai($connString);
 $requestData = $_REQUEST;
 
 $columns = array(
-    0 => 'id',
+    0 => 'id_kategori_produk',
     1 => 'id',
-    2 => 'kategori_produk',
+    2 => 'id_kategori_produk',
     3 => 'produk',
     4 => 'keterangan'
 );
@@ -34,8 +34,9 @@ class Pegawai {
 
     function getRecords($req, $col) {                
 
-        $sqlTot = "SELECT *";
-        $sqlTot .= " FROM data_produk";        
+        $sqlTot = "SELECT data_produk.id, kategori_produk, produk, keterangan";
+        $sqlTot .= " FROM data_produk";
+        $sqlTot .= " JOIN master_kategori_produk ON data_produk.id_kategori_produk = master_kategori_produk.id";
 
         $sql = $sqlTot;
 
@@ -70,7 +71,7 @@ class Pegawai {
             
             $nestedData[] = NULL;
             $nestedData[] = $user->linkAct($row['id']);
-            $nestedData[] = $row['kproduk'];
+            $nestedData[] = $row['kategori_produk'];
             $nestedData[] = $row['produk'];
             $nestedData[] = $row['keterangan'];
             $nestedData[] = NULL;            

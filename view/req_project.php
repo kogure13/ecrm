@@ -24,9 +24,9 @@ $noreg = new noreg($connString);
                    width="100%">
                 <thead>
                     <tr>
-                        <th class="nosort" width="30px">#</th>
-                        <th class="nosort" width="40px">Action</th>
-                        <th>No. Reg</th><th>Tanggal</th>
+                        <th class="nosort" width="20px">#</th>
+                        <th class="nosort" width="auto">Action</th>
+                        <th>No. Reg</th><th>Tanggal Request</th>
                         <th>Nama proyek</th><th class="nosort">Penanggung Jawab</th>
                         <th>Status</th><th class="nosort">Keterangan</th>
                     </tr>

@@ -81,12 +81,9 @@ $(document).ready(function () {
                         type: 'POST',
                         dataType: 'JSON',
                         success: function (data) {
-                            $('#nip').val(data.nip);
-                            $('#fname').val(data.nama_peg);
-                            $('#jabatan').val(data.jabatan_peg);
-                            $('#alamat').val(data.alamat_peg);
-                            $('#tlp').val(data.no_tlp);
-                            $('#email').val(data.email);
+                            $('#kproduk').val(data.id_kategori_produk);
+                            $('#produk').val(data.produk);
+                            $('#keterangan').val(data.keterangan);
                         }
                     });
 
@@ -107,37 +104,19 @@ $(document).ready(function () {
 
     $('#form_kproduk').validate({
         rules: {
-            nip: {
+            kproduk: {
                 required: true
             },
-            fname: {
-                required: true
-            },
-            jabatan: {
-                required: true
-            },
-            email: {
-                required: true
-            },
-            tlp: {
+            produk: {
                 required: true
             }
         },
-        messages: {
-            nip: {
+        messages: {            
+            produk: {
                 required: '*) field is required'
             },
-            fname: {
-                required: '*) field is required'
-            },
-            jabatan: {
+            kproduk: {
                 required: '*) choose one'
-            },
-            email: {
-                required: '*) field is required'
-            },
-            tlp: {
-                required: true
             }
         },
         submitHandler: function (form) {
@@ -161,7 +140,7 @@ function ajaxAction(action) {
     data = $('#form_kproduk').serializeArray();
     var table = $('#lookup').DataTable();
 
-    $.ajax({
+    v_dump = $.ajax({
         url: 'application/kproduk/data.php',
         type: 'POST',
         dataType: 'JSON',

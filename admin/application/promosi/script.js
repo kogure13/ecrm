@@ -1,23 +1,48 @@
 $(document).ready(function () {
 
-    $('#btn_cancel').click(function () {
-        window.location.reload();
+    $('#btn_add').click(function (e) {
+        e.preventDefault();
+
+        $('#add_model').modal({backdrop: 'static', keyboard: false});
+        $('.modal-title').html('Tambah Pegawai');
+        $('#action').val('add');
+        $('#edit_id').val(0);
     });
 
-    $('#btn_promosi').html('Upload');
+
+    $('#btn_cancel').click(function () {
+        var $form = $('#form_pegawai');
+        $form.trigger('reset');
+        $form.validate().resetForm();
+        $form.find('.error').removeClass('error');
+    });
+
+    var items_jabatan = '';
+    var v_dump = $.ajax({
+        url: 'application/jabatan/option_jabatan.php',
+        dataType: 'JSON',
+        success: function (data) {
+            $.each(data, function (key, value) {
+                items_jabatan += '<option value="' + value.id + '">' + value.jabatan + '</option>';
+            });
+
+            $('#jabatan').append(items_jabatan);
+        }
+    });    
 
     var dataTable = $('#lookup').DataTable({
-        'autoWidth': false,
+        'autoWidth': true,
         'aoColumnDefs': [
-            {'bSortable': false, 'aTargets': ['nosort']}            
+            {'bSortable': false, 'aTargets': ['nosort']},
+            {'sClass': 'text-right', 'aTargets': [0]}
         ],
         'processing': true,
         'serverSide': true,
         'ajax': {
             type: 'POST',
             dataType: 'JSON',
-            url: 'application/promosi/ajax.php',
-            error: function() {
+            url: 'application/pegawai/ajax.php',
+            error: function () {
                 $.Notification.notify(
                         'error', 'top center',
                         'Warning',
@@ -25,7 +50,28 @@ $(document).ready(function () {
                         );
             }
         },
+        rowCallback: function (row, data, iDisplayIndex) {
+            var info = this.fnPagingInfo();
+            var page = info.iPage;
+            var length = info.iLength;
+            var index = page * length + (iDisplayIndex + 1);
+            $('td:eq(0)', row).html(index);
+        },
         fnDrawCallback: function (oSettings) {
+
+            $('#lookup td.status').each(function () {
+                var status = $(this).html();
+                switch (status) {
+                    case 'Inactive':
+                        $(this).addClass('status-inactive');
+                        break;
+                    case 'Active':
+                        $(this).addClass('status-active');
+                        break;
+                    default:
+                        return;
+                }
+            });
 
             $('.act_btn').each(function () {
                 $(this).tooltip({
@@ -39,28 +85,28 @@ $(document).ready(function () {
                 var id = $(this).attr('id');
 
                 if (com == 'Edit') {
-                    $('#btn_jabatan').html('Edit Jabatan');
-                    $('#btn_add').attr('class', 'btn btn-sm btn-success');
+                    $('#add_model').modal({backdrop: 'static', keyboard: false});
+                    $('.modal-title').html('Edit pegawai');
                     $('#action').val('edit');
                     $('#edit_id').val(id);
 
                     v_edit = $.ajax({
-                        url: 'application/promosi/edit.php?id=' + id,
+                        url: 'application/pegawai/edit.php?id=' + id,
                         type: 'POST',
                         dataType: 'JSON',
-                        beforeSend: function () {
-                            $('#err-loading').css('display', 'inline', 'important');
-                            $('#err-loading').html("<img src='theme/asset/images/loading.gif' height='20px' /> Loading...");
-                        },
                         success: function (data) {
-                            $('#err-loading').hide(1300);
-                            $('#jabatan').val(data.jabatan);
+                            $('#nip').val(data.nip);
+                            $('#fname').val(data.nama_peg);
+                            $('#jabatan').val(data.jabatan_peg);
+                            $('#alamat').val(data.alamat_peg);
+                            $('#tlp').val(data.no_tlp);
+                            $('#email').val(data.email);
                         }
                     });
 
                 } else if (com == 'Delete') {
                     var conf = confirm('Delete this items ?');
-                    var url = 'application/promosi/data.php';
+                    var url = 'application/pegawai/data.php';
 
                     if (conf) {
                         $.post(url, {id: id, action: com.toLowerCase()}, function () {
@@ -73,15 +119,39 @@ $(document).ready(function () {
         }
     });//end datatable
 
-    $('#form_jabatan').validate({
+    $('#form_pegawai').validate({
         rules: {
+            nip: {
+                required: true
+            },
+            fname: {
+                required: true
+            },
             jabatan: {
+                required: true
+            },
+            email: {
+                required: true
+            },
+            tlp: {
                 required: true
             }
         },
         messages: {
+            nip: {
+                required: '*) field is required'
+            },
+            fname: {
+                required: '*) field is required'
+            },
             jabatan: {
-                required: ' *) field is required'
+                required: '*) choose one'
+            },
+            email: {
+                required: '*) field is required'
+            },
+            tlp: {
+                required: true
             }
         },
         submitHandler: function (form) {
@@ -92,40 +162,32 @@ $(document).ready(function () {
                 ajaxAction('edit');
             }
 
-            $('#form_jabatan').trigger('reset');
+            $('#form_pegawai').trigger('reset');
         }
+    });//end validate
+    $.validator.addMethod("pwcheck", function (value, element, regexpr) {
+        return regexpr.test(value);
     });
+
 });
 
 function ajaxAction(action) {
-    data = $('#form_jabatan').serializeArray();
+    data = $('#form_pegawai').serializeArray();
     var table = $('#lookup').DataTable();
 
-    v_dump = $.ajax({
-        url: 'application/jabatan/data.php',
+    $.ajax({
+        url: 'application/pegawai/data.php',
         type: 'POST',
         dataType: 'JSON',
         data: data,
         success: function (response) {
             if (response == 1) {
-                $.Notification.notify(
-                        'error', 'top center',
-                        'Warning',
-                        'Data sudah tersedia'
-                        );
-            } else {
-                $.Notification.notify(
-                        'success', 'top center',
-                        'Success',
-                        'Data berhasil diproses'
-                        );
+                alert('Data sudah tersedia');
+            } else if (response == 0) {
+                $('#add_model').modal('hide');
+                table.ajax.reload();
             }
-            table.ajax.reload();
 
-            $('#btn_add').attr('class', 'btn btn-sm btn-primary');
-            $('#btn_jabatan').html('Add Jabatan');
-            $('#action').val('add');
-            $('#edit_id').val('0');
         }
     });
 }

@@ -2,8 +2,8 @@
 
 class dbObj {
 
-    // var $DB_Host = "localhost"; //koneksi localhost
-    var $DB_Host = "192.168.0.128"; //koneksi server
+    var $DB_Host = "localhost"; //koneksi localhost
+    // var $DB_Host = "192.168.0.128"; //koneksi server
     var $DB_Name = "db_ecrm"; //nama database
     var $DB_User = "root"; //user database
     var $DB_Pass = ""; //password database
@@ -134,11 +134,20 @@ class User {
     }
 
     public function commentAct($id) {
-    	return '<div class="text-center">
-    	<button class="act_btn btn btn-sm btn-danger" id="'.$id.'" data-original-title="comment">
-            Penilaian
-        </button>
-    	</div>';
+    	return '<div class="dropdown">
+            <button type="button" id="dropdownOptionStatus" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Option <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownOptionStatus">
+            <li>
+                <a href="#">Komplain</a>
+                </li>
+                <li>
+                <a href="#">Selesai</a>
+                </li>
+            </ul>
+            </div>
+    	';
     }
 
     function logout() {
@@ -181,7 +190,8 @@ class noreg {
 class nProject {
 
     protected $conn;
-
+    protected $data = [];
+    
     function __construct($connString) {
         $this->conn = $connString;
     }
@@ -199,6 +209,28 @@ class nProject {
     }
 
 }//end class list project
+
+class nProduk {
+    
+    protected $conn;
+    protected $data = [];
+    
+    function __construct($connString) {
+        $this->conn = $connString;
+    }
+
+    function getOption($tb_name) {
+        $json_data = [];
+        $sql = "SELECT * FROM " . $tb_name;
+        $result = mysqli_query($this->conn, $sql);
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo '<li>';
+            echo ucwords($row['kategori_produk']);
+            echo '</li>';
+        }
+    }
+}
 
 class profile_client {
     
