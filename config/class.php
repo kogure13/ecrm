@@ -2,8 +2,8 @@
 
 class dbObj {
 
-    var $DB_Host = "localhost"; //koneksi localhost
-    // var $DB_Host = "192.168.0.128"; //koneksi server
+    // var $DB_Host = "localhost"; //koneksi localhost
+    var $DB_Host = "192.168.0.128"; //koneksi server
     var $DB_Name = "db_ecrm"; //nama database
     var $DB_User = "root"; //user database
     var $DB_Pass = ""; //password database
@@ -139,11 +139,15 @@ class User {
             Option <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownOptionStatus">
-            <li>
-                <a href="#">Komplain</a>
+                <li>
+                    <a href="#" id="'.$id.'" class="komplain_btn text-danger" data-toggle="tooltip" data-placement="top" data-original-title="Komplain" title="Komplain">
+                        Komplain
+                    </a>
                 </li>
                 <li>
-                <a href="#">Selesai</a>
+                    <a href="#" id="'.$id.'" class="comp_btn text-success" data-toggle="tooltip" data-placement="top" data-original-title="Selesai" title="Selesai">
+                        Selesai
+                    </a>
                 </li>
             </ul>
             </div>
@@ -230,11 +234,12 @@ class nProduk {
             echo '</li>';
         }
     }
-}
+}//end class list produk
 
 class profile_client {
     
     protected $conn;
+    protected $data = [];
     
     function __construct($connString) {
         $this->conn = $connString;

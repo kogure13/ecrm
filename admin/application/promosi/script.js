@@ -4,30 +4,17 @@ $(document).ready(function () {
         e.preventDefault();
 
         $('#add_model').modal({backdrop: 'static', keyboard: false});
-        $('.modal-title').html('Tambah Pegawai');
+        $('.modal-title').html('Tambah Promosi');
         $('#action').val('add');
         $('#edit_id').val(0);
     });
 
 
     $('#btn_cancel').click(function () {
-        var $form = $('#form_pegawai');
+        var $form = $('#form_promo');
         $form.trigger('reset');
         $form.validate().resetForm();
         $form.find('.error').removeClass('error');
-    });
-
-    var items_jabatan = '';
-    var v_dump = $.ajax({
-        url: 'application/jabatan/option_jabatan.php',
-        dataType: 'JSON',
-        success: function (data) {
-            $.each(data, function (key, value) {
-                items_jabatan += '<option value="' + value.id + '">' + value.jabatan + '</option>';
-            });
-
-            $('#jabatan').append(items_jabatan);
-        }
     });    
 
     var dataTable = $('#lookup').DataTable({
@@ -41,7 +28,7 @@ $(document).ready(function () {
         'ajax': {
             type: 'POST',
             dataType: 'JSON',
-            url: 'application/pegawai/ajax.php',
+            url: 'application/promosi/ajax.php',
             error: function () {
                 $.Notification.notify(
                         'error', 'top center',
@@ -57,21 +44,7 @@ $(document).ready(function () {
             var index = page * length + (iDisplayIndex + 1);
             $('td:eq(0)', row).html(index);
         },
-        fnDrawCallback: function (oSettings) {
-
-            $('#lookup td.status').each(function () {
-                var status = $(this).html();
-                switch (status) {
-                    case 'Inactive':
-                        $(this).addClass('status-inactive');
-                        break;
-                    case 'Active':
-                        $(this).addClass('status-active');
-                        break;
-                    default:
-                        return;
-                }
-            });
+        fnDrawCallback: function (oSettings) {            
 
             $('.act_btn').each(function () {
                 $(this).tooltip({
@@ -86,12 +59,12 @@ $(document).ready(function () {
 
                 if (com == 'Edit') {
                     $('#add_model').modal({backdrop: 'static', keyboard: false});
-                    $('.modal-title').html('Edit pegawai');
+                    $('.modal-title').html('Edit promosi');
                     $('#action').val('edit');
                     $('#edit_id').val(id);
 
                     v_edit = $.ajax({
-                        url: 'application/pegawai/edit.php?id=' + id,
+                        url: 'application/promosi/edit.php?id=' + id,
                         type: 'POST',
                         dataType: 'JSON',
                         success: function (data) {
@@ -106,7 +79,7 @@ $(document).ready(function () {
 
                 } else if (com == 'Delete') {
                     var conf = confirm('Delete this items ?');
-                    var url = 'application/pegawai/data.php';
+                    var url = 'application/promosi/data.php';
 
                     if (conf) {
                         $.post(url, {id: id, action: com.toLowerCase()}, function () {
@@ -119,7 +92,7 @@ $(document).ready(function () {
         }
     });//end datatable
 
-    $('#form_pegawai').validate({
+    $('#form_promo').validate({
         rules: {
             nip: {
                 required: true
@@ -162,7 +135,7 @@ $(document).ready(function () {
                 ajaxAction('edit');
             }
 
-            $('#form_pegawai').trigger('reset');
+            $('#form_promo').trigger('reset');
         }
     });//end validate
     $.validator.addMethod("pwcheck", function (value, element, regexpr) {
@@ -172,11 +145,11 @@ $(document).ready(function () {
 });
 
 function ajaxAction(action) {
-    data = $('#form_pegawai').serializeArray();
+    data = $('#form_promo').serializeArray();
     var table = $('#lookup').DataTable();
 
     $.ajax({
-        url: 'application/pegawai/data.php',
+        url: 'application/promosi/data.php',
         type: 'POST',
         dataType: 'JSON',
         data: data,

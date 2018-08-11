@@ -1,5 +1,4 @@
 <?php
-
 date_default_timezone_set('Asia/Jakarta');
 
 define('company_name', 'PT. CATUDAYA DATA PRAKASA');
