@@ -66,10 +66,11 @@
         <script src="assets/plugins/jquery-knob/jquery.knob.js"></script>
 
         <!-- <script src="assets/pages/jquery.dashboard.js"></script>-->
+        <script src="assets/plugins/autocomplete/jquery.autocomplete.min.js"></script>
         <script src="assets/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.min.js"></script>
         <script src="assets/plugins/switchery/js/switchery.min.js"></script>
-        <script type="text/javascript" src="assets/plugins/multiselect/js/jquery.multi-select.js"></script>
-        <script type="text/javascript" src="assets/plugins/jquery-quicksearch/jquery.quicksearch.js"></script>
+        <script src="assets/plugins/multiselect/js/jquery.multi-select.js"></script>
+        <script src="assets/plugins/jquery-quicksearch/jquery.quicksearch.js"></script>
         <script src="assets/plugins/select2/js/select2.min.js" type="text/javascript"></script>
         <script src="assets/plugins/bootstrap-select/js/bootstrap-select.min.js" type="text/javascript"></script>
         <script src="assets/plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js" type="text/javascript"></script>

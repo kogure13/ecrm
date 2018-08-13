@@ -101,6 +101,10 @@ $(document).ready(function () {
                             $('.rdstar').attr('checked', false);
                         }
                     });
+                } else if(com == 'Selesai') {
+                    $('#selesai_model').modal({backdrop: 'static', keyboard: false});
+                    $('.modal-title').html('Ulasan Anda');                    
+                    $('#edit_id_selesai').val(id);
                 }
             });
         }
@@ -169,7 +173,16 @@ $(document).ready(function () {
 
             $('#form_comment').trigger('reset');
         }
-    });
+    });//end form komplain
+    
+    $('#form_selesai').validate({
+        submitHandler: function(form) {
+            var com_action = $('#action').val();
+            ajaxSelesai('add_selesai');
+
+            $('#form_selesai').trigger('reset');
+        }
+    });//end form selesai
 });//end $ document
 
 function ajaxAction(action) {

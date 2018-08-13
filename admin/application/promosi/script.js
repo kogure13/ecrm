@@ -68,12 +68,10 @@ $(document).ready(function () {
                         type: 'POST',
                         dataType: 'JSON',
                         success: function (data) {
-                            $('#nip').val(data.nip);
-                            $('#fname').val(data.nama_peg);
-                            $('#jabatan').val(data.jabatan_peg);
-                            $('#alamat').val(data.alamat_peg);
-                            $('#tlp').val(data.no_tlp);
-                            $('#email').val(data.email);
+                            $('#judul').val(data.judul_promosi);
+                            $('#deskripsi').val(data.deskripsi);
+                            $('#pawal').val(data.periode_awal);
+                            $('#pakhir').val(data.periode_akhir);
                         }
                     });
 
@@ -91,40 +89,38 @@ $(document).ready(function () {
             });
         }
     });//end datatable
+    
+    $('#pawal, #pakhir').datepicker({
+        format: 'yyyy-mm-dd'
+    });
 
     $('#form_promo').validate({
         rules: {
-            nip: {
+            judul: {
                 required: true
             },
-            fname: {
+            deskripsi: {
                 required: true
             },
-            jabatan: {
+            pawal: {
                 required: true
             },
-            email: {
-                required: true
-            },
-            tlp: {
+            pakhir: {
                 required: true
             }
         },
         messages: {
-            nip: {
+            judul: {
                 required: '*) field is required'
             },
-            fname: {
+            deskripsi: {
                 required: '*) field is required'
             },
-            jabatan: {
+            pawal: {
                 required: '*) choose one'
             },
-            email: {
+            pakhir: {
                 required: '*) field is required'
-            },
-            tlp: {
-                required: true
             }
         },
         submitHandler: function (form) {
@@ -148,7 +144,7 @@ function ajaxAction(action) {
     data = $('#form_promo').serializeArray();
     var table = $('#lookup').DataTable();
 
-    $.ajax({
+    v_dump = $.ajax({
         url: 'application/promosi/data.php',
         type: 'POST',
         dataType: 'JSON',
@@ -160,7 +156,7 @@ function ajaxAction(action) {
                 $('#add_model').modal('hide');
                 table.ajax.reload();
             }
-
         }
     });
+    console.log(v_dump)
 }

@@ -18,7 +18,8 @@
                         <th class="nosort" style="width: auto">#</th>
                         <th>Username</th><th>Company name</th>
                         <th>Company address</th><th>Phone number</th>
-                        <th>E-mail</th><th>Join date</th>                        
+                        <th>E-mail</th><th>Join date</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody></tbody>

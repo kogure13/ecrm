@@ -78,7 +78,8 @@ class Client {
             $nestedData[] = $row['company_address'];
             $nestedData[] = $row['tlp'];
             $nestedData[] = $row['email'];
-            $nestedData[] = $row['date_register'];                        
+            $nestedData[] = $row['date_register'];
+            $nestedData[] = NULL;
 
             $data[] = $nestedData;
         }

@@ -2,8 +2,8 @@
 
 class dbObj {
 
-    // var $DB_Host = "localhost"; //koneksi localhost
-    var $DB_Host = "192.168.0.128"; //koneksi server
+    var $DB_Host = "localhost"; //koneksi localhost
+    // var $DB_Host = "192.168.0.128"; //koneksi server
     var $DB_Name = "db_ecrm"; //nama database
     var $DB_User = "root"; //user database
     var $DB_Pass = ""; //password database
@@ -95,7 +95,6 @@ class User {
     protected $data = [];
 
     public function linkAct($id) {
-
         return '
         <div class="text-center">
         <a href="#" id="' . $id . '" class="act_btn text-success" data-toggle="tooltip" data-placement="top" data-original-title="Edit" title="Edit">
@@ -140,13 +139,13 @@ class User {
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownOptionStatus">
                 <li>
-                    <a href="#" id="'.$id.'" class="komplain_btn text-danger" data-toggle="tooltip" data-placement="top" data-original-title="Komplain" title="Komplain">
-                        Komplain
+                    <a href="#" id="'.$id.'" class="act_btn text-success" data-toggle="tooltip" data-placement="top" data-original-title="Selesai" title="Selesai">
+                        Selesai
                     </a>
                 </li>
                 <li>
-                    <a href="#" id="'.$id.'" class="comp_btn text-success" data-toggle="tooltip" data-placement="top" data-original-title="Selesai" title="Selesai">
-                        Selesai
+                    <a href="#" id="'.$id.'" class="act_btn text-danger" data-toggle="tooltip" data-placement="top" data-original-title="comment" title="comment">
+                        Komplain
                     </a>
                 </li>
             </ul>
@@ -235,6 +234,31 @@ class nProduk {
         }
     }
 }//end class list produk
+
+class nPromo {
+    
+    protected $conn;
+    protected $data = [];
+    
+    function __construct($connString) {
+        $this->conn = $connString;
+    }
+
+    function getOption($tb_name) {
+        $json_data = [];
+        $sql = "SELECT * FROM " . $tb_name;
+        $result = mysqli_query($this->conn, $sql);
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo '<li>'
+            . '<a href="#">'.$row['judul_promosi'].'</a>
+                <p>'.$row['deskripsi'].'</p>
+            <p>'.date('d-m-Y', strtotime($row['periode_awal'])).'</p>
+            <div class="cleaner"></div>';
+            echo '</li>';
+        }
+    }
+}//end class list promo
 
 class profile_client {
     

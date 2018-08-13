@@ -48,14 +48,14 @@ $noreg = new noreg($connString);
                 <div class="modal-body">
                     <input type="hidden" value="add" name="action" id="action">
                     <input type="hidden" value="0" name="edit_id" id="edit_id">  
-                    <input type="hidden" value="<?=$_SESSION['id_user']?>" name="id_client" id="id_client">
+                    <input type="hidden" value="<?= $_SESSION['id_user'] ?>" name="id_client" id="id_client">
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-6">
                                 <label for="nip" class="control-label">No. Reg:</label>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-keyboard-o"></i></span>
-                                    <input type="text" class="form-control input-sm" id="noreg" name="noreg" readonly="readonly" value="<?=$noreg->getData()?>"/>
+                                    <input type="text" class="form-control input-sm" id="noreg" name="noreg" readonly="readonly" value="<?= $noreg->getData() ?>"/>
                                 </div>                                
                             </div>
                             <div class="col-sm-4">
@@ -109,41 +109,8 @@ $noreg = new noreg($connString);
                 <div class="modal-body">
                     <input type="hidden" value="add_comment" name="action" id="action">
                     <input type="hidden" value="0" name="edit_id_comment" id="edit_id_comment">  
-                    <input type="hidden" value="<?=$_SESSION['id_user']?>" name="id_client" id="id_client">
-                    <input type="hidden" value="<?=date('Y-m-d')?>" name="comdate">
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <p class="text-muted font-13 m-b-5">Penilaian:
-                                    <label class="radio-inline">
-                                        <input type="radio" class="radio rdc_btn" value="1" name="rdc"> Feedback Positif
-                                    </label>
-                                    <label class="radio-inline">
-                                        <input type="radio" class="radio rdc_btn" value="0" name="rdc"> Feedback Negatif
-                                    </label>                                
-                                </p>
-                            </div>                        
-                        </div>                            
-                    </div>
-
-                    <div class="form-group" id="rdp" style="display: none;">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <p class="text-muted2">
-                                    <?php 
-                                        for ($i=1; $i <= 5; $i++) {
-                                    ?>
-                                    <label class="radio-inline">
-                                        <input type="radio" class="rdstar" name="rdstar" value="<?=$i?>"> <?=$i?>
-                                    </label>
-                                    <?php
-                                        }
-                                    ?>
-                                </p>                                    
-                            </div>
-                        </div>
-                    </div>                    
-                    
+                    <input type="hidden" value="<?= $_SESSION['id_user'] ?>" name="id_client" id="id_client">
+                    <input type="hidden" value="<?= date('Y-m-d') ?>" name="comdate">                 
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-7">
@@ -158,6 +125,33 @@ $noreg = new noreg($connString);
                         <button type="button" id="btn_cancel_commit" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button>
                         <button type="submit" id="btn_add_commit" class="btn btn-sm btn-primary">Save</button>
                     </div>                        
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- start selesai project -->
+<div id="selesai_model" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">                
+                <h4 class="modal-title"></h4>
+            </div>
+            <form id="form_selesai" name="form_selesai" novalidate="novalidate">
+                <div class="modal-body">
+                    <input type="hidden" value="add_selesai" name="action" id="action">
+                    <input type="hidden" value="0" name="edit_id_selesai" id="edit_id_selesai">  
+                    <input type="hidden" value="<?= $_SESSION['id_user'] ?>" name="id_client" id="id_client">
+                    <input type="hidden" value="<?= date('Y-m-d') ?>" name="fdate">
+                    <h4>Selesaikan request prospek</h4>
+                    <p>
+                        Pilih "Ya" apabila request sudah sesuai dengan permintaan anda
+                    </p>
+                </div>
+                <div class="modal-footer">                    
+                    <button type="button" id="btn_cancel_commit" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button>
+                    <button type="submit" id="btn_add_commit" class="btn btn-sm btn-success">Ya</button>                                            
                 </div>
             </form>
         </div>

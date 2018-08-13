@@ -72,29 +72,20 @@
     </div>        
 </div>
 
-<div id="sidebar" class="float_r">                                
-    <h5>Artikel</h5>
-    <div class="rp_pp">
-        <a href="#">Integer venenatis pharetra magna vitae ultrices</a>
-        <p>Feb 23, 2048 - 20 Comments</p>
-        <div class="cleaner"></div>
-    </div>
-    <div class="rp_pp">
-        <a href="#">Vestibulum quis nulla nunc, nec lobortis nunc.</a>
-        <p>Feb 16, 2048 - 20 Comments</p>
-        <div class="cleaner"></div>
-    </div>
-    <div class="rp_pp">
-        <a href="#">Pellentesque convallis tristique mauris.</a>
-        <p>Feb 10, 2048 - 20 Comments</p>
-        <div class="cleaner"></div>
-    </div>
-
+<div id="sidebar" class="float_r">                               
     <div class="cleaner h40"></div>
 
-    <h5>News update</h5>
+    <h5>Promosi</h5>
     <ul class="demo">
-        <li class="news_item rp_pp">
+        <?php
+            $db = new dbObj();
+                $connString = $db->getConstring();
+
+                $tb_name = "data_promosi";
+                $jPromo = new nPromo($connString);
+                $jPromo->getOption($tb_name);
+        ?>
+<!--        <li class="news_item rp_pp">
             <a href="#">Integer venenatis pharetra magna vitae ultrices</a>
             <p>Feb 23, 2048 - 20 Comments</p>
             <div class="cleaner"></div>    
@@ -108,7 +99,7 @@
             <a href="#">Pellentesque convallis tristique mauris.</a>
             <p>Feb 10, 2048 - 20 Comments</p>
             <div class="cleaner"></div>    
-        </li>
+        </li>-->
     </ul>            
 
 </div>        

@@ -35,10 +35,7 @@ class Promosi {
 
     function getRecords($req, $col) {                
 
-        $sqlTot = "SELECT data_pegawai.id, nip, nama_peg, jabatan, alamat_peg, "
-                . "no_tlp, email";
-        $sqlTot .= " FROM data_pegawai";
-        $sqlTot .= " INNER JOIN master_jabatan ON data_pegawai.jabatan_peg = master_jabatan.id";
+        $sqlTot = "SELECT * FROM data_promosi";
 
         $sql = $sqlTot;
 
@@ -48,8 +45,8 @@ class Promosi {
         
         if(!empty($req['search']['value'])) {
 
-            $sql .=" WHERE nip LIKE '%" . $req['search']['value'] . "%' "
-                    . "OR nama_peg LIKE '%".$req['search']['value']."%'";            
+            $sql .=" WHERE judul_promosi LIKE '%" . $req['search']['value'] . "%' "
+                    . "OR kode_promosi LIKE '%".$req['search']['value']."%'";            
             
             $query = mysqli_query($this->conn, $sql) or die("ajax-grid-data.php: get PO");
             $totalFiltered = mysqli_num_rows($query);
@@ -73,12 +70,11 @@ class Promosi {
             
             $nestedData[] = NULL;
             $nestedData[] = $user->linkAct($row['id']);
-            $nestedData[] = $row['nip'];
-            $nestedData[] = $row['nama_peg'];
-            $nestedData[] = $row['jabatan'];
-            $nestedData[] = $row['alamat_peg'];
-            $nestedData[] = $row['no_tlp'];
-            $nestedData[] = $row['email'];
+            $nestedData[] = $row['judul_promosi'];
+            $nestedData[] = $row['deskripsi'];
+            $nestedData[] = $row['periode_awal'];
+            $nestedData[] = $row['periode_akhir'];
+            $nestedData[] = $row['banner'];
 
             $data[] = $nestedData;            
         }

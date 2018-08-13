@@ -1,4 +1,14 @@
 $(document).ready(function () {
+    
+    v_auto = $('#eto').autocomplete({
+        source: 'application/client/autogrid.php',
+        select: function(event, ui) {
+            event.preventDefault();
+            $('#eto').val(ui.item.id);
+        }
+    });
+    
+    console.log(v_auto)
 
     $('#form_email').validate({
         rules: {
@@ -17,7 +27,7 @@ $(document).ready(function () {
 
             $('#form_email').trigger('reset');
         }
-    });
+    });//end form email broadcast
 
 });
 

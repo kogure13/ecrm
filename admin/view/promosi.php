@@ -3,17 +3,14 @@
         <div class="card-box">
             <div class="row">
                 <div class="col-lg-5 col-sm-12">
-                    <form name="form_jabatan" id="form_jabatan" novalidate="novalidate">
-                        <div class="form-group">                            
-                            <input type="hidden" value="add" name="action" id="action">
-                            <input type="hidden" value="0" name="edit_id" id="edit_id">
-                            <button id="btn_add" class="btn btn-sm btn-primary">
-                                <i class="fa fa-plus"></i>
-                                Add Promosi
-                            </button>                                
-                        </div>
-
-                    </form>                        
+                    <div class="form-group">                            
+                        <input type="hidden" value="add" name="action" id="action">
+                        <input type="hidden" value="0" name="edit_id" id="edit_id">
+                        <button id="btn_add" class="btn btn-sm btn-primary">
+                            <i class="fa fa-plus"></i>
+                            Add Promosi
+                        </button>                                
+                    </div>
                 </div>
             </div>
 
@@ -41,7 +38,7 @@
             <div class="modal-header">                
                 <h4 class="modal-title"></h4>
             </div>
-            <form method="post" name="form_promo" id="form_kproyek" novalidate="novalidate">
+            <form method="post" name="form_promo" id="form_promo" novalidate="novalidate">
                 <div class="modal-body">
                     <input type="hidden" value="add" name="action" id="action">
                     <input type="hidden" value="0" name="edit_id" id="edit_id">                    
