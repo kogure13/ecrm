@@ -56,12 +56,13 @@ $(document).ready(function () {
                 e.preventDefault();
                 var com = $(this).attr('data-original-title');
                 var id = $(this).attr('id');
+                console.log(com)
 
                 if (com == 'Edit') {
                     $('#add_model').modal({backdrop: 'static', keyboard: false});
                     $('.modal-title').html('Edit promosi');
-                    $('#action').val('edit');
-                    $('#edit_id').val(id);
+                    $('#action_promo').val('edit');
+                    $('#edit_id_promo').val(id);
 
                     v_edit = $.ajax({
                         url: 'application/promosi/edit.php?id=' + id,

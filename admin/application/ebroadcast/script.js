@@ -6,9 +6,7 @@ $(document).ready(function () {
             event.preventDefault();
             $('#eto').val(ui.item.id);
         }
-    });
-    
-    console.log(v_auto)
+    });       
 
     $('#form_email').validate({
         rules: {

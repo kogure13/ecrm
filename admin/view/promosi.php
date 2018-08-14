@@ -38,10 +38,10 @@
             <div class="modal-header">                
                 <h4 class="modal-title"></h4>
             </div>
-            <form method="post" name="form_promo" id="form_promo" novalidate="novalidate">
+            <form name="form_promo" id="form_promo" novalidate="novalidate">
                 <div class="modal-body">
-                    <input type="hidden" value="add" name="action" id="action">
-                    <input type="hidden" value="0" name="edit_id" id="edit_id">                    
+                    <input type="hidden" value="add" name="action" id="action_promo">
+                    <input type="hidden" value="0" name="edit_id" id="edit_id_promo">                    
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-6">

@@ -78,28 +78,28 @@
     <h5>Promosi</h5>
     <ul class="demo">
         <?php
-            $db = new dbObj();
-                $connString = $db->getConstring();
+        $db = new dbObj();
+        $connString = $db->getConstring();
 
-                $tb_name = "data_promosi";
-                $jPromo = new nPromo($connString);
-                $jPromo->getOption($tb_name);
+        $tb_name = "data_promosi";
+        $jPromo = new nPromo($connString);
+        $jPromo->getOption($tb_name);
         ?>
-<!--        <li class="news_item rp_pp">
-            <a href="#">Integer venenatis pharetra magna vitae ultrices</a>
-            <p>Feb 23, 2048 - 20 Comments</p>
-            <div class="cleaner"></div>    
-        </li>
-        <li class="news_item rp_pp">
-            <a href="#">Vestibulum quis nulla nunc, nec lobortis nunc.</a>
-            <p>Feb 16, 2048 - 20 Comments</p>
-            <div class="cleaner"></div>    
-        </li>
-        <li class="news_item rp_pp">
-            <a href="#">Pellentesque convallis tristique mauris.</a>
-            <p>Feb 10, 2048 - 20 Comments</p>
-            <div class="cleaner"></div>    
-        </li>-->
+        <!--        <li class="news_item rp_pp">
+                    <a href="#">Integer venenatis pharetra magna vitae ultrices</a>
+                    <p>Feb 23, 2048 - 20 Comments</p>
+                    <div class="cleaner"></div>    
+                </li>
+                <li class="news_item rp_pp">
+                    <a href="#">Vestibulum quis nulla nunc, nec lobortis nunc.</a>
+                    <p>Feb 16, 2048 - 20 Comments</p>
+                    <div class="cleaner"></div>    
+                </li>
+                <li class="news_item rp_pp">
+                    <a href="#">Pellentesque convallis tristique mauris.</a>
+                    <p>Feb 10, 2048 - 20 Comments</p>
+                    <div class="cleaner"></div>    
+                </li>-->
     </ul>            
 
 </div>        

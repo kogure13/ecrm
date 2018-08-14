@@ -26,7 +26,15 @@
             <form id="form_keluhan" name="form_keluhan" novalidate="novalidate">
                 <div class="modal-body">
                     <input type="hidden" value="add" name="action" id="action">
-                    <input type="hidden" value="0" name="edit_id" id="edit_id">                                        
+                    <input type="hidden" value="0" name="edit_id" id="edit_id">
+                    <div class="form-group">
+                        <label>Status:</label>
+                        <select id="status" name="status" class="input-sm form-control">
+                            <option></option>
+                            <option value="1">On Progress</option>
+                            <option value="2">Selesai</option>
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label for="keterangan" class="control-label">Keterangan:</label>                                
                         <textarea class="form-control" id="keterangan" name="keterangan"></textarea>

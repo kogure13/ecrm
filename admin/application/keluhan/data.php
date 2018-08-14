@@ -36,9 +36,10 @@ class CRUD {
         if ($numData > 0) {
             echo 1;
         } else {
-            $sql = "INSERT INTO master_jabatan";
-            $sql .= " (kode_jabatan, jabatan)";
-            $sql .= " VALUES('" . addslashes($params['kode']) . "', '" . addslashes($params['jabatan']) . "')";
+            $sql = "INSERT INTO data_keluhan";
+            $sql .= " (id_penilaian, status, keterangan)";
+            $sql .= " VALUES('".$params['edit_id']."', " . $params['status'] . "', "
+                    . "'" . addslashes($params['keterangan']) . "')";
 
             $result = mysqli_query($this->conn, $sql) or die("error to insert data");
             echo 0;
@@ -46,7 +47,6 @@ class CRUD {
     }
 
     function updateData($params) {
-
 
         $sql = "UPDATE data_penilaian";
         $sql .= " SET keterangan = '" . addslashes($params['keterangan']) . "'";

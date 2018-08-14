@@ -110,7 +110,11 @@ $noreg = new noreg($connString);
                     <input type="hidden" value="add_comment" name="action" id="action">
                     <input type="hidden" value="0" name="edit_id_comment" id="edit_id_comment">  
                     <input type="hidden" value="<?= $_SESSION['id_user'] ?>" name="id_client" id="id_client">
-                    <input type="hidden" value="<?= date('Y-m-d') ?>" name="comdate">                 
+                    <input type="hidden" value="<?= date('Y-m-d') ?>" name="comdate"> 
+                    
+                    <div class="form-group">
+                        
+                    </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-7">

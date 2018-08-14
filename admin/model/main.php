@@ -65,8 +65,7 @@
         <script src="assets/plugins/raphael/raphael-min.js"></script>
         <script src="assets/plugins/jquery-knob/jquery.knob.js"></script>
 
-        <!-- <script src="assets/pages/jquery.dashboard.js"></script>-->
-        <script src="assets/plugins/autocomplete/jquery.autocomplete.min.js"></script>
+        <!-- <script src="assets/pages/jquery.dashboard.js"></script>-->        
         <script src="assets/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.min.js"></script>
         <script src="assets/plugins/switchery/js/switchery.min.js"></script>
         <script src="assets/plugins/multiselect/js/jquery.multi-select.js"></script>
@@ -76,8 +75,10 @@
         <script src="assets/plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js" type="text/javascript"></script>
         <script src="assets/plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js" type="text/javascript"></script>
         <script src="assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js" type="text/javascript"></script>
+        
+        <script src="assets/plugins/autocomplete/jquery.autocomplete.min.js"></script>
 
-        <script type="text/javascript" src="assets/pages/jquery.form-advanced.init.js"></script>
+        <script src="assets/pages/jquery.form-advanced.init.js"></script>
 
         <script src="assets/js/jquery.validate.min.js"></script>
         <script src="assets/js/jquery.core.js"></script>

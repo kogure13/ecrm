@@ -57,7 +57,7 @@ class CRUD {
         } else {
 
             $sql = "UPDATE " . $tb_name;
-            $sql .= " judul_promosi = '".  addslashes($params['judul'])."', "
+            $sql .= " SET judul_promosi = '".  addslashes($params['judul'])."', "
                     . "deskripsi = '".  addslashes($params['deskripsi'])."', "
                     . "periode_awal = '".$params['pawal']."', "
                     . "periode_akhir = '".$params['pakhir']."'";
