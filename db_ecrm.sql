@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
-Source Server Version : 100116
-Source Host           : localhost:3306
+Source Server         : server128
+Source Server Version : 100130
+Source Host           : 192.168.0.128:3306
 Source Database       : db_ecrm
 
 Target Server Type    : MYSQL
-Target Server Version : 100116
+Target Server Version : 100130
 File Encoding         : 65001
 
-Date: 2018-08-14 05:22:55
+Date: 2018-08-14 14:59:42
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -43,6 +43,9 @@ INSERT INTO `data_client` VALUES ('1', 'npm01', 'jl. kemana mana 12', '123456789
 DROP TABLE IF EXISTS `data_keluhan`;
 CREATE TABLE `data_keluhan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_penilaian` int(255) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `keterangan` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -143,9 +146,8 @@ CREATE TABLE `data_promosi` (
 -- ----------------------------
 -- Records of data_promosi
 -- ----------------------------
-INSERT INTO `data_promosi` VALUES ('1', null, 'test', 'test', '2018-08-01', '2018-08-30', null);
+INSERT INTO `data_promosi` VALUES ('1', null, 'test', 'Promo Bulan Agustus 2018', '2018-08-01', '2018-08-30', null);
 INSERT INTO `data_promosi` VALUES ('2', null, 'promo A', 'test', '2018-08-01', '2018-08-30', null);
-INSERT INTO `data_promosi` VALUES ('3', null, 'Promo B', 'test', '2018-08-01', '2018-08-30', null);
 
 -- ----------------------------
 -- Table structure for data_prospek
