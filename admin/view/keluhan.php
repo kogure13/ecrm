@@ -5,6 +5,7 @@
                    cellspacing="0" width="100%">
                 <thead>
                     <tr>
+                        <th class="nosort" width="30px">#</th>
                         <th class="nosort" width="40px">Action</th>
                         <th>Tanggal</th>
                         <th>Proyek</th>

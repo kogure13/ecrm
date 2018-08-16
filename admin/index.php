@@ -7,7 +7,7 @@ require_once '../config/function.php';
 
 $main = new Main();
 
-if (isset($_SESSION['admin_crm'])) {
+if (isset($_SESSION['admin_ecrm'])) {
     include 'model/main.php';
 } else {
     include 'model/login.php';

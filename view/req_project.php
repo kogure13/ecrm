@@ -150,6 +150,18 @@ $noreg = new noreg($connString);
                     <input type="hidden" value="<?= date('Y-m-d') ?>" name="fdate">
                     <h4>Selesaikan request prospek</h4>
                     <p>
+                        Penilaian Anda: &nbsp;
+                        <?php
+                        for($i=1; $i<=5; $i++){
+                            ?>
+                        <label class="radio-inline">
+                            <input type="radio" name="rdc" > <?=$i?>
+                        </label>
+                        <?php
+                        }
+                        ?>
+                    </p>
+                    <p>
                         Pilih "Ya" apabila request sudah sesuai dengan permintaan anda
                     </p>
                 </div>

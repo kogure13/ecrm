@@ -43,6 +43,7 @@ class Main {
                 $db = new dbObj();
                 $connString = $db->getConstring();
                 $user = new User($connString);
+                
                 $user->logout();
             } else {
                 include_once 'model/404.php';

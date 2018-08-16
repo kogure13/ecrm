@@ -33,7 +33,7 @@ class Login {
             $row = mysqli_fetch_assoc($query);
             
             if($row['password'] == $params['password']) {
-                $_SESSION['admin_crm'] = true;
+                $_SESSION['admin_ecrm'] = TRUE;
                 $_SESSION['id_user'] = $row['id'];
                 $_SESSION['id_reff'] = $row['id_reff'];
                 $_SESSION['role'] = $row['role'];                

@@ -9,10 +9,11 @@ $eClass = new Keluhan($connString);
 $requestData = $_REQUEST;
 
 $columns = array(
-    0 => 'tanggal',
-    1 => 'id',
-    2 => 'nama_proyek',
-    3 => 'keterangan'
+    0 => 'id',
+    1 => 'tanggal',
+    2 => 'id',
+    3 => 'nama_proyek',
+    4 => 'keterangan'
 );
 
 $eClass->getData($requestData, $columns);
@@ -76,6 +77,7 @@ class Keluhan {
                     break;
             }
             
+            $nestedData[] = NULL;
             $nestedData[] = $ubtn;
             $nestedData[] = $row['tanggal'];
             $nestedData[] = $row['nama_proyek'];

@@ -33,7 +33,7 @@ class Login {
             $query = mysqli_query($this->conn, $sql);
             $row = mysqli_fetch_assoc($query);
             if(password_verify($params['password'], $row['password'])) {
-                $_SESSION['ecrm_client'] = true;
+                $_SESSION['client_ecrm'] = TRUE;
                 $_SESSION['id_user'] = $row['id'];
                 
                 echo 0;

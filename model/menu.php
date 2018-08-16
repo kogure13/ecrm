@@ -20,7 +20,7 @@ if (isset($_GET['page'])) {
         </li>
         <li><a href="?page=product" class="<?= ($page == 'product') ? 'selected' : '' ?>">Product</a></li>                    
         <li><a href="?page=contact" class="<?= ($page == 'contact') ? 'selected' : '' ?>">Contact</a></li>
-        <?php if(!isset($_SESSION['ecrm_client'])) { ?> 
+        <?php if(!isset($_SESSION['client_ecrm'])) { ?> 
         <li><a href="?page=register" class="<?= ($page == 'register') ? 'selected' : '' ?>">Register</a></li>
         <li><a href="?page=login" class="<?= ($page == 'login') ? 'selected' : '' ?>">Login</a></li>        
         <?php } else { ?> 
