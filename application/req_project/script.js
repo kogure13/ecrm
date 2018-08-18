@@ -175,7 +175,24 @@ $(document).ready(function () {
         }
     });//end form komplain
     
-    $('#form_selesai').validate({
+    v_selesai = $('#form_selesai').validate({
+        rules: {            
+            rdc: {
+                required: true
+            }
+        },
+        messages: {
+            rdc: {
+                required: "Pilih Salah Satu"                
+            }
+        },
+        errorPlacement: function(error, element) {
+            if(element.is(":radio")) {
+                error.appendTo(element.parents('.text-muted'));
+            } else {
+                error.insertAfter(element);
+            }
+        },
         submitHandler: function(form) {
             var com_action = $('#action').val();
             ajaxSelesai('add_selesai');
@@ -183,6 +200,7 @@ $(document).ready(function () {
             $('#form_selesai').trigger('reset');
         }
     });//end form selesai
+    
 });//end $ document
 
 function ajaxAction(action) {
@@ -225,4 +243,11 @@ function ajaxComment(action) {
             alert('Terima Kasih Atas Penilaian Anda');
         }
     });    
+}
+
+function ajaxSelesai(action) {
+    data = $('#form_selesai').serializeArray();
+    table = $('#lookup').DataTable();
+    
+    console.log(data)
 }

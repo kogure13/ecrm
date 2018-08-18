@@ -150,12 +150,19 @@ $noreg = new noreg($connString);
                     <input type="hidden" value="<?= date('Y-m-d') ?>" name="fdate">
                     <h4>Selesaikan request prospek</h4>
                     <p>
-                        Penilaian Anda: &nbsp;
+                        Penilaian Anda: <br/>
                         <?php
                         for($i=1; $i<=5; $i++){
+                            switch($i) {
+                                case 1: $opv = 'Kurang Sekali'; break;
+                                case 2: $opv = 'Kurang'; break;
+                                case 3: $opv = 'Cukup'; break;
+                                case 4: $opv = 'Baik'; break;
+                                case 5: $opv = 'Baik Sekali'; break;                                    
+                            }
                             ?>
                         <label class="radio-inline">
-                            <input type="radio" name="rdc" > <?=$i?>
+                            <input type="radio" id="rdc" name="rdc" value="<?=$i?>" > <?=$opv?>
                         </label>
                         <?php
                         }
