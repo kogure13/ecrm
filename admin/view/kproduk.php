@@ -46,7 +46,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-sm-4">
+                            <div class="col-sm-6">
                                 <label for="produk" class="control-label">Produk:</label>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-cubes"></i></span>
@@ -62,8 +62,7 @@
                                 <textarea id="keterangan" name="keterangan" class="form-control" ></textarea>
                             </div>                            
                         </div>                        
-                    </div>
-                    
+                    </div>                    
                 </div>
                 <div class="modal-footer">
                     <div class="">

@@ -164,6 +164,7 @@ class User {
 class noreg {
 
     protected $conn;
+    protected $data = [];
 
     function __construct($connString) {
         $this->conn = $connString;
@@ -200,8 +201,7 @@ class nProject {
         $this->conn = $connString;
     }
 
-    function getOption($tb_name) {
-        $json_data = [];
+    function getOption($tb_name) {        
         $sql = "SELECT * FROM " . $tb_name;
         $result = mysqli_query($this->conn, $sql);
 
@@ -223,8 +223,7 @@ class nProduk {
         $this->conn = $connString;
     }
 
-    function getOption($tb_name) {
-        $json_data = [];
+    function getOption($tb_name) {        
         $sql = "SELECT * FROM " . $tb_name;
         $result = mysqli_query($this->conn, $sql);
 
@@ -245,13 +244,12 @@ class nPromo {
         $this->conn = $connString;
     }
 
-    function getOption($tb_name) {
-        $json_data = [];
+    function getOption($tb_name) {        
         $sql = "SELECT * FROM " . $tb_name;
         $result = mysqli_query($this->conn, $sql);
 
         while ($row = mysqli_fetch_assoc($result)) {
-            echo '<li>'
+            echo '<li class="news_item rp_pp">'
             . '<a href="#">'.$row['judul_promosi'].'</a>
                 <p>'.$row['deskripsi'].'</p>
             <p>'.date('d-m-Y', strtotime($row['periode_awal'])).'</p>
@@ -270,17 +268,16 @@ class profile_client {
         $this->conn = $connString;
     }
     
-    function getData($params, $tb_name) {
-        $json_data = [];
+    function getData($params, $tb_name) {        
         $sql = "SELECT * FROM ".$tb_name;
         $sql .= " WHERE id = $params";
 
         $result = mysqli_query($this->conn, $sql) or die();
                 
         while ($row = mysqli_fetch_assoc($result)) {            
-            $json_data = $row;
+            $data = $row;
         }
-        echo json_encode($json_data);
+        echo json_encode($data);
     }
 }
 

@@ -24,7 +24,7 @@
     
     <div class="panel panel-default" style="height: 300px;">
         <div class="panel-heading">
-            Product
+            <i class="fa fa-cubes fa-fw"></i> Product
         </div>
         <div class="panel-body" style="overflow-y: auto; ">
             <ul class="tmo_list" id="jproyek">
@@ -38,25 +38,7 @@
                 ?>
             </ul>
         </div>
-    </div>
-    
-    <div class="panel panel-default" style="height: 300px;">
-        <div class="panel-heading">
-            Project
-        </div>
-        <div class="panel-body" style="overflow-y: auto; ">
-            <ul class="tmo_list" id="jproyek">
-                <?php
-                $db = new dbObj();
-                $connString = $db->getConstring();
-
-                $tb_name = "master_kategori_proyek";
-                $jProyek = new nProject($connString);
-                $jProyek->getOption($tb_name);
-                ?>
-            </ul>
-        </div>
-    </div>
+    </div>        
 
     <div class="cleaner h40"></div>
 

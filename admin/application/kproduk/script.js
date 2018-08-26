@@ -23,7 +23,7 @@ $(document).ready(function () {
         dataType: 'JSON',
         success: function (data) {
             $.each(data, function (key, value) {
-                items_kproduk += '<option value="' + value.id + '">' + value.kategori_produk + '</option>';
+                items_kproduk += '<option value="' + value.id + '">' + value.nama_proyek + '</option>';
             });
 
             $('#kproduk').append(items_kproduk);
@@ -81,7 +81,7 @@ $(document).ready(function () {
                         type: 'POST',
                         dataType: 'JSON',
                         success: function (data) {
-                            $('#kproduk').val(data.id_kategori_produk);
+                            $('#kproduk').val(data.id_kategori_proyek);
                             $('#produk').val(data.produk);
                             $('#keterangan').val(data.keterangan);
                         }

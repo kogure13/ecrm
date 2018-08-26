@@ -9,9 +9,9 @@ $eClass = new Pegawai($connString);
 $requestData = $_REQUEST;
 
 $columns = array(
-    0 => 'id_kategori_produk',
+    0 => 'id_kategori_proyek',
     1 => 'id',
-    2 => 'id_kategori_produk',
+    2 => 'id_kategori_proyek',
     3 => 'produk',
     4 => 'keterangan'
 );
@@ -34,9 +34,9 @@ class Pegawai {
 
     function getRecords($req, $col) {                
 
-        $sqlTot = "SELECT data_produk.id, kategori_produk, produk, keterangan";
+        $sqlTot = "SELECT data_produk.id, nama_proyek, produk, data_produk.keterangan";
         $sqlTot .= " FROM data_produk";
-        $sqlTot .= " JOIN master_kategori_produk ON data_produk.id_kategori_produk = master_kategori_produk.id";
+        $sqlTot .= " JOIN master_kategori_proyek ON data_produk.id_kategori_proyek = master_kategori_proyek.id";
 
         $sql = $sqlTot;
 
@@ -46,8 +46,7 @@ class Pegawai {
         
         if(!empty($req['search']['value'])) {
 
-            $sql .=" WHERE nip LIKE '%" . $req['search']['value'] . "%' "
-                    . "OR nama_peg LIKE '%".$req['search']['value']."%'";            
+            $sql .=" WHERE produk LIKE '%" . $req['search']['value'] . "%' ";            
             
             $query = mysqli_query($this->conn, $sql) or die("ajax-grid-data.php: get PO");
             $totalFiltered = mysqli_num_rows($query);
@@ -71,7 +70,7 @@ class Pegawai {
             
             $nestedData[] = NULL;
             $nestedData[] = $user->linkAct($row['id']);
-            $nestedData[] = $row['kategori_produk'];
+            $nestedData[] = $row['nama_proyek'];
             $nestedData[] = $row['produk'];
             $nestedData[] = $row['keterangan'];
             $nestedData[] = NULL;            

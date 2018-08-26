@@ -1,3 +1,4 @@
+
 <div id="slider-wrapper">
     <!-- Promosi banner -->
     <div id="slider" class="nivoSlider">
@@ -16,7 +17,7 @@
 <div class="col one_third no_margin_right">
     <div class="panel panel-default" style="height: 300px;">
         <div class="panel-heading">
-            Project
+            <i class="fa fa-cubes fa-fw"></i> Product
         </div>
         <div class="panel-body" style="overflow-y: auto; ">
             <ul class="tmo_list" id="jproyek">
@@ -75,17 +76,22 @@
 <div id="sidebar" class="float_r">                               
     <div class="cleaner h40"></div>
 
-    <h5>Promosi</h5>
-    <ul class="demo">
-        <?php
-        $db = new dbObj();
-        $connString = $db->getConstring();
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <i class="fa fa-bell fa-fw"></i> Promosi
+        </div>
+        <div class="panel-body">
+            <ul class="demo">
+                <?php
+                $db = new dbObj();
+                $connString = $db->getConstring();
 
-        $tb_name = "data_promosi";
-        $jPromo = new nPromo($connString);
-        $jPromo->getOption($tb_name);
-        ?>
-        <!--        <li class="news_item rp_pp">
+                $tb_name = "data_promosi";
+                $jPromo = new nPromo($connString);
+                $jPromo->getOption($tb_name);
+                ?>
+                <!--
+                <li class="news_item rp_pp">
                     <a href="#">Integer venenatis pharetra magna vitae ultrices</a>
                     <p>Feb 23, 2048 - 20 Comments</p>
                     <div class="cleaner"></div>    
@@ -99,9 +105,11 @@
                     <a href="#">Pellentesque convallis tristique mauris.</a>
                     <p>Feb 10, 2048 - 20 Comments</p>
                     <div class="cleaner"></div>    
-                </li>-->
-    </ul>            
-
+                </li>
+                -->
+            </ul>            
+        </div>
+    </div>    
 </div>        
 
 <div class="cleaner"></div>
@@ -118,4 +126,3 @@
         });
     });
 </script>
-

@@ -33,7 +33,7 @@ class Client {
 
     public function getData($req, $col, $tb_name) {
         $this->data = $this->getRecords($req, $col, $tb_name);
-        echo json_encode($this->data);
+        echo json_encode($this->data);        
     }
 
     function getRecords($req, $col, $tb_name) {
@@ -68,9 +68,16 @@ class Client {
         }
 
         $user = new User($this->conn);
-
+                
         while ($row = mysqli_fetch_assoc($query)) {
             $nestedData = [];
+            $status = '';
+            
+            if($this->ctClient($row['id']) > 0) {
+                $status = "Aktif";
+            }else {
+                $status = "Pasif";
+            }                        
             
             $nestedData[] = NULL;
             $nestedData[] = $row['username'];
@@ -79,7 +86,7 @@ class Client {
             $nestedData[] = $row['tlp'];
             $nestedData[] = $row['email'];
             $nestedData[] = $row['date_register'];
-            $nestedData[] = NULL;
+            $nestedData[] = $status;
 
             $data[] = $nestedData;
         }
@@ -101,5 +108,17 @@ class Client {
         }
 
         return $json_data;
+    }
+    
+    function ctClient($params) {
+        $sql = "select count(*) as cl ";
+        $sql .= "FROM data_prospek ";
+        $sql .= "WHERE id_client = $params AND ";
+        $sql .= "(status = 1 OR status = 2)";
+        
+        $result = mysqli_query($this->conn, $sql) or die();
+        $row = mysqli_fetch_assoc($result);
+        $d = $row['cl'];
+        return $d;
     }
 }//end class client

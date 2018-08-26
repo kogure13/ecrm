@@ -1,3 +1,8 @@
+function strtrunc(str, max, add){
+   add = add || '...';
+   return (typeof str === 'string' && str.length > max ? str.substring(0, max) + add : str);
+};
+
 $(document).ready(function () {
 
     $('#btn_add').click(function (e) {
@@ -24,11 +29,20 @@ $(document).ready(function () {
         $form.find('.error').removeClass('error');
     });
 
-    var dataTable = $('#lookup').DataTable({
-        'autoWidth': true,
+    var dataTable = $('#lookup').DataTable({        
+        'autoWidth': false,
         'aoColumnDefs': [
             {'bSortable': false, 'aTargets': ['nosort']},
-            {'sClass': 'text-right', 'aTargets': [0]}
+            {'sClass': 'text-right', 'aTargets': [0]},
+            {
+                'aTargets': [2, 3],
+                'render': function(data, type, full, meta) {
+                    if(type == 'display') {
+                        data = strtrunc(data, 25);
+                    }                    
+                    return data;
+                }
+            }
         ],
         'processing': true,
         'serverSide': true,

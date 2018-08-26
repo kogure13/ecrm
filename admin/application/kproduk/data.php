@@ -38,7 +38,7 @@ class CRUD {
         } else {
 
             $sql = "INSERT INTO " . $tb_name;
-            $sql .= " (id_kategori_produk, produk, keterangan)";
+            $sql .= " (id_kategori_proyek, produk, keterangan)";
             $sql .= " VALUES('" . $params['kproduk'] . "','" . addslashes($params['produk']) . "', "
                     . "'" . addslashes($params['keterangan']) . "')";
                         
@@ -56,7 +56,7 @@ class CRUD {
         } else {
 
             $sql = "UPDATE " . $tb_name;
-            $sql .= " SET id_kategori_produk = '" . $params['kproduk'] . "',"
+            $sql .= " SET id_kategori_proyek = '" . $params['kproduk'] . "',"
                     . " produk = '" . addslashes($params['produk']) . "',"
                     . " keterangan = '" . addslashes($params['keterangan']) . "'";
             $sql .= " WHERE id = '" . $_POST['edit_id'] . "'";
@@ -77,7 +77,7 @@ class CRUD {
     function cekData($params, $tb_name) {
 
         $sql = "SELECT * FROM " . $tb_name;
-        $sql .= " WHERE id_kategori_produk = '" . $params['kproduk'] . "' AND"
+        $sql .= " WHERE id_kategori_proyek = '" . $params['kproduk'] . "' AND"
                 . " produk LIKE '%".$params['produk']."%'";
         $query = mysqli_query($this->conn, $sql) or die('error to cek data');
         $numData = intval($query->num_rows);
