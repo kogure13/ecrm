@@ -12,8 +12,9 @@ $columns = array(
     0 => 'id',
     1 => 'tanggal',
     2 => 'id',
-    3 => 'nama_proyek',
-    4 => 'keterangan'
+    3 => NULL,
+    4 => 'nama_proyek',
+    5 => 'keterangan'
 );
 
 $eClass->getData($requestData, $columns);

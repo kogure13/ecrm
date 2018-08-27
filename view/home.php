@@ -34,10 +34,13 @@
     </div>    
 </div>        
 
-<div id="content" class="float_l">
+<div id="content" class="float_l text-justify">
 
     <h2><?= company_name ?></h2>
-    <div class="image_frame image_fl"><span></span><img src="theme/asset/images/Logo_CDP.jpg" alt="" /></div>
+    <div class="image_frame image_fl">
+        <span></span>
+        <img src="theme/asset/images/Logo_CDP.jpg" alt="" width="310" />
+    </div>
     <p>Sejarah Singkat Perusahaan</p>
     <p>
         Didirikan pada tanggal 2 November 1990 dengan nama PT. CATU DAYA PERKASA, 

@@ -51,7 +51,7 @@ $noreg = new noreg($connString);
                     <input type="hidden" value="<?= $_SESSION['id_user'] ?>" name="id_client" id="id_client">
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                                 <label for="nip" class="control-label">No. Reg:</label>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-keyboard-o"></i></span>

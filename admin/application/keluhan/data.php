@@ -30,20 +30,14 @@ class CRUD {
     }
 
     function insertData($params) {
+        
+        $sql = "INSERT INTO data_keluhan";
+        $sql .= " (id_penilaian, status, keterangan)";
+        $sql .= " VALUES('" . $params['edit_id'] . "', " . $params['status'] . "', "
+                . "'" . addslashes($params['keterangan']) . "')";
 
-        $numData = $this->cekData($params);
-
-        if ($numData > 0) {
-            echo 1;
-        } else {
-            $sql = "INSERT INTO data_keluhan";
-            $sql .= " (id_penilaian, status, keterangan)";
-            $sql .= " VALUES('".$params['edit_id']."', " . $params['status'] . "', "
-                    . "'" . addslashes($params['keterangan']) . "')";
-
-            $result = mysqli_query($this->conn, $sql) or die("error to insert data");
-            echo 0;
-        }
+        $result = mysqli_query($this->conn, $sql) or die("error to insert data");
+        echo 0;
     }
 
     function updateData($params) {
@@ -63,17 +57,6 @@ class CRUD {
 
         $result = mysqli_query($this->conn, $sql) or die("error to delete data");
         echo 'delete';
-    }
-
-    function cekData($params) {
-
-        $sql = "SELECT * FROM master_jabatan";
-        $sql .= " WHERE kode_jabatan LIKE '%" . $params['kode'] . "%' AND "
-                . "jabatan LIKE '%" . $params['jabatan'] . "'";
-        $query = mysqli_query($this->conn, $sql) or die('error to cek data');
-        $numData = intval($query->num_rows);
-
-        return $numData;
     }
 
 }

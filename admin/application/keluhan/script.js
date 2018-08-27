@@ -8,7 +8,7 @@ $(document).ready(function () {
     });
 
     var dataTable = $('#lookup').dataTable({
-        'autoWidth': false,
+        'autoWidth': true,
         'aoColumnDefs': [
             {'bSortable': false, 'aTargets': ['nosort']},
             {'sClass': 'text-right', 'aTargets': [0]}

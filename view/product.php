@@ -32,7 +32,7 @@
                 $db = new dbObj();
                 $connString = $db->getConstring();
 
-                $tb_name = "master_kategori_produk";
+                $tb_name = "master_kategori_proyek";
                 $jProduk = new nProduk($connString);
                 $jProduk->getOption($tb_name);
                 ?>

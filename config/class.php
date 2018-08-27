@@ -180,7 +180,9 @@ class noreg {
 
         if ($row['numData'] < 10) {
 
-            $a .= "0" . $row['numData'];
+            $a .= "00" . $row['numData'];
+        } else if($row['numData'] >= 10 && $row['numData'] < 100){
+            $a .= "0".$row['numData'];
         } else {
             $a .= $row['numData'];
         }
@@ -229,7 +231,7 @@ class nProduk {
 
         while ($row = mysqli_fetch_assoc($result)) {
             echo '<li>';
-            echo ucwords($row['kategori_produk']);
+            echo ucwords($row['nama_proyek']);
             echo '</li>';
         }
     }
@@ -279,6 +281,6 @@ class profile_client {
         }
         echo json_encode($data);
     }
-}
+}//end class profile client
 
 ?>

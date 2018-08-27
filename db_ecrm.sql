@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 100130
 File Encoding         : 65001
 
-Date: 2018-08-27 09:11:11
+Date: 2018-08-27 09:33:56
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,12 +30,21 @@ CREATE TABLE `data_client` (
   `password` varchar(255) DEFAULT NULL,
   `status_client` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of data_client
 -- ----------------------------
 INSERT INTO `data_client` VALUES ('1', 'npm01', 'jl. kemana mana 12', '1234567890', 'npm@client.net', '2018-07-29', 'npm01', '$2y$10$gymxA3VIv.x9pyNlLul9..M3zoYy.K4kVeiiQUVfTw0GQawxAci4.', '0');
+INSERT INTO `data_client` VALUES ('2', 'PLN Bandung', 'JLN. Bandung selatan', '022665423', 'npm@client.net', '2018-07-29', 'PLN BANDUNG', '$2y$10$gymxA3VIv.x9pyNlLul9..M3zoYy.K4kVeiiQUVfTw0GQawxAci4.', '0');
+INSERT INTO `data_client` VALUES ('3', 'PT.Bio Farma Persero', 'jln. xxxxxxxxxx', '02278999363', 'biofarma@gmail.com', '2018-08-15', 'biofarma', '$2y$10$h0.SeyEuJKVkorzGCAPyJOkU9q7smdnkggj9nRPF4F1E77yQyDKy.', '0');
+INSERT INTO `data_client` VALUES ('4', 'PT. PLN (Persero) P3BS Sektor Kramasan PLTG TM 1 Jakabaring', 'JLN.xxxxxxxx', '022543534532', 'PLNJakabaring@gmail.com', '2018-08-15', 'plnjakabaring', '$2y$10$3KQsf87Qf7Uu2.88aSWpyuUdPsBdQq7O8f6r2NxBd3WKVmVPF.Tbe', '0');
+INSERT INTO `data_client` VALUES ('5', 'PT PLN (Persero) TJBTB APP Probolinggo', 'JLN.xxxxxxx', '02294352525', 'PLNPorbolinggo@gmail.com', '2018-08-15', 'plnporbolinggo', '$2y$10$gcN0Ust3KfnWD/m9P0hdJOJJIre2M/Mw/zZRx0GdXRd2xk5LFbpnG', '0');
+INSERT INTO `data_client` VALUES ('6', 'PT PLN (Persero) P3BS UPT Banda Aceh', 'Jln.xxxxxx', '0223252352', 'PLNBancaaceh@gmail.com', '2018-08-15', 'plnbandaaceh', '$2y$10$T7jFRaJ/JO.KKIP3WznJ4uZx.b1V02rVoWESMASjdWf36CLCPHrXK', '0');
+INSERT INTO `data_client` VALUES ('7', 'PT PLN ( PERSERO) P3BS UPT PALEMBANG', 'Jln.xxxxxx', '022325235325', 'PLNPalembang@gmail.com', '2018-08-15', 'plnpalembang', '$2y$10$OCI9XiiLQEV31t2dlXaz4O1YIyD75h2TwN0vI0h00wjKRe/ZZU.uS', '0');
+INSERT INTO `data_client` VALUES ('8', 'PT. Petronas', 'Jln.xxxxxxx\r\n', '0224325235', 'petronas@gmail.com', '2018-08-15', 'petronas', '$2y$10$IZmKnIB/HkCJz9odv/pka.dWQq3vmXLMLPsIjFRNtc4CNxdO8Fk9O', '0');
+INSERT INTO `data_client` VALUES ('9', 'PT. Adiprima Suraprinta', 'Jln.xxxxxx', '022242534635', 'adirima@gmail.com', '2018-08-15', 'adiprima', '$2y$10$2Ws8Q1upCLWZAuvyaEyuqubk8vsKrtXoa78WHJ71OohaywNCjTLZ2', '0');
+INSERT INTO `data_client` VALUES ('10', 'PT. PLN (PERSERO) TJBT', 'Jln.xxxxxx', '022789789796', 'PLNTjbt@gmail.com', '2018-08-15', 'plntjbt', '$2y$10$RfWstMP96x2M9BGZGLfpDO1wx1gpUBcg37HsMMtGUB06T/BOJdLvW', '0');
 
 -- ----------------------------
 -- Table structure for data_keluhan
