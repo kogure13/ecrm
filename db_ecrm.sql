@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 100130
 File Encoding         : 65001
 
-Date: 2018-08-14 14:59:42
+Date: 2018-08-27 09:11:11
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -102,12 +102,13 @@ CREATE TABLE `data_penilaian` (
   `keterangan` text,
   `tanggal` date NOT NULL DEFAULT '0000-00-00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of data_penilaian
 -- ----------------------------
 INSERT INTO `data_penilaian` VALUES ('1', '1', '1', '0', '0', 'dnasdnajkdna  nsdkandkanda dakndkandak ksandkas\r\n\r\nKeterangan marketing : sudah ditangani per tanggal ???', '2018-07-29');
+INSERT INTO `data_penilaian` VALUES ('2', '4', '1', '0', '0', 'asdad sd d asd dasd ad dasd dasdasd', '2018-08-27');
 
 -- ----------------------------
 -- Table structure for data_produk
@@ -115,7 +116,7 @@ INSERT INTO `data_penilaian` VALUES ('1', '1', '1', '0', '0', 'dnasdnajkdna  nsd
 DROP TABLE IF EXISTS `data_produk`;
 CREATE TABLE `data_produk` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_kategori_produk` int(11) DEFAULT NULL,
+  `id_kategori_proyek` int(11) DEFAULT NULL,
   `produk` varchar(50) DEFAULT NULL,
   `keterangan` varchar(255) DEFAULT NULL,
   `gambar` varchar(255) DEFAULT NULL,
@@ -141,7 +142,7 @@ CREATE TABLE `data_promosi` (
   `periode_akhir` date DEFAULT NULL,
   `banner` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of data_promosi
@@ -171,7 +172,7 @@ CREATE TABLE `data_prospek` (
 INSERT INTO `data_prospek` VALUES ('1', 'PJO-01/2018-07', '1', '1', '1', '2018-08-01', 'Keterangan: 1', '5');
 INSERT INTO `data_prospek` VALUES ('2', 'PJO-02/2018-07', '1', '2', '1', '2018-08-06', 'Generator dan Pancang baru', '1');
 INSERT INTO `data_prospek` VALUES ('3', 'PJO-03/2018-07', '1', '2', '1', '2018-08-30', 'Tambahan Generator Baru\r\n\r\n', '2');
-INSERT INTO `data_prospek` VALUES ('4', 'PJO-04/2018-07', '1', '1', '3', '2018-07-19', 'fasfasf', '4');
+INSERT INTO `data_prospek` VALUES ('4', 'PJO-04/2018-07', '1', '1', '3', '2018-07-19', 'fasfasf', '5');
 
 -- ----------------------------
 -- Table structure for data_user
@@ -219,22 +220,6 @@ INSERT INTO `master_jabatan` VALUES ('7', '007', 'Sekretaris');
 INSERT INTO `master_jabatan` VALUES ('8', '008', 'Marketing');
 
 -- ----------------------------
--- Table structure for master_kategori_produk
--- ----------------------------
-DROP TABLE IF EXISTS `master_kategori_produk`;
-CREATE TABLE `master_kategori_produk` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `kategori_produk` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Records of master_kategori_produk
--- ----------------------------
-INSERT INTO `master_kategori_produk` VALUES ('1', 'baterai');
-INSERT INTO `master_kategori_produk` VALUES ('2', 'rectifier');
-
--- ----------------------------
 -- Table structure for master_kategori_proyek
 -- ----------------------------
 DROP TABLE IF EXISTS `master_kategori_proyek`;
@@ -249,5 +234,5 @@ CREATE TABLE `master_kategori_proyek` (
 -- ----------------------------
 -- Records of master_kategori_proyek
 -- ----------------------------
-INSERT INTO `master_kategori_proyek` VALUES ('1', '001', 'Pancang', 'Pancang');
-INSERT INTO `master_kategori_proyek` VALUES ('2', '002', 'Generator', 'Generator');
+INSERT INTO `master_kategori_proyek` VALUES ('1', '001', 'Baterai', '');
+INSERT INTO `master_kategori_proyek` VALUES ('2', '002', 'Rectifier', '');

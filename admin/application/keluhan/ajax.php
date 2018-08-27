@@ -81,6 +81,7 @@ class Keluhan {
             $nestedData[] = $ubtn;
             $nestedData[] = $row['tanggal'];
             $nestedData[] = $row['nama_proyek'];
+            $nestedData[] = NULL;
             $nestedData[] = $row['keterangan'];            
 
             $data[] = $nestedData;            

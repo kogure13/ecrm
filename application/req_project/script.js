@@ -150,14 +150,11 @@ $(document).ready(function () {
             keterangan: {
                 required: true,
                 minlength: 30
-            },
-            rdc: {
-                required: true
             }
         },
         messages: {
-            rdc: {
-                required: "Pilih Salah Satu"                
+            keterangan: {
+                required: "Pesan tidak boleh kosong"                
             }
         },
         errorPlacement: function(error, element) {
@@ -247,7 +244,5 @@ function ajaxComment(action) {
 
 function ajaxSelesai(action) {
     data = $('#form_selesai').serializeArray();
-    table = $('#lookup').DataTable();
-    
-    console.log(data)
+    table = $('#lookup').DataTable();        
 }

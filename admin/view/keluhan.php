@@ -7,9 +7,8 @@
                     <tr>
                         <th class="nosort" width="30px">#</th>
                         <th class="nosort" width="40px">Action</th>
-                        <th>Tanggal</th>
-                        <th>Proyek</th>
-                        <th>Keterangan</th>
+                        <th>Tanggal</th><th>Proyek</th>
+                        <th>Client</th><th>Keterangan</th>
                     </tr>
                 </thead>
                 <tbody></tbody>

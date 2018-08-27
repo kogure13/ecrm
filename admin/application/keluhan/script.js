@@ -8,7 +8,7 @@ $(document).ready(function () {
     });
 
     var dataTable = $('#lookup').dataTable({
-        'autoWidth': true,
+        'autoWidth': false,
         'aoColumnDefs': [
             {'bSortable': false, 'aTargets': ['nosort']},
             {'sClass': 'text-right', 'aTargets': [0]}
@@ -34,21 +34,7 @@ $(document).ready(function () {
             var index = page * length + (iDisplayIndex + 1);
             $('td:eq(0)', row).html(index);
         },
-        fnDrawCallback: function (oSettings) {
-
-            $('#lookup td.status').each(function () {
-                var status = $(this).html();
-                switch (status) {
-                    case 'Inactive':
-                        $(this).addClass('status-inactive');
-                        break;
-                    case 'Active':
-                        $(this).addClass('status-active');
-                        break;
-                    default:
-                        return;
-                }
-            });
+        fnDrawCallback: function (oSettings) {            
 
             $('.act_btn').each(function () {
                 $(this).tooltip({
